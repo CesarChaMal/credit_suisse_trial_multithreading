@@ -16,8 +16,8 @@ public class PropertyConfig {
 	public static PropertyPlaceholderConfigurer propertyConfigurer() {
 		PropertyPlaceholderConfigurer ppc = new PropertyPlaceholderConfigurer();		
 		Resource[] resources = new ClassPathResource[] { new ClassPathResource( "app.properties" ) };
-		ppc.setLocations( resources );
-		ppc.setIgnoreUnresolvablePlaceholders( true );
+		ppc.setLocations(resources);
+		ppc.setIgnoreUnresolvablePlaceholders(true);
 		return ppc;
 	}
 	

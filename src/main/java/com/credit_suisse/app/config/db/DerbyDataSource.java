@@ -8,9 +8,11 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+import org.springframework.stereotype.Component;
 
-@Profile("derby")
 @Configuration
+@Profile("derby")
+@Component("derby")
 public class DerbyDataSource {
 
 	//jdbc:derby:memory:testdb

@@ -69,6 +69,15 @@ public class Bootstrap implements InitializingBean, ApplicationContextAware, App
     @Value("${InputFile}")
     private String inputFile;
     
+    @Value("${Log}")
+    private String log;
+    
+    @Value("${Instruments_Count}")
+    private int instruments_Count;
+    
+    @Value("${Newst}")
+    private int newst;
+    
     public Bootstrap() { }
     
     public void afterPropertiesSet() throws Exception {
@@ -84,6 +93,8 @@ public class Bootstrap implements InitializingBean, ApplicationContextAware, App
         CommonConstants.MAX_THREADS = maxThreads;
         CommonConstants.WORKER_PROFILE = workerProfile;
         CommonConstants.INPUT_FILE = inputFile;
+        CommonConstants.INSTRUMENTS_COUNT = instruments_Count;
+        CommonConstants.NEWST = newst;
     }
 
     public void setApplicationContext(ApplicationContext context)

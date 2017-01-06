@@ -1,24 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
+	<!--
+	<property name="logs" value="c:/logs" />
+	<property name="logs" value="credit_suisse_trial.log" />
+    -->
+	<property name="logs" value="logs/" />
+
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>${logs}credit_suisse_trial.log</file>
+		<!--
+        <append>true</append>
+	    -->
+        <append>false</append>
+        <encoder>
+            <pattern>%-5relative %d{yyyy-MM-dd HH:mm:ss} %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
 	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
 		<layout class="ch.qos.logback.classic.PatternLayout">
-			<Pattern>
-				%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n
-			</Pattern>
+			<Pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n</Pattern>
 		</layout>
 	</appender>
 
+    <logger name="jdbc" level="debug" additivity="false">
+		<appender-ref ref="STDOUT" />
+        <appender-ref ref="FILE" />
+    </logger>
+
+    <logger name="jdbc.sqlonly" level="debug" additivity="false">
+		<appender-ref ref="STDOUT" />
+        <appender-ref ref="FILE" />
+    </logger>
+
 	<logger name="org.springframework" level="debug" additivity="false">
 		<appender-ref ref="STDOUT" />
+		<appender-ref ref="FILE" />
 	</logger>
 	
-	<logger name="com.credit_suisse" level="debug" additivity="false">
+	<logger name="com.credit_suisse.app" level="debug" additivity="false">
 		<appender-ref ref="STDOUT" />
+		<appender-ref ref="FILE" />
 	</logger>
 	 
-	<root level="error">
+	<root level="debug" additivity="false">
 		<appender-ref ref="STDOUT" />
+		<appender-ref ref="FILE" />
 	</root>
 
 </configuration>

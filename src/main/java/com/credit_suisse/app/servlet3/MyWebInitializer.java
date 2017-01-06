@@ -24,7 +24,7 @@ public class MyWebInitializer extends AbstractAnnotationConfigDispatcherServletI
 	protected Class<?>[] getServletConfigClasses() {
 		return new Class[] { SpringWebConfig.class };
 	}
-
+//
 	@Override
 	protected String[] getServletMappings() {
 		return new String[] { "/" };
@@ -40,12 +40,12 @@ public class MyWebInitializer extends AbstractAnnotationConfigDispatcherServletI
 
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
+    	servletContext.setInitParameter("spring.profiles.active", "h2");
         WebApplicationContext context = getContext();
         servletContext.addListener(new ContextLoaderListener(context));
         ServletRegistration.Dynamic dispatcher = servletContext.addServlet("DispatcherServlet", new DispatcherServlet(context));
         dispatcher.setLoadOnStartup(1);
         dispatcher.addMapping("/");
-		servletContext.setInitParameter("spring.profiles.active", "h2");
     }
 
     private AnnotationConfigWebApplicationContext getContext() {

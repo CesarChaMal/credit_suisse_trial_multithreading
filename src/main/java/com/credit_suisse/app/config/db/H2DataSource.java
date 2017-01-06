@@ -11,13 +11,16 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+import org.springframework.stereotype.Component;
 
-@Profile("h2")
 @Configuration
+@Profile("h2")
+@Component("h2")
 public class H2DataSource {
 
 	// jdbc:h2:mem:testdb
 	@Bean
+//	@Bean(name= {"dataSource"})
 	public DataSource dataSource() {
 		EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
 		EmbeddedDatabase db = builder.setType(EmbeddedDatabaseType.H2).addScript("db/sql/h2/create-db.sql").addScript("db/sql/h2/insert-data.sql").build();

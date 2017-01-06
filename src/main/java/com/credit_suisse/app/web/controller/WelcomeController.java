@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.credit_suisse.app.core.CalculatorEngine;
 import com.credit_suisse.app.core.module.AverageNewstInstrumentsModule;
 import com.credit_suisse.app.core.module.OnFlyModule;
+import com.credit_suisse.app.dao.InstrumentPriceModifierDao;
 import com.credit_suisse.app.model.Instrument;
 import com.credit_suisse.app.model.InstrumentPriceModifier;
 import com.credit_suisse.app.model.newInstrument;
@@ -25,8 +26,15 @@ public class WelcomeController {
 
 	private static final Logger logger = LoggerFactory.getLogger(WelcomeController.class);
 
+	@Autowired
+	InstrumentPriceModifierDao instrumentPriceModifierDao;
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String welcome(Model model) {
+
+		List<InstrumentPriceModifier> modifiers = instrumentPriceModifierDao.findAll();
+
+		logger.debug(Arrays.toString(modifiers.toArray()));
 
 //		String inputPath = "c:\\temp\\input.txt";
 //		String inputPath = "c:\\temp\\big_input.txt";
@@ -62,7 +70,8 @@ public class WelcomeController {
 		calculator.addModule(newInstrument1);
 		calculator.addModule(newInstrument2);
 
-		model.addAttribute("instruments", calculator.calculate());
+		model.addAttribute("modifiers", modifiers);
+		model.addAttribute("instruments", calculator.calculate(instrumentPriceModifierDao));
 
 		return "welcome";
 

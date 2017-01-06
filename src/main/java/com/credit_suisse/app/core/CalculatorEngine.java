@@ -6,21 +6,32 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.TimerTask;
 import java.util.TreeMap;
-import java.util.concurrent.ConcurrentHashMap;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.DependsOn;
+import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.ImportResource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.stereotype.Service;
+import org.springframework.web.context.WebApplicationContext;
 
+import com.credit_suisse.app.config.SpringRootConfig;
+import com.credit_suisse.app.config.SpringWebConfig;
+import com.credit_suisse.app.config.db.DerbyDataSource;
+import com.credit_suisse.app.config.db.H2DataSource;
+import com.credit_suisse.app.config.db.HsqlDataSource;
 import com.credit_suisse.app.core.module.AverageModule;
 import com.credit_suisse.app.core.module.AverageMonthModule;
 import com.credit_suisse.app.core.module.AverageNewstInstrumentsModule;
 import com.credit_suisse.app.core.module.OnFlyModule;
+import com.credit_suisse.app.dao.InstrumentPriceModifierDao;
 import com.credit_suisse.app.model.Instrument;
 import com.credit_suisse.app.model.Instrument1;
 import com.credit_suisse.app.model.Instrument2;
@@ -30,7 +41,30 @@ import com.credit_suisse.app.model.newInstrument;
 import com.credit_suisse.app.util.CommonConstants;
 import com.credit_suisse.app.util.InstrumentUtil;
 
+@Service
+//@Controller
+@ImportResource(value = {"file:src/main/**/db-derby-config.xml","file:src/main/**/db-h2-config.xml","file:src/main/**/db-hsqldb-config.xml","file:src/main/**/spring-bean-config.xml"})
+//@Import( {DerbyDataSource.class, H2DataSource.class, HsqlDataSource.class, SpringRootConfig.class, SpringWebConfig.class} )
+//@ContextConfiguration(locations = {"file:src/main/**/db-derby-config.xml","file:src/main/**/db-h2-config.xml","file:src/main/**/db-hsqldb-config.xml","file:src/main/**/spring-bean-config.xml"})
+//@DependsOn("h2")
 public class CalculatorEngine extends Thread {
+	
+    @Autowired
+    public ApplicationContext ctx;
+
+	@Autowired
+	private WebApplicationContext wctx;
+    
+//	@Autowired
+//	DataSource dataSource;
+
+//	@Bean
+//	public NamedParameterJdbcTemplate getNamedParameterJdbcTemplate() {
+//		return new NamedParameterJdbcTemplate(dataSource);
+//	}
+
+	public CalculatorEngine() {
+	}
 
 	private static final Logger logger = LoggerFactory.getLogger(CalculatorEngine.class);
 
@@ -41,6 +75,17 @@ public class CalculatorEngine extends Thread {
 //	private static volatile Map<String, Instrument> MODULES = new ConcurrentHashMap<>();
 
 	private String inputPath = null;
+	
+	@Autowired
+	NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+	
+	@Autowired
+	public void setNamedParameterJdbcTemplate(NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
+		this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
+	}
+	
+	@Autowired
+	InstrumentPriceModifierDao instrumentPriceModifierDao;
 	
 	// commented out because causes synchronization issue
 	static {
@@ -112,7 +157,7 @@ public class CalculatorEngine extends Thread {
 		}
 	}
 
-	public synchronized Map<String, Double> calculate() {
+	public synchronized Map<String, Double> calculate(InstrumentPriceModifierDao multiplier) {
 		Map<String, Double> result = new TreeMap<>();
 		parseFile();
 		Double multiplierValue = 1.0;
@@ -120,6 +165,11 @@ public class CalculatorEngine extends Thread {
 		logger.debug("MODULES.size: " + MODULES.size());
 		
 		for (Entry<String, Instrument> instrumentModule : MODULES.entrySet()) {
+			if (multiplier != null){
+				List<InstrumentPriceModifier> instrumentPriceModifier = multiplier.findByNameList(instrumentModule.getKey());
+				multiplierValue = instrumentPriceModifier != null ? instrumentPriceModifier.get(0).getModifier() : 1;
+				System.out.println(instrumentPriceModifier);
+			}
 			System.out.println(instrumentModule.getKey() + ":" + instrumentModule.getValue().calculate());
 			System.out.println(instrumentModule.getKey() + " multiplier:" + multiplierValue);
 //			result.put(instrumentModule.getKey(), instrumentModule.getValue().calculate());
@@ -166,6 +216,11 @@ public class CalculatorEngine extends Thread {
 	public void run() {
 		logger.debug("Calculator Engine calculate");
 		
+//		instrumentPriceModifierDao = (InstrumentPriceModifierDao) ctx.getBean(InstrumentPriceModifierDao.class);
+//		instrumentPriceModifierDao = ctx.getBean(InstrumentPriceModifierDao.class);
+//		List<InstrumentPriceModifier> modifiers = instrumentPriceModifierDao.findAll();
+//		modifiers.forEach(System.out::println);
+
 //		Instrument newInstrument = new newInstrument("INSTRUMENT3", 4.0d, new Date());
 //		newInstrument.setInstrumentCalculateBehavior(new OnFlyModule(){
 //			@Override
@@ -185,7 +240,7 @@ public class CalculatorEngine extends Thread {
 //		CalculatorEngine calculator = new CalculatorEngine(CommonConstants.INPUT_FILE);
 //		CalculatorEngine calculator = CalculatorEngine.getInstance(CommonConstants.INPUT_FILE);
 //		this.addModule(newInstrument);
-		this.calculate();
+		this.calculate(instrumentPriceModifierDao);
 	}
 
 }

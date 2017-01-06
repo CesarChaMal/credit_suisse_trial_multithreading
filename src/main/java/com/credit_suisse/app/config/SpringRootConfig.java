@@ -9,12 +9,19 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.ImportResource;
 
+import com.credit_suisse.app.config.db.DerbyDataSource;
+import com.credit_suisse.app.config.db.H2DataSource;
+import com.credit_suisse.app.config.db.HsqlDataSource;
 import com.credit_suisse.app.core.TaskManager;
 import com.credit_suisse.app.util.CommonConstants;
 
-@ComponentScan({ "com.credit_suisse.app" })
 @Configuration
+@ComponentScan({ "com.credit_suisse.app" })
+@ImportResource(value = {"file:src/main/**/db-derby-config.xml","file:src/main/**/db-h2-config.xml","file:src/main/**/db-hsqldb-config.xml","file:src/main/**/spring-bean-config.xml"})
+@Import( {DerbyDataSource.class, H2DataSource.class, HsqlDataSource.class, SpringWebConfig.class} )
 public class SpringRootConfig {
 
     @Value("${ThreadPoolSize}")
