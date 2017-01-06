@@ -3,13 +3,13 @@ package com.credit_suisse.app.core;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Manager extends Thread {
+public class ThreadManager extends Thread {
 	
-	private static final Logger logger = LoggerFactory.getLogger(CalculatorEngineRefresh.class);
+	private static final Logger logger = LoggerFactory.getLogger(ThreadManager.class);
 
 	Thread[] task = null;
 
-	public Manager(){
+	public ThreadManager(){
 	}
 	
 	public Thread[] getTask() {
@@ -23,7 +23,7 @@ public class Manager extends Thread {
 	}
 	
 	public void run(){
-		for (int i=0;i < task.length;i++){
+		for (int i=0; i < task.length; i++){
 	        logger.debug("run() starting task " + i + " "+ task[i].getName());
 		    task[i].start();
 		}

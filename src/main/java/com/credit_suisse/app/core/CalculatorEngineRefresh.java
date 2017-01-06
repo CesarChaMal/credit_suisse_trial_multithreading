@@ -6,14 +6,15 @@ import org.slf4j.LoggerFactory;
 
 import com.credit_suisse.app.util.CommonConstants;
 
-public class CalculatorEngineRefresh extends TimerTask{
+public class CalculatorEngineRefresh extends TimerTask {
 	
 	private volatile static CalculatorEngineRefresh INSTANCE;
 	
-	private volatile static CalculatorEngine calculatorEngine;
+	private volatile CalculatorEngine calculatorEngine;
 	
 	private CalculatorEngineRefresh() {
-		calculatorEngine = CalculatorEngine.getInstance(CommonConstants.INSTRUMENT_INPUT_FILE);
+//		calculatorEngine = CalculatorEngine.getInstance(CommonConstants.INPUT_FILE);
+		calculatorEngine = new CalculatorEngine(CommonConstants.INPUT_FILE);
 	}
 
 	private static final Logger logger = LoggerFactory.getLogger(CalculatorEngineRefresh.class);
@@ -36,9 +37,29 @@ public class CalculatorEngineRefresh extends TimerTask{
 	}
 
 	public void reloadCalculatorEngine(){
-		Manager cachemanager = new Manager();
+		ThreadManager cachemanager = new ThreadManager();
+		
+		Thread thread1 = new Thread(){
+			public void run(){
+				System.out.println("Thread Running");
+			}
+		};
+//		thread1.start();
+		
+		Runnable myRunnable = new Runnable(){
+		     public void run(){
+		        System.out.println("Runnable running");
+		     }
+		};
+
+		Thread thread2 = new Thread(myRunnable);
+//		thread2.start();
+		   
+//		Thread t[] = new Thread[3];
 		Thread t[] = new Thread[1];
-		t[0] = CalculatorEngine.getInstance(CommonConstants.INSTRUMENT_INPUT_FILE);
+		t[0] = new CalculatorEngine(CommonConstants.INPUT_FILE);
+//		t[1] = thread1;
+//		t[2] = thread2;
 		cachemanager.setTask(t);
 		cachemanager.start();
 	}

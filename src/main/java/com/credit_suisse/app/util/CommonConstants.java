@@ -13,10 +13,12 @@ public class CommonConstants {
 //    public static final Integer INSTRUMENTS_COUNT = 7;
     public static final Integer NEWST = 10;
 //    public static final Integer NEWST = 3;
-	public static final int THREAD_POOL_SIZE = 10;
-	public static final long WORKER_SLEEP_TIME = 1000;
-	public static final boolean INSTRUMENT_MANAGER_ON = true;
-	public static final String INSTRUMENT_INPUT_FILE = "src/main/resources/input.txt";
-	public static final long INSTRUMENT_REFRESH_MILLIS = 5000;
-	public static final boolean INSTRUMENT_WORKER_ON = true;
+	public static boolean MANAGER_ON = false;
+	public static boolean WORKER_ON = false;
+	public static long REFRESH_MILLIS = 5000;
+	public static long SLEEP_MILLIS = 1000;
+	public static int THREAD_POOL_SIZE = 10;
+	public static int MAX_THREADS = 2;
+	public static String INPUT_FILE = "src/main/resources/input.txt";
+	public static String WORKER_PROFILE = "Instrument-1";
 }

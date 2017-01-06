@@ -23,7 +23,6 @@ public class TaskExecutor implements Runnable {
 	@Autowired
 	TaskManager taskManager;
 
-
 	private ExecutorService executorService = Executors.newFixedThreadPool(CommonConstants.THREAD_POOL_SIZE);
 
 	public TaskExecutor(String name, emWorkerProfile profile) {
@@ -38,11 +37,11 @@ public class TaskExecutor implements Runnable {
 		{
 			try
 			{
-				if(CommonConstants.INSTRUMENT_WORKER_ON){
-					logger.debug("Worker on");
+				if(CommonConstants.WORKER_ON){
+					logger.debug(workername + " Worker on");
 					synchronized(this){
 						try {
-							this.wait(CommonConstants.WORKER_SLEEP_TIME);
+							this.wait(CommonConstants.SLEEP_MILLIS);
 						} catch (Exception e) {
 							logger.error(e.getMessage());
 						}

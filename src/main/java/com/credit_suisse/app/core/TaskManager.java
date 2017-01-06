@@ -25,7 +25,7 @@ public class TaskManager implements InitializingBean, DisposableBean, Applicatio
 	
 	private ExecutorService executorService;
 
-    public int numThreads = 2;
+    public int numThreads = CommonConstants.MAX_THREADS;
     
     Timer timer;
 
@@ -53,7 +53,7 @@ public class TaskManager implements InitializingBean, DisposableBean, Applicatio
 			logger.error("Unable to get hostname",e);
 		}
 
-		executorService.execute(new TaskExecutor("TaskExecutor_" +  hostname, emWorkerProfile.PROFILE_INSTRUMENT));
+		executorService.execute(new TaskExecutor("TaskExecutor_" +  hostname + "_" + CommonConstants.WORKER_PROFILE, emWorkerProfile.PROFILE_INSTRUMENT));
 	}
 
     public void afterPropertiesSet() throws Exception {
@@ -77,10 +77,10 @@ public class TaskManager implements InitializingBean, DisposableBean, Applicatio
 	        
 	        timer = new Timer();
 	        
-	        logger.debug("STARTING Managers");
+	        logger.debug("STARTING Threads Managers");
 	        
-	        if(CommonConstants.INSTRUMENT_MANAGER_ON)
-	        	timer.schedule(CalculatorEngineRefresh.getInstance(),0, CommonConstants.INSTRUMENT_REFRESH_MILLIS);
+	        if(CommonConstants.MANAGER_ON)
+	        	timer.schedule(CalculatorEngineRefresh.getInstance(),0, CommonConstants.REFRESH_MILLIS);
 	        else
 	        	logger.debug("Instrument Manager is configured not to run, skipping startup!");
         }

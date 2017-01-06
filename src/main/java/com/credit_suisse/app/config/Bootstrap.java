@@ -18,10 +18,11 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
 import com.credit_suisse.app.core.CalculatorEngine;
+import com.credit_suisse.app.util.CommonConstants;
 
-//@Configuration
-//@Component("bootstrap")
-//@DependsOn("commonConstants")
+@Configuration
+@Component("bootstrap")
+@DependsOn("commonConstants")
 public class Bootstrap implements InitializingBean, ApplicationContextAware, ApplicationListener<ApplicationEvent> {
 
 	private static final Logger logger = LoggerFactory.getLogger(Bootstrap.class);
@@ -43,6 +44,30 @@ public class Bootstrap implements InitializingBean, ApplicationContextAware, App
 
     @Value("#{systemProperties}")
     Properties systemProperties;
+
+    @Value("${Manager_Startup}")
+    private boolean manager_Startup;
+
+    @Value("${Worker_Startup}")
+    private boolean worker_Startup;
+    
+    @Value("${RefreshMillis}")
+    private long refreshMillis;
+    
+    @Value("${SleepMillis}")
+    private long sleepMillis;
+    
+    @Value("${ThreadPoolSize}")
+    private int threadPoolSize;
+    
+    @Value("${MaxThreads}")
+    private int maxThreads;
+    
+    @Value("${WorkerProfile}")
+    private String workerProfile;
+    
+    @Value("${InputFile}")
+    private String inputFile;
     
     public Bootstrap() { }
     
@@ -50,8 +75,15 @@ public class Bootstrap implements InitializingBean, ApplicationContextAware, App
         
         if (appProperties == null) {
             logger.error("The properties was not found, cannot bootstrap!!");
-            
         }
+        CommonConstants.MANAGER_ON = manager_Startup;
+        CommonConstants.WORKER_ON = worker_Startup;
+        CommonConstants.REFRESH_MILLIS = refreshMillis;
+        CommonConstants.SLEEP_MILLIS = sleepMillis;
+        CommonConstants.THREAD_POOL_SIZE = threadPoolSize;
+        CommonConstants.MAX_THREADS = maxThreads;
+        CommonConstants.WORKER_PROFILE = workerProfile;
+        CommonConstants.INPUT_FILE = inputFile;
     }
 
     public void setApplicationContext(ApplicationContext context)

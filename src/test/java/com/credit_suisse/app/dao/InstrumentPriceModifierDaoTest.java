@@ -19,8 +19,6 @@ public class InstrumentPriceModifierDaoTest {
 
     private EmbeddedDatabase db;
 
-    InstrumentPriceModifierDao instrumentPriceModifierDao;
-    
     @Before
     public void setUp() {
         //db = new EmbeddedDatabaseBuilder().addDefaultScripts().build();
@@ -29,23 +27,6 @@ public class InstrumentPriceModifierDaoTest {
     		.addScript("db/sql/h2/create-db.sql")
     		.addScript("db/sql/h2/insert-data.sql")
     		.build();
-    }
-
-    @Test
-    public void testFindByname() {
-    	NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(db);
-    	InstrumentPriceModifierDaoImpl instrumentPriceModifierDao = new InstrumentPriceModifierDaoImpl();
-    	instrumentPriceModifierDao.setNamedParameterJdbcTemplate(template);
-    	
-    	InstrumentPriceModifier instrument = instrumentPriceModifierDao.findByName("INSTRUMENT1");
-    	List<InstrumentPriceModifier> instrumentList = instrumentPriceModifierDao.findByNameList("INSTRUMENT1");
-  
-//    	System.out.println(instrument.getId());
-    	
-    	assertNotNull(instrument);
-    	assertEquals(new Long(1), instrumentList.get(0).getId());
-    	assertEquals("INSTRUMENT1", instrumentList.get(0).getName());
-    	assertEquals(1.05, instrumentList.get(0).getModifier(), 0.001);
     }
 
     @After

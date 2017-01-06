@@ -5,6 +5,7 @@ import java.util.concurrent.Executors;
 
 import javax.annotation.PostConstruct;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -16,7 +17,7 @@ import com.credit_suisse.app.util.CommonConstants;
 @Configuration
 public class SpringRootConfig {
 
-//    @Value("${threadPoolSize}")
+    @Value("${ThreadPoolSize}")
     private int threadPoolSize;
 //    private int threadPoolSize = CommonConstants.THREAD_POOL_SIZE;
     
@@ -32,9 +33,8 @@ public class SpringRootConfig {
     
     @Bean
     public ExecutorService executorService() {
-    	System.out.println("threadPoolSize:" + threadPoolSize);
-//        return Executors.newFixedThreadPool(threadPoolSize);
-        return Executors.newFixedThreadPool(CommonConstants.THREAD_POOL_SIZE);
+    	CommonConstants.THREAD_POOL_SIZE = threadPoolSize;
+        return Executors.newFixedThreadPool(threadPoolSize);
     }
     
 	@PostConstruct

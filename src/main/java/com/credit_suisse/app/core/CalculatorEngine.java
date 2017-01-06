@@ -20,7 +20,6 @@ import com.credit_suisse.app.core.module.AverageModule;
 import com.credit_suisse.app.core.module.AverageMonthModule;
 import com.credit_suisse.app.core.module.AverageNewstInstrumentsModule;
 import com.credit_suisse.app.core.module.OnFlyModule;
-import com.credit_suisse.app.dao.InstrumentPriceModifierDao;
 import com.credit_suisse.app.model.Instrument;
 import com.credit_suisse.app.model.Instrument1;
 import com.credit_suisse.app.model.Instrument2;
@@ -40,8 +39,6 @@ public class CalculatorEngine extends Thread {
 
 	private String inputPath = null;
 	
-	private volatile static CalculatorEngine INSTANCE;
-
 	static {
 		init();
 	}
@@ -74,23 +71,12 @@ public class CalculatorEngine extends Thread {
 
 	}
 
-	private CalculatorEngine(String inputPath) {
+	public CalculatorEngine(String inputPath) {
 		logger.debug(String.format("Input file path: %s", inputPath));
 		this.inputPath = inputPath;
 //		init();
 	}
 	
-	public static CalculatorEngine getInstance(String inputPath) {
-		if (INSTANCE == null) {
-			synchronized (CalculatorEngine.class) {
-				if (INSTANCE == null) {
-					INSTANCE = new CalculatorEngine(inputPath);
-				}
-			}
-		}
-		return INSTANCE;
-	}
-
 	public void addModule(Instrument instrument) {
 		logger.info(String.format("Add module %s for instrument %s", instrument.getClass().getName(),instrument.getName()));
 		String name = instrument.getName();
@@ -124,18 +110,12 @@ public class CalculatorEngine extends Thread {
 		}
 	}
 
-	public Map<String, Double> calculate(InstrumentPriceModifierDao multiplier) {
+	public Map<String, Double> calculate() {
 		Map<String, Double> result = new TreeMap<>();
 		parseFile();
 		Double multiplierValue = 1.0;
 		
 		for (Entry<String, Instrument> instrumentModule : MODULES.entrySet()) {
-			if (multiplier != null){
-				List<InstrumentPriceModifier> instrumentPriceModifier = multiplier.findByNameList(instrumentModule.getKey());
-//				multiplierValue = instrumentPriceModifier != null ? instrumentPriceModifier.get(0).getModifier() : 1;
-				System.out.println(instrumentPriceModifier);
-			}
-			
 			System.out.println(instrumentModule.getKey() + ":" + instrumentModule.getValue().calculate());
 			System.out.println(instrumentModule.getKey() + " multiplier:" + multiplierValue);
 //			result.put(instrumentModule.getKey(), instrumentModule.getValue().calculate());
@@ -181,6 +161,8 @@ public class CalculatorEngine extends Thread {
 
 	@Override
 	public void run() {
+		logger.debug("Calculator Engine calculate");
+		
 		Instrument newInstrument = new newInstrument("INSTRUMENT3", 4.0d, new Date());
 		newInstrument.setInstrumentCalculateBehavior(new OnFlyModule(){
 			@Override
@@ -197,11 +179,10 @@ public class CalculatorEngine extends Thread {
 			}
 		});
 		
-//		CalculatorEngine calculator = new CalculatorEngine(inputPath);
-		CalculatorEngine calculator = CalculatorEngine.getInstance(CommonConstants.INSTRUMENT_INPUT_FILE);
+		CalculatorEngine calculator = new CalculatorEngine(CommonConstants.INPUT_FILE);
+//		CalculatorEngine calculator = CalculatorEngine.getInstance(CommonConstants.INPUT_FILE);
 //		calculator.addModule(newInstrument);
-		InstrumentPriceModifierDao instrumentPriceModifierDao = null;
-		calculator.calculate(instrumentPriceModifierDao);
+		calculator.calculate();
 	}
 
 }

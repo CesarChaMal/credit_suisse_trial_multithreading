@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.credit_suisse.app.core.CalculatorEngine;
 import com.credit_suisse.app.core.module.OnFlyModule;
-import com.credit_suisse.app.dao.InstrumentPriceModifierDao;
 import com.credit_suisse.app.model.Instrument;
 import com.credit_suisse.app.model.InstrumentPriceModifier;
 import com.credit_suisse.app.model.newInstrument;
@@ -24,21 +23,8 @@ public class WelcomeController {
 
 	private static final Logger logger = LoggerFactory.getLogger(WelcomeController.class);
 
-	@Autowired
-	InstrumentPriceModifierDao instrumentPriceModifierDao;
-	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String welcome(Model model) {
-
-		InstrumentPriceModifier instrument = instrumentPriceModifierDao.findByName("INSTRUMENT1");
-		logger.debug("instrument:" + instrument);
-		
-		List<InstrumentPriceModifier> instrumentList = instrumentPriceModifierDao.findByNameList("INSTRUMENT1");
-		logger.debug("instrument:" + instrumentList.get(0));
-		
-		List<InstrumentPriceModifier> modifiers = instrumentPriceModifierDao.findAll();
-
-		logger.debug(Arrays.toString(modifiers.toArray()));
 
 //		String inputPath = "c:\\temp\\input.txt";
 //		String inputPath = "c:\\temp\\big_input.txt";
@@ -67,12 +53,11 @@ public class WelcomeController {
 			}
 		});
 		
-//		CalculatorEngine calculator = new CalculatorEngine(inputPath);
-		CalculatorEngine calculator = CalculatorEngine.getInstance(inputPath);
+		CalculatorEngine calculator = new CalculatorEngine(inputPath);
+//		CalculatorEngine calculator = CalculatorEngine.getInstance(inputPath);
 //		calculator.addModule(newInstrument);
 
-		model.addAttribute("modifiers", modifiers);
-		model.addAttribute("instruments", calculator.calculate(instrumentPriceModifierDao));
+		model.addAttribute("instruments", calculator.calculate());
 
 		return "welcome";
 

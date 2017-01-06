@@ -15,8 +15,6 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import com.credit_suisse.app.config.SpringRootConfig;
 import com.credit_suisse.app.core.CalculatorEngine;
 import com.credit_suisse.app.core.module.OnFlyModule;
-import com.credit_suisse.app.dao.InstrumentPriceModifierDao;
-import com.credit_suisse.app.dao.InstrumentPriceModifierDaoImpl;
 import com.credit_suisse.app.model.Instrument;
 import com.credit_suisse.app.model.InstrumentPriceModifier;
 import com.credit_suisse.app.model.newInstrument;
@@ -45,8 +43,6 @@ public class Application {
 //		String inputPath = "src/main/resources/big_input.txt";
 //		String inputPath = "src/main/resources/huge_input.txt";
 
-		InstrumentPriceModifierDao instrumentPriceModifierDao = null;
-
 		Instrument newInstrument = new newInstrument("INSTRUMENT3", 4.0d, new Date());
 //		Instrument newInstrument = new newInstrument("INSTRUMENT3", 6.0d, DefinerInstrument.getDate("03-Jan-2017"));
 		newInstrument.setInstrumentCalculateBehavior(new OnFlyModule(){
@@ -64,10 +60,10 @@ public class Application {
 			}
 		});
 		
-//		CalculatorEngine calculator = new CalculatorEngine(inputPath);
-		CalculatorEngine calculator = CalculatorEngine.getInstance(inputPath);
+		CalculatorEngine calculator = new CalculatorEngine(inputPath);
+//		CalculatorEngine calculator = CalculatorEngine.getInstance(inputPath);
 		calculator.addModule(newInstrument);
-		calculator.calculate(instrumentPriceModifierDao);
+		calculator.calculate();
 
 	}
 }
