@@ -1,0 +1,670 @@
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Credit Suisse Trial 1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] >>> jetty-maven-plugin:9.2.11.v20150529:run (default-cli) @ credit_suisse_trial >>>
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:resources (default-resources) @ credit_suisse_trial ---
+[debug] execute contextualize
+[WARNING] Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 10 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:compile (default-compile) @ credit_suisse_trial ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:testResources (default-testResources) @ credit_suisse_trial ---
+[debug] execute contextualize
+[WARNING] Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\src\test\resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:testCompile (default-testCompile) @ credit_suisse_trial ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] <<< jetty-maven-plugin:9.2.11.v20150529:run (default-cli) @ credit_suisse_trial <<<
+[INFO] 
+[INFO] --- jetty-maven-plugin:9.2.11.v20150529:run (default-cli) @ credit_suisse_trial ---
+[INFO] Configuring Jetty for project: Credit Suisse Trial
+[INFO] webAppSourceDirectory not set. Trying src\main\webapp
+[INFO] Reload Mechanic: automatic
+[INFO] Classes = C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes
+[INFO] Context path = /credit_suisse_trial
+[INFO] Tmp directory = C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\tmp
+[INFO] Web defaults = org/eclipse/jetty/webapp/webdefault.xml
+[INFO] Web overrides =  none
+[INFO] web.xml file = file:/C:/springsource/workspaces/ws_credit_suisse_trial/credit_suisse_trial/src/main/webapp/WEB-INF/web.xml
+[INFO] Webapp directory = C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\src\main\webapp
+18:04:10,468 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback.groovy]
+18:04:10,469 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback-test.xml]
+18:04:10,469 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Found resource [logback.xml] at [file:/C:/springsource/workspaces/ws_credit_suisse_trial/credit_suisse_trial/target/classes/logback.xml]
+18:04:10,503 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - debug attribute not set
+18:04:10,516 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - About to instantiate appender of type [ch.qos.logback.core.ConsoleAppender]
+18:04:10,523 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - Naming appender as [STDOUT]
+18:04:10,569 |-WARN in ch.qos.logback.core.ConsoleAppender[STDOUT] - This appender no longer admits a layout as a sub-component, set an encoder instead.
+18:04:10,569 |-WARN in ch.qos.logback.core.ConsoleAppender[STDOUT] - To ensure compatibility, wrapping your layout in LayoutWrappingEncoder.
+18:04:10,569 |-WARN in ch.qos.logback.core.ConsoleAppender[STDOUT] - See also http://logback.qos.ch/codes.html#layoutInsteadOfEncoder for details
+18:04:10,569 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting level of logger [org.springframework] to DEBUG
+18:04:10,569 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [org.springframework] to false
+18:04:10,569 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [STDOUT] to Logger[org.springframework]
+18:04:10,570 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting level of logger [com.credit_suisse] to DEBUG
+18:04:10,570 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [com.credit_suisse] to false
+18:04:10,570 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [STDOUT] to Logger[com.credit_suisse]
+18:04:10,570 |-INFO in ch.qos.logback.classic.joran.action.RootLoggerAction - Setting level of ROOT logger to ERROR
+18:04:10,570 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [STDOUT] to Logger[ROOT]
+18:04:10,570 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - End of configuration.
+18:04:10,571 |-INFO in ch.qos.logback.classic.joran.JoranConfigurator@1d186db - Registering current configuration as safe fallback point
+
+2017-01-05 18:04:10 INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization started
+2017-01-05 18:04:10 DEBUG o.s.w.c.s.StandardServletEnvironment - Adding [servletConfigInitParams] PropertySource with lowest search precedence
+2017-01-05 18:04:10 DEBUG o.s.w.c.s.StandardServletEnvironment - Adding [servletContextInitParams] PropertySource with lowest search precedence
+2017-01-05 18:04:10 DEBUG o.s.w.c.s.StandardServletEnvironment - Adding [jndiProperties] PropertySource with lowest search precedence
+2017-01-05 18:04:10 DEBUG o.s.w.c.s.StandardServletEnvironment - Adding [systemProperties] PropertySource with lowest search precedence
+2017-01-05 18:04:10 DEBUG o.s.w.c.s.StandardServletEnvironment - Adding [systemEnvironment] PropertySource with lowest search precedence
+2017-01-05 18:04:10 DEBUG o.s.w.c.s.StandardServletEnvironment - Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,jndiProperties,systemProperties,systemEnvironment]
+2017-01-05 18:04:10 DEBUG o.s.w.c.s.StandardServletEnvironment - Replacing [servletContextInitParams] PropertySource with [servletContextInitParams]
+2017-01-05 18:04:10 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Refreshing Root WebApplicationContext: startup date [Thu Jan 05 18:04:10 CST 2017]; root of context hierarchy
+2017-01-05 18:04:10 DEBUG o.s.core.env.StandardEnvironment - Adding [systemProperties] PropertySource with lowest search precedence
+2017-01-05 18:04:10 DEBUG o.s.core.env.StandardEnvironment - Adding [systemEnvironment] PropertySource with lowest search precedence
+2017-01-05 18:04:10 DEBUG o.s.core.env.StandardEnvironment - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+2017-01-05 18:04:10 DEBUG o.s.core.env.StandardEnvironment - Adding [systemProperties] PropertySource with lowest search precedence
+2017-01-05 18:04:10 DEBUG o.s.core.env.StandardEnvironment - Adding [systemEnvironment] PropertySource with lowest search precedence
+2017-01-05 18:04:10 DEBUG o.s.core.env.StandardEnvironment - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+2017-01-05 18:04:10 DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - JSR-250 'javax.annotation.ManagedBean' found and supported for component scanning
+2017-01-05 18:04:10 DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+2017-01-05 18:04:10 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Registering annotated classes: [class com.credit_suisse.app.config.SpringRootConfig]
+2017-01-05 18:04:10 DEBUG o.s.w.c.s.AnnotationConfigWebApplicationContext - Bean factory for Root WebApplicationContext: org.springframework.beans.factory.support.DefaultListableBeanFactory@e7950d: defining beans [org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,springRootConfig]; root of factory hierarchy
+2017-01-05 18:04:10 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Registering scope 'request' with implementation [org.springframework.web.context.request.RequestScope@1ea78b1]
+2017-01-05 18:04:10 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Registering scope 'session' with implementation [org.springframework.web.context.request.SessionScope@1e6dad8]
+2017-01-05 18:04:10 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Registering scope 'globalSession' with implementation [org.springframework.web.context.request.SessionScope@13315a5]
+2017-01-05 18:04:10 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Registering scope 'application' with implementation [org.springframework.web.context.support.ServletContextScope@17008df]
+2017-01-05 18:04:10 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+2017-01-05 18:04:10 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+2017-01-05 18:04:10 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Eagerly caching bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor' to allow for resolving potential circular references
+2017-01-05 18:04:10 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Finished creating instance of bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+2017-01-05 18:04:10 DEBUG o.s.core.env.StandardEnvironment - Adding [systemProperties] PropertySource with lowest search precedence
+2017-01-05 18:04:10 DEBUG o.s.core.env.StandardEnvironment - Adding [systemEnvironment] PropertySource with lowest search precedence
+2017-01-05 18:04:10 DEBUG o.s.core.env.StandardEnvironment - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+2017-01-05 18:04:10 DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - JSR-250 'javax.annotation.ManagedBean' found and supported for component scanning
+2017-01-05 18:04:10 DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+2017-01-05 18:04:10 DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Looking for matching resources in directory tree [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app]
+2017-01-05 18:04:10 DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app] for files matching pattern [C:/springsource/workspaces/ws_credit_suisse_trial/credit_suisse_trial/target/classes/com/credit_suisse/app/**/*.class]
+2017-01-05 18:04:10 DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\config] for files matching pattern [C:/springsource/workspaces/ws_credit_suisse_trial/credit_suisse_trial/target/classes/com/credit_suisse/app/**/*.class]
+2017-01-05 18:04:10 DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\config\db] for files matching pattern [C:/springsource/workspaces/ws_credit_suisse_trial/credit_suisse_trial/target/classes/com/credit_suisse/app/**/*.class]
+2017-01-05 18:04:10 DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\core] for files matching pattern [C:/springsource/workspaces/ws_credit_suisse_trial/credit_suisse_trial/target/classes/com/credit_suisse/app/**/*.class]
+2017-01-05 18:04:10 DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\core\module] for files matching pattern [C:/springsource/workspaces/ws_credit_suisse_trial/credit_suisse_trial/target/classes/com/credit_suisse/app/**/*.class]
+2017-01-05 18:04:10 DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\dao] for files matching pattern [C:/springsource/workspaces/ws_credit_suisse_trial/credit_suisse_trial/target/classes/com/credit_suisse/app/**/*.class]
+2017-01-05 18:04:10 DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\model] for files matching pattern [C:/springsource/workspaces/ws_credit_suisse_trial/credit_suisse_trial/target/classes/com/credit_suisse/app/**/*.class]
+2017-01-05 18:04:10 DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\servlet3] for files matching pattern [C:/springsource/workspaces/ws_credit_suisse_trial/credit_suisse_trial/target/classes/com/credit_suisse/app/**/*.class]
+2017-01-05 18:04:10 DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\util] for files matching pattern [C:/springsource/workspaces/ws_credit_suisse_trial/credit_suisse_trial/target/classes/com/credit_suisse/app/**/*.class]
+2017-01-05 18:04:10 DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\web] for files matching pattern [C:/springsource/workspaces/ws_credit_suisse_trial/credit_suisse_trial/target/classes/com/credit_suisse/app/**/*.class]
+2017-01-05 18:04:10 DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\web\controller] for files matching pattern [C:/springsource/workspaces/ws_credit_suisse_trial/credit_suisse_trial/target/classes/com/credit_suisse/app/**/*.class]
+2017-01-05 18:04:10 DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Resolved location pattern [classpath*:com/credit_suisse/app/**/*.class] to resources [file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\Application$1.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\Application.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\config\Bootstrap.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\config\db\DerbyDataSource.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\config\db\H2DataSource.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\config\db\HsqlDataSource.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\config\SpringRootConfig.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\config\SpringWebConfig.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\core\CalculatorEngine$1.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\core\CalculatorEngine.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\core\CalculatorEngineRefresh.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\core\EngineCalculatorModule.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\core\Manager.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\core\module\AverageModule.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\core\module\AverageMonthModule.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\core\module\AverageNewstInstrumentsModule.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\core\module\OnFlyModule.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\core\TaskExecutor.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\core\TaskManager.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\dao\InstrumentPriceModifierDao.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\dao\InstrumentPriceModifierDaoImpl$InstrumentPriceModifierMapper.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\dao\InstrumentPriceModifierDaoImpl.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\model\Instrument.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\model\Instrument1.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\model\Instrument2.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\model\Instrument3.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\model\InstrumentCalculateBehavior.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\model\InstrumentPriceModifier.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\model\newInstrument.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\servlet3\MyWebInitializer.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\util\CommonConstants.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\util\emWorkerProfile.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\util\InstrumentUtil$1.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\util\InstrumentUtil.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\web\controller\WelcomeController$1.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\web\controller\WelcomeController.class]]
+2017-01-05 18:04:10 DEBUG o.s.c.e.PropertySourcesPropertyResolver - Searching for key 'spring.profiles.active' in [servletConfigInitParams]
+2017-01-05 18:04:10 DEBUG o.s.c.e.PropertySourcesPropertyResolver - Searching for key 'spring.profiles.active' in [servletContextInitParams]
+2017-01-05 18:04:10 DEBUG o.s.c.e.PropertySourcesPropertyResolver - Found key 'spring.profiles.active' in [servletContextInitParams] with type [String] and value 'h2'
+2017-01-05 18:04:10 DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\config\db\H2DataSource.class]
+2017-01-05 18:04:10 DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\config\SpringWebConfig.class]
+2017-01-05 18:04:10 DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\core\TaskManager.class]
+2017-01-05 18:04:10 DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\dao\InstrumentPriceModifierDaoImpl.class]
+2017-01-05 18:04:10 DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\util\CommonConstants.class]
+2017-01-05 18:04:10 DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\web\controller\WelcomeController.class]
+2017-01-05 18:04:10 DEBUG o.s.core.env.StandardEnvironment - Adding [systemProperties] PropertySource with lowest search precedence
+2017-01-05 18:04:10 DEBUG o.s.core.env.StandardEnvironment - Adding [systemEnvironment] PropertySource with lowest search precedence
+2017-01-05 18:04:10 DEBUG o.s.core.env.StandardEnvironment - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+2017-01-05 18:04:10 DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - JSR-250 'javax.annotation.ManagedBean' found and supported for component scanning
+2017-01-05 18:04:10 DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+2017-01-05 18:04:10 DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Looking for matching resources in directory tree [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\web]
+2017-01-05 18:04:10 DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\web] for files matching pattern [C:/springsource/workspaces/ws_credit_suisse_trial/credit_suisse_trial/target/classes/com/credit_suisse/app/web/**/*.class]
+2017-01-05 18:04:10 DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\web\controller] for files matching pattern [C:/springsource/workspaces/ws_credit_suisse_trial/credit_suisse_trial/target/classes/com/credit_suisse/app/web/**/*.class]
+2017-01-05 18:04:10 DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Resolved location pattern [classpath*:com/credit_suisse/app/web/**/*.class] to resources [file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\web\controller\WelcomeController$1.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\web\controller\WelcomeController.class]]
+2017-01-05 18:04:10 DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\web\controller\WelcomeController.class]
+2017-01-05 18:04:10 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method com.credit_suisse.app.config.db.H2DataSource.dataSource()
+2017-01-05 18:04:10 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method com.credit_suisse.app.config.db.H2DataSource.startDBManager()
+2017-01-05 18:04:10 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registered bean definition for imported @Configuration class org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration
+2017-01-05 18:04:10 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration.requestMappingHandlerMapping()
+2017-01-05 18:04:10 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration.mvcContentNegotiationManager()
+2017-01-05 18:04:10 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration.viewControllerHandlerMapping()
+2017-01-05 18:04:10 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration.beanNameHandlerMapping()
+2017-01-05 18:04:10 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration.resourceHandlerMapping()
+2017-01-05 18:04:10 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration.mvcResourceUrlProvider()
+2017-01-05 18:04:10 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration.defaultServletHandlerMapping()
+2017-01-05 18:04:10 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration.requestMappingHandlerAdapter()
+2017-01-05 18:04:10 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration.mvcConversionService()
+2017-01-05 18:04:10 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration.mvcValidator()
+2017-01-05 18:04:10 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration.mvcPathMatcher()
+2017-01-05 18:04:10 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration.mvcUrlPathHelper()
+2017-01-05 18:04:10 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration.mvcUriComponentsContributor()
+2017-01-05 18:04:10 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration.httpRequestHandlerAdapter()
+2017-01-05 18:04:10 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration.simpleControllerHandlerAdapter()
+2017-01-05 18:04:10 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration.handlerExceptionResolver()
+2017-01-05 18:04:10 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration.mvcViewResolver()
+2017-01-05 18:04:10 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method com.credit_suisse.app.config.SpringWebConfig.viewResolver()
+2017-01-05 18:04:10 INFO  o.s.c.a.ConfigurationClassBeanDefinitionReader - Skipping bean definition for [BeanMethod:name=taskManager,declaringClass=com.credit_suisse.app.config.SpringRootConfig]: a definition for bean 'taskManager' already exists. This top-level bean definition is considered as an override.
+2017-01-05 18:04:10 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method com.credit_suisse.app.config.SpringRootConfig.bootstrap()
+2017-01-05 18:04:10 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method com.credit_suisse.app.config.SpringRootConfig.executorService()
+2017-01-05 18:04:10 DEBUG o.s.c.a.ConfigurationClassEnhancer - Successfully enhanced com.credit_suisse.app.config.SpringRootConfig; enhanced class name is: com.credit_suisse.app.config.SpringRootConfig$$EnhancerBySpringCGLIB$$10520da5
+2017-01-05 18:04:10 DEBUG o.s.c.a.ConfigurationClassPostProcessor - Replacing bean definition 'springRootConfig' existing class name 'com.credit_suisse.app.config.SpringRootConfig' with enhanced class name 'com.credit_suisse.app.config.SpringRootConfig$$EnhancerBySpringCGLIB$$10520da5'
+2017-01-05 18:04:10 DEBUG o.s.c.a.ConfigurationClassEnhancer - Successfully enhanced com.credit_suisse.app.config.db.H2DataSource; enhanced class name is: com.credit_suisse.app.config.db.H2DataSource$$EnhancerBySpringCGLIB$$9cfdfee3
+2017-01-05 18:04:10 DEBUG o.s.c.a.ConfigurationClassPostProcessor - Replacing bean definition 'h2DataSource' existing class name 'com.credit_suisse.app.config.db.H2DataSource' with enhanced class name 'com.credit_suisse.app.config.db.H2DataSource$$EnhancerBySpringCGLIB$$9cfdfee3'
+2017-01-05 18:04:10 DEBUG o.s.c.a.ConfigurationClassEnhancer - Successfully enhanced com.credit_suisse.app.config.SpringWebConfig; enhanced class name is: com.credit_suisse.app.config.SpringWebConfig$$EnhancerBySpringCGLIB$$a855dc8d
+2017-01-05 18:04:10 DEBUG o.s.c.a.ConfigurationClassPostProcessor - Replacing bean definition 'springWebConfig' existing class name 'com.credit_suisse.app.config.SpringWebConfig' with enhanced class name 'com.credit_suisse.app.config.SpringWebConfig$$EnhancerBySpringCGLIB$$a855dc8d'
+2017-01-05 18:04:10 DEBUG o.s.c.a.ConfigurationClassEnhancer - Successfully enhanced org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration; enhanced class name is: org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration$$EnhancerBySpringCGLIB$$b59d3ddd
+2017-01-05 18:04:10 DEBUG o.s.c.a.ConfigurationClassPostProcessor - Replacing bean definition 'org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration' existing class name 'org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration' with enhanced class name 'org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration$$EnhancerBySpringCGLIB$$b59d3ddd'
+2017-01-05 18:04:10 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+2017-01-05 18:04:10 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+2017-01-05 18:04:10 INFO  o.s.b.f.a.AutowiredAnnotationBeanPostProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2017-01-05 18:04:10 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Eagerly caching bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor' to allow for resolving potential circular references
+2017-01-05 18:04:10 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Finished creating instance of bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+2017-01-05 18:04:10 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'org.springframework.context.annotation.internalRequiredAnnotationProcessor'
+2017-01-05 18:04:10 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'org.springframework.context.annotation.internalRequiredAnnotationProcessor'
+2017-01-05 18:04:10 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Eagerly caching bean 'org.springframework.context.annotation.internalRequiredAnnotationProcessor' to allow for resolving potential circular references
+2017-01-05 18:04:10 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Finished creating instance of bean 'org.springframework.context.annotation.internalRequiredAnnotationProcessor'
+2017-01-05 18:04:10 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+2017-01-05 18:04:10 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+2017-01-05 18:04:10 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Eagerly caching bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor' to allow for resolving potential circular references
+2017-01-05 18:04:10 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Finished creating instance of bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+2017-01-05 18:04:10 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor'
+2017-01-05 18:04:10 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor'
+2017-01-05 18:04:10 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Eagerly caching bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor' to allow for resolving potential circular references
+2017-01-05 18:04:10 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Finished creating instance of bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor'
+2017-01-05 18:04:10 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.enhancedConfigurationProcessor'
+2017-01-05 18:04:10 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.enhancedConfigurationProcessor'
+2017-01-05 18:04:10 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Eagerly caching bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.enhancedConfigurationProcessor' to allow for resolving potential circular references
+2017-01-05 18:04:10 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Finished creating instance of bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.enhancedConfigurationProcessor'
+2017-01-05 18:04:10 DEBUG o.s.w.c.s.AnnotationConfigWebApplicationContext - Unable to locate MessageSource with name 'messageSource': using default [org.springframework.context.support.DelegatingMessageSource@107165]
+2017-01-05 18:04:10 DEBUG o.s.w.c.s.AnnotationConfigWebApplicationContext - Unable to locate ApplicationEventMulticaster with name 'applicationEventMulticaster': using default [org.springframework.context.event.SimpleApplicationEventMulticaster@69a3b3]
+2017-01-05 18:04:10 DEBUG o.s.u.c.s.UiApplicationContextUtils - Unable to locate ThemeSource with name 'themeSource': using default [org.springframework.ui.context.support.ResourceBundleThemeSource@a04618]
+2017-01-05 18:04:10 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@e7950d: defining beans [org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,springRootConfig,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor,org.springframework.context.annotation.ConfigurationClassPostProcessor.enhancedConfigurationProcessor,h2DataSource,springWebConfig,taskManager,instrumentPriceModifierDaoImpl,commonConstants,welcomeController,dataSource,startDBManager,org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration,requestMappingHandlerMapping,mvcContentNegotiationManager,viewControllerHandlerMapping,beanNameHandlerMapping,resourceHandlerMapping,mvcResourceUrlProvider,defaultServletHandlerMapping,requestMappingHandlerAdapter,mvcConversionService,mvcValidator,mvcPathMatcher,mvcUrlPathHelper,mvcUriComponentsContributor,httpRequestHandlerAdapter,simpleControllerHandlerAdapter,handlerExceptionResolver,mvcViewResolver,viewResolver,bootstrap,executorService]; root of factory hierarchy
+2017-01-05 18:04:10 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+2017-01-05 18:04:10 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+2017-01-05 18:04:10 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'org.springframework.context.annotation.internalRequiredAnnotationProcessor'
+2017-01-05 18:04:10 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+2017-01-05 18:04:10 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'springRootConfig'
+2017-01-05 18:04:10 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'springRootConfig'
+2017-01-05 18:04:10 DEBUG o.s.c.a.CommonAnnotationBeanPostProcessor - Found init method on class [com.credit_suisse.app.config.SpringRootConfig$$EnhancerBySpringCGLIB$$10520da5]: public void com.credit_suisse.app.config.SpringRootConfig.startDBManager()
+2017-01-05 18:04:10 DEBUG o.s.c.a.CommonAnnotationBeanPostProcessor - Registered init method on class [com.credit_suisse.app.config.SpringRootConfig$$EnhancerBySpringCGLIB$$10520da5]: org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement@32abbf2d
+2017-01-05 18:04:10 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Eagerly caching bean 'springRootConfig' to allow for resolving potential circular references
+2017-01-05 18:04:11 DEBUG o.s.c.a.CommonAnnotationBeanPostProcessor - Invoking init method on bean 'springRootConfig': public void com.credit_suisse.app.config.SpringRootConfig.startDBManager()
+2017-01-05 18:04:11 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Finished creating instance of bean 'springRootConfig'
+2017-01-05 18:04:11 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor'
+2017-01-05 18:04:11 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.enhancedConfigurationProcessor'
+2017-01-05 18:04:11 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'h2DataSource'
+2017-01-05 18:04:11 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'h2DataSource'
+2017-01-05 18:04:11 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Eagerly caching bean 'h2DataSource' to allow for resolving potential circular references
+2017-01-05 18:04:11 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Finished creating instance of bean 'h2DataSource'
+2017-01-05 18:04:11 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'springWebConfig'
+2017-01-05 18:04:11 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'springWebConfig'
+2017-01-05 18:04:11 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Eagerly caching bean 'springWebConfig' to allow for resolving potential circular references
+2017-01-05 18:04:11 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Finished creating instance of bean 'springWebConfig'
+2017-01-05 18:04:11 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'taskManager'
+2017-01-05 18:04:11 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'taskManager'
+2017-01-05 18:04:11 DEBUG o.s.b.f.annotation.InjectionMetadata - Registered injected element on class [com.credit_suisse.app.core.TaskManager]: AutowiredMethodElement for public void com.credit_suisse.app.core.TaskManager.setExecutorService(java.util.concurrent.ExecutorService)
+2017-01-05 18:04:11 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Eagerly caching bean 'taskManager' to allow for resolving potential circular references
+2017-01-05 18:04:11 DEBUG o.s.b.f.annotation.InjectionMetadata - Processing injected element of bean 'taskManager': AutowiredMethodElement for public void com.credit_suisse.app.core.TaskManager.setExecutorService(java.util.concurrent.ExecutorService)
+2017-01-05 18:04:11 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'executorService'
+2017-01-05 18:04:11 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'executorService'
+2017-01-05 18:04:11 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'springRootConfig'
+threadPoolSize:0
+2017-01-05 18:04:11 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Eagerly caching bean 'executorService' to allow for resolving potential circular references
+2017-01-05 18:04:11 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Finished creating instance of bean 'executorService'
+2017-01-05 18:04:11 DEBUG o.s.b.f.a.AutowiredAnnotationBeanPostProcessor - Autowiring by type from bean name 'taskManager' to bean named 'executorService'
+2017-01-05 18:04:11 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Invoking afterPropertiesSet() on bean with name 'taskManager'
+2017-01-05 18:04:11 INFO  c.credit_suisse.app.core.TaskManager - Initializing TaskManager...
+2017-01-05 18:04:11 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Finished creating instance of bean 'taskManager'
+2017-01-05 18:04:11 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'instrumentPriceModifierDaoImpl'
+2017-01-05 18:04:11 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'instrumentPriceModifierDaoImpl'
+2017-01-05 18:04:11 DEBUG o.s.b.f.annotation.InjectionMetadata - Registered injected element on class [com.credit_suisse.app.dao.InstrumentPriceModifierDaoImpl]: AutowiredMethodElement for public void com.credit_suisse.app.dao.InstrumentPriceModifierDaoImpl.setNamedParameterJdbcTemplate(org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate)
+2017-01-05 18:04:11 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Eagerly caching bean 'instrumentPriceModifierDaoImpl' to allow for resolving potential circular references
+2017-01-05 18:04:11 DEBUG o.s.b.f.annotation.InjectionMetadata - Processing injected element of bean 'instrumentPriceModifierDaoImpl': AutowiredMethodElement for public void com.credit_suisse.app.dao.InstrumentPriceModifierDaoImpl.setNamedParameterJdbcTemplate(org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate)
+2017-01-05 18:04:11 WARN  o.s.w.c.s.AnnotationConfigWebApplicationContext - Exception encountered during context initialization - cancelling refresh attempt
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'instrumentPriceModifierDaoImpl': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire method: public void com.credit_suisse.app.dao.InstrumentPriceModifierDaoImpl.setNamedParameterJdbcTemplate(org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate); nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:334) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1210) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:537) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:476) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:303) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:299) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:194) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:755) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:757) ~[spring-context-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:480) ~[spring-context-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:403) [spring-web-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:306) [spring-web-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:106) [spring-web-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.eclipse.jetty.server.handler.ContextHandler.callContextInitialized(ContextHandler.java:800) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.servlet.ServletContextHandler.callContextInitialized(ServletContextHandler.java:444) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.ContextHandler.startContext(ContextHandler.java:791) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.servlet.ServletContextHandler.startContext(ServletContextHandler.java:294) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.webapp.WebAppContext.startWebapp(WebAppContext.java:1349) [jetty-webapp-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.maven.plugin.JettyWebAppContext.startWebapp(JettyWebAppContext.java:296) [jetty-maven-plugin-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.webapp.WebAppContext.startContext(WebAppContext.java:1342) [jetty-webapp-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:741) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.webapp.WebAppContext.doStart(WebAppContext.java:505) [jetty-webapp-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.maven.plugin.JettyWebAppContext.doStart(JettyWebAppContext.java:365) [jetty-maven-plugin-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.start(ContainerLifeCycle.java:132) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.doStart(ContainerLifeCycle.java:114) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.AbstractHandler.doStart(AbstractHandler.java:61) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.doStart(ContextHandlerCollection.java:163) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.start(ContainerLifeCycle.java:132) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.doStart(ContainerLifeCycle.java:114) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.AbstractHandler.doStart(AbstractHandler.java:61) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.start(ContainerLifeCycle.java:132) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.Server.start(Server.java:387) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.doStart(ContainerLifeCycle.java:114) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.AbstractHandler.doStart(AbstractHandler.java:61) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.Server.doStart(Server.java:354) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.maven.plugin.JettyServer.doStart(JettyServer.java:73) [jetty-maven-plugin-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.maven.plugin.AbstractJettyMojo.startJetty(AbstractJettyMojo.java:534) [jetty-maven-plugin-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.maven.plugin.AbstractJettyMojo.execute(AbstractJettyMojo.java:357) [jetty-maven-plugin-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.maven.plugin.JettyRunMojo.execute(JettyRunMojo.java:167) [jetty-maven-plugin-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo(DefaultBuildPluginManager.java:101) [maven-core-3.0.5.jar:3.0.5]
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:209) [maven-core-3.0.5.jar:3.0.5]
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:153) [maven-core-3.0.5.jar:3.0.5]
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:145) [maven-core-3.0.5.jar:3.0.5]
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:84) [maven-core-3.0.5.jar:3.0.5]
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:59) [maven-core-3.0.5.jar:3.0.5]
+	at org.apache.maven.lifecycle.internal.LifecycleStarter.singleThreadedBuild(LifecycleStarter.java:183) [maven-core-3.0.5.jar:3.0.5]
+	at org.apache.maven.lifecycle.internal.LifecycleStarter.execute(LifecycleStarter.java:161) [maven-core-3.0.5.jar:3.0.5]
+	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:320) [maven-core-3.0.5.jar:3.0.5]
+	at org.apache.maven.DefaultMaven.execute(DefaultMaven.java:156) [maven-core-3.0.5.jar:3.0.5]
+	at org.apache.maven.cli.MavenCli.execute(MavenCli.java:537) [maven-embedder-3.0.5.jar:3.0.5]
+	at org.apache.maven.cli.MavenCli.doMain(MavenCli.java:196) [maven-embedder-3.0.5.jar:3.0.5]
+	at org.apache.maven.cli.MavenCli.main(MavenCli.java:141) [maven-embedder-3.0.5.jar:3.0.5]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_60]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_60]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_60]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[na:1.8.0_60]
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced(Launcher.java:290) [plexus-classworlds-2.4.jar:na]
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launch(Launcher.java:230) [plexus-classworlds-2.4.jar:na]
+	at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode(Launcher.java:409) [plexus-classworlds-2.4.jar:na]
+	at org.codehaus.plexus.classworlds.launcher.Launcher.main(Launcher.java:352) [plexus-classworlds-2.4.jar:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire method: public void com.credit_suisse.app.dao.InstrumentPriceModifierDaoImpl.setNamedParameterJdbcTemplate(org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate); nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:649) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:331) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	... 64 common frames omitted
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoSuchBeanDefinitionException(DefaultListableBeanFactory.java:1301) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1047) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:942) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:606) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	... 66 common frames omitted
+2017-01-05 18:04:11 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@e7950d: defining beans [org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,springRootConfig,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor,org.springframework.context.annotation.ConfigurationClassPostProcessor.enhancedConfigurationProcessor,h2DataSource,springWebConfig,taskManager,instrumentPriceModifierDaoImpl,commonConstants,welcomeController,dataSource,startDBManager,org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration,requestMappingHandlerMapping,mvcContentNegotiationManager,viewControllerHandlerMapping,beanNameHandlerMapping,resourceHandlerMapping,mvcResourceUrlProvider,defaultServletHandlerMapping,requestMappingHandlerAdapter,mvcConversionService,mvcValidator,mvcPathMatcher,mvcUrlPathHelper,mvcUriComponentsContributor,httpRequestHandlerAdapter,simpleControllerHandlerAdapter,handlerExceptionResolver,mvcViewResolver,viewResolver,bootstrap,executorService]; root of factory hierarchy
+2017-01-05 18:04:11 DEBUG o.s.b.f.s.DisposableBeanAdapter - Invoking destroy() on bean with name 'taskManager'
+2017-01-05 18:04:11 INFO  c.credit_suisse.app.core.TaskManager - Destroying TaskManager...
+2017-01-05 18:04:11 DEBUG o.s.b.f.s.DisposableBeanAdapter - Invoking destroy method 'shutdown' on bean with name 'executorService'
+2017-01-05 18:04:11 ERROR o.s.web.context.ContextLoader - Context initialization failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'instrumentPriceModifierDaoImpl': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire method: public void com.credit_suisse.app.dao.InstrumentPriceModifierDaoImpl.setNamedParameterJdbcTemplate(org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate); nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:334) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1210) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:537) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:476) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:303) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:299) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:194) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:755) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:757) ~[spring-context-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:480) ~[spring-context-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:403) ~[spring-web-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:306) ~[spring-web-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:106) [spring-web-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.eclipse.jetty.server.handler.ContextHandler.callContextInitialized(ContextHandler.java:800) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.servlet.ServletContextHandler.callContextInitialized(ServletContextHandler.java:444) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.ContextHandler.startContext(ContextHandler.java:791) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.servlet.ServletContextHandler.startContext(ServletContextHandler.java:294) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.webapp.WebAppContext.startWebapp(WebAppContext.java:1349) [jetty-webapp-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.maven.plugin.JettyWebAppContext.startWebapp(JettyWebAppContext.java:296) [jetty-maven-plugin-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.webapp.WebAppContext.startContext(WebAppContext.java:1342) [jetty-webapp-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:741) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.webapp.WebAppContext.doStart(WebAppContext.java:505) [jetty-webapp-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.maven.plugin.JettyWebAppContext.doStart(JettyWebAppContext.java:365) [jetty-maven-plugin-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.start(ContainerLifeCycle.java:132) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.doStart(ContainerLifeCycle.java:114) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.AbstractHandler.doStart(AbstractHandler.java:61) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.doStart(ContextHandlerCollection.java:163) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.start(ContainerLifeCycle.java:132) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.doStart(ContainerLifeCycle.java:114) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.AbstractHandler.doStart(AbstractHandler.java:61) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.start(ContainerLifeCycle.java:132) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.Server.start(Server.java:387) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.doStart(ContainerLifeCycle.java:114) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.AbstractHandler.doStart(AbstractHandler.java:61) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.Server.doStart(Server.java:354) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.maven.plugin.JettyServer.doStart(JettyServer.java:73) [jetty-maven-plugin-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.maven.plugin.AbstractJettyMojo.startJetty(AbstractJettyMojo.java:534) [jetty-maven-plugin-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.maven.plugin.AbstractJettyMojo.execute(AbstractJettyMojo.java:357) [jetty-maven-plugin-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.maven.plugin.JettyRunMojo.execute(JettyRunMojo.java:167) [jetty-maven-plugin-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo(DefaultBuildPluginManager.java:101) [maven-core-3.0.5.jar:3.0.5]
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:209) [maven-core-3.0.5.jar:3.0.5]
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:153) [maven-core-3.0.5.jar:3.0.5]
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:145) [maven-core-3.0.5.jar:3.0.5]
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:84) [maven-core-3.0.5.jar:3.0.5]
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:59) [maven-core-3.0.5.jar:3.0.5]
+	at org.apache.maven.lifecycle.internal.LifecycleStarter.singleThreadedBuild(LifecycleStarter.java:183) [maven-core-3.0.5.jar:3.0.5]
+	at org.apache.maven.lifecycle.internal.LifecycleStarter.execute(LifecycleStarter.java:161) [maven-core-3.0.5.jar:3.0.5]
+	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:320) [maven-core-3.0.5.jar:3.0.5]
+	at org.apache.maven.DefaultMaven.execute(DefaultMaven.java:156) [maven-core-3.0.5.jar:3.0.5]
+	at org.apache.maven.cli.MavenCli.execute(MavenCli.java:537) [maven-embedder-3.0.5.jar:3.0.5]
+	at org.apache.maven.cli.MavenCli.doMain(MavenCli.java:196) [maven-embedder-3.0.5.jar:3.0.5]
+	at org.apache.maven.cli.MavenCli.main(MavenCli.java:141) [maven-embedder-3.0.5.jar:3.0.5]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_60]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_60]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_60]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[na:1.8.0_60]
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced(Launcher.java:290) [plexus-classworlds-2.4.jar:na]
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launch(Launcher.java:230) [plexus-classworlds-2.4.jar:na]
+	at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode(Launcher.java:409) [plexus-classworlds-2.4.jar:na]
+	at org.codehaus.plexus.classworlds.launcher.Launcher.main(Launcher.java:352) [plexus-classworlds-2.4.jar:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire method: public void com.credit_suisse.app.dao.InstrumentPriceModifierDaoImpl.setNamedParameterJdbcTemplate(org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate); nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:649) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:331) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	... 64 common frames omitted
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoSuchBeanDefinitionException(DefaultListableBeanFactory.java:1301) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1047) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:942) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:606) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	... 66 common frames omitted
+[INFO] Started Jetty Server
+[INFO] Starting scanner at interval of 10 seconds.
+[INFO] restarting o.e.j.m.p.JettyWebAppContext@1e083b1{/credit_suisse_trial,file:/C:/springsource/workspaces/ws_credit_suisse_trial/credit_suisse_trial/src/main/webapp/,UNAVAILABLE}{file:/C:/springsource/workspaces/ws_credit_suisse_trial/credit_suisse_trial/src/main/webapp/}
+[INFO] Webapp source directory = C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\src\main\webapp
+[INFO] Reload Mechanic: automatic
+[INFO] Classes = C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes
+[INFO] Context path = /credit_suisse_trial
+[INFO] Tmp directory = C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\tmp
+[INFO] Web defaults = org/eclipse/jetty/webapp/webdefault.xml
+[INFO] Web overrides =  none
+[INFO] web.xml file = file:/C:/springsource/workspaces/ws_credit_suisse_trial/credit_suisse_trial/src/main/webapp/WEB-INF/web.xml
+[INFO] Webapp directory = C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\src\main\webapp
+18:04:52,954 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback.groovy]
+18:04:52,954 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback-test.xml]
+18:04:52,954 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Found resource [logback.xml] at [file:/C:/springsource/workspaces/ws_credit_suisse_trial/credit_suisse_trial/target/classes/logback.xml]
+18:04:52,979 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - debug attribute not set
+18:04:52,981 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - About to instantiate appender of type [ch.qos.logback.core.ConsoleAppender]
+18:04:52,985 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - Naming appender as [STDOUT]
+18:04:53,015 |-WARN in ch.qos.logback.core.ConsoleAppender[STDOUT] - This appender no longer admits a layout as a sub-component, set an encoder instead.
+18:04:53,015 |-WARN in ch.qos.logback.core.ConsoleAppender[STDOUT] - To ensure compatibility, wrapping your layout in LayoutWrappingEncoder.
+18:04:53,015 |-WARN in ch.qos.logback.core.ConsoleAppender[STDOUT] - See also http://logback.qos.ch/codes.html#layoutInsteadOfEncoder for details
+18:04:53,016 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting level of logger [org.springframework] to DEBUG
+18:04:53,016 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [org.springframework] to false
+18:04:53,016 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [STDOUT] to Logger[org.springframework]
+18:04:53,016 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting level of logger [com.credit_suisse] to DEBUG
+18:04:53,016 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting additivity of logger [com.credit_suisse] to false
+18:04:53,016 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [STDOUT] to Logger[com.credit_suisse]
+18:04:53,016 |-INFO in ch.qos.logback.classic.joran.action.RootLoggerAction - Setting level of ROOT logger to ERROR
+18:04:53,016 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [STDOUT] to Logger[ROOT]
+18:04:53,016 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - End of configuration.
+18:04:53,017 |-INFO in ch.qos.logback.classic.joran.JoranConfigurator@2d274f - Registering current configuration as safe fallback point
+
+2017-01-05 18:04:53 INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization started
+2017-01-05 18:04:53 DEBUG o.s.w.c.s.StandardServletEnvironment - Adding [servletConfigInitParams] PropertySource with lowest search precedence
+2017-01-05 18:04:53 DEBUG o.s.w.c.s.StandardServletEnvironment - Adding [servletContextInitParams] PropertySource with lowest search precedence
+2017-01-05 18:04:53 DEBUG o.s.w.c.s.StandardServletEnvironment - Adding [jndiProperties] PropertySource with lowest search precedence
+2017-01-05 18:04:53 DEBUG o.s.w.c.s.StandardServletEnvironment - Adding [systemProperties] PropertySource with lowest search precedence
+2017-01-05 18:04:53 DEBUG o.s.w.c.s.StandardServletEnvironment - Adding [systemEnvironment] PropertySource with lowest search precedence
+2017-01-05 18:04:53 DEBUG o.s.w.c.s.StandardServletEnvironment - Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,jndiProperties,systemProperties,systemEnvironment]
+2017-01-05 18:04:53 DEBUG o.s.w.c.s.StandardServletEnvironment - Replacing [servletContextInitParams] PropertySource with [servletContextInitParams]
+2017-01-05 18:04:53 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Refreshing Root WebApplicationContext: startup date [Thu Jan 05 18:04:53 CST 2017]; root of context hierarchy
+2017-01-05 18:04:53 DEBUG o.s.core.env.StandardEnvironment - Adding [systemProperties] PropertySource with lowest search precedence
+2017-01-05 18:04:53 DEBUG o.s.core.env.StandardEnvironment - Adding [systemEnvironment] PropertySource with lowest search precedence
+2017-01-05 18:04:53 DEBUG o.s.core.env.StandardEnvironment - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+2017-01-05 18:04:53 DEBUG o.s.core.env.StandardEnvironment - Adding [systemProperties] PropertySource with lowest search precedence
+2017-01-05 18:04:53 DEBUG o.s.core.env.StandardEnvironment - Adding [systemEnvironment] PropertySource with lowest search precedence
+2017-01-05 18:04:53 DEBUG o.s.core.env.StandardEnvironment - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+2017-01-05 18:04:53 DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - JSR-250 'javax.annotation.ManagedBean' found and supported for component scanning
+2017-01-05 18:04:53 DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+2017-01-05 18:04:53 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Registering annotated classes: [class com.credit_suisse.app.config.SpringRootConfig]
+2017-01-05 18:04:53 DEBUG o.s.w.c.s.AnnotationConfigWebApplicationContext - Bean factory for Root WebApplicationContext: org.springframework.beans.factory.support.DefaultListableBeanFactory@1330c44: defining beans [org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,springRootConfig]; root of factory hierarchy
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Registering scope 'request' with implementation [org.springframework.web.context.request.RequestScope@11fdc13]
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Registering scope 'session' with implementation [org.springframework.web.context.request.SessionScope@1dbae55]
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Registering scope 'globalSession' with implementation [org.springframework.web.context.request.SessionScope@231a39]
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Registering scope 'application' with implementation [org.springframework.web.context.support.ServletContextScope@1e089ed]
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Eagerly caching bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor' to allow for resolving potential circular references
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Finished creating instance of bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+2017-01-05 18:04:53 DEBUG o.s.core.env.StandardEnvironment - Adding [systemProperties] PropertySource with lowest search precedence
+2017-01-05 18:04:53 DEBUG o.s.core.env.StandardEnvironment - Adding [systemEnvironment] PropertySource with lowest search precedence
+2017-01-05 18:04:53 DEBUG o.s.core.env.StandardEnvironment - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+2017-01-05 18:04:53 DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - JSR-250 'javax.annotation.ManagedBean' found and supported for component scanning
+2017-01-05 18:04:53 DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+2017-01-05 18:04:53 DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Looking for matching resources in directory tree [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app]
+2017-01-05 18:04:53 DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app] for files matching pattern [C:/springsource/workspaces/ws_credit_suisse_trial/credit_suisse_trial/target/classes/com/credit_suisse/app/**/*.class]
+2017-01-05 18:04:53 DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\config] for files matching pattern [C:/springsource/workspaces/ws_credit_suisse_trial/credit_suisse_trial/target/classes/com/credit_suisse/app/**/*.class]
+2017-01-05 18:04:53 DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\config\db] for files matching pattern [C:/springsource/workspaces/ws_credit_suisse_trial/credit_suisse_trial/target/classes/com/credit_suisse/app/**/*.class]
+2017-01-05 18:04:53 DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\core] for files matching pattern [C:/springsource/workspaces/ws_credit_suisse_trial/credit_suisse_trial/target/classes/com/credit_suisse/app/**/*.class]
+2017-01-05 18:04:53 DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\core\module] for files matching pattern [C:/springsource/workspaces/ws_credit_suisse_trial/credit_suisse_trial/target/classes/com/credit_suisse/app/**/*.class]
+2017-01-05 18:04:53 DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\dao] for files matching pattern [C:/springsource/workspaces/ws_credit_suisse_trial/credit_suisse_trial/target/classes/com/credit_suisse/app/**/*.class]
+2017-01-05 18:04:53 DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\model] for files matching pattern [C:/springsource/workspaces/ws_credit_suisse_trial/credit_suisse_trial/target/classes/com/credit_suisse/app/**/*.class]
+2017-01-05 18:04:53 DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\servlet3] for files matching pattern [C:/springsource/workspaces/ws_credit_suisse_trial/credit_suisse_trial/target/classes/com/credit_suisse/app/**/*.class]
+2017-01-05 18:04:53 DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\util] for files matching pattern [C:/springsource/workspaces/ws_credit_suisse_trial/credit_suisse_trial/target/classes/com/credit_suisse/app/**/*.class]
+2017-01-05 18:04:53 DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\web] for files matching pattern [C:/springsource/workspaces/ws_credit_suisse_trial/credit_suisse_trial/target/classes/com/credit_suisse/app/**/*.class]
+2017-01-05 18:04:53 DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\web\controller] for files matching pattern [C:/springsource/workspaces/ws_credit_suisse_trial/credit_suisse_trial/target/classes/com/credit_suisse/app/**/*.class]
+2017-01-05 18:04:53 DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Resolved location pattern [classpath*:com/credit_suisse/app/**/*.class] to resources [file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\Application$1.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\Application.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\config\Bootstrap.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\config\db\DerbyDataSource.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\config\db\H2DataSource.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\config\db\HsqlDataSource.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\config\SpringRootConfig.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\config\SpringWebConfig.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\core\CalculatorEngine$1.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\core\CalculatorEngine.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\core\CalculatorEngineRefresh.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\core\EngineCalculatorModule.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\core\Manager.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\core\module\AverageModule.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\core\module\AverageMonthModule.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\core\module\AverageNewstInstrumentsModule.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\core\module\OnFlyModule.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\core\TaskExecutor.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\core\TaskManager.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\dao\InstrumentPriceModifierDao.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\dao\InstrumentPriceModifierDaoImpl$InstrumentPriceModifierMapper.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\dao\InstrumentPriceModifierDaoImpl.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\model\Instrument.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\model\Instrument1.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\model\Instrument2.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\model\Instrument3.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\model\InstrumentCalculateBehavior.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\model\InstrumentPriceModifier.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\model\newInstrument.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\servlet3\MyWebInitializer.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\util\CommonConstants.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\util\emWorkerProfile.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\util\InstrumentUtil$1.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\util\InstrumentUtil.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\web\controller\WelcomeController$1.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\web\controller\WelcomeController.class]]
+2017-01-05 18:04:53 DEBUG o.s.c.e.PropertySourcesPropertyResolver - Searching for key 'spring.profiles.active' in [servletConfigInitParams]
+2017-01-05 18:04:53 DEBUG o.s.c.e.PropertySourcesPropertyResolver - Searching for key 'spring.profiles.active' in [servletContextInitParams]
+2017-01-05 18:04:53 DEBUG o.s.c.e.PropertySourcesPropertyResolver - Found key 'spring.profiles.active' in [servletContextInitParams] with type [String] and value 'h2'
+2017-01-05 18:04:53 DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\config\db\H2DataSource.class]
+2017-01-05 18:04:53 DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\config\SpringWebConfig.class]
+2017-01-05 18:04:53 DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\core\TaskManager.class]
+2017-01-05 18:04:53 DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\dao\InstrumentPriceModifierDaoImpl.class]
+2017-01-05 18:04:53 DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\util\CommonConstants.class]
+2017-01-05 18:04:53 DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\web\controller\WelcomeController.class]
+2017-01-05 18:04:53 DEBUG o.s.core.env.StandardEnvironment - Adding [systemProperties] PropertySource with lowest search precedence
+2017-01-05 18:04:53 DEBUG o.s.core.env.StandardEnvironment - Adding [systemEnvironment] PropertySource with lowest search precedence
+2017-01-05 18:04:53 DEBUG o.s.core.env.StandardEnvironment - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+2017-01-05 18:04:53 DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - JSR-250 'javax.annotation.ManagedBean' found and supported for component scanning
+2017-01-05 18:04:53 DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+2017-01-05 18:04:53 DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Looking for matching resources in directory tree [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\web]
+2017-01-05 18:04:53 DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\web] for files matching pattern [C:/springsource/workspaces/ws_credit_suisse_trial/credit_suisse_trial/target/classes/com/credit_suisse/app/web/**/*.class]
+2017-01-05 18:04:53 DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\web\controller] for files matching pattern [C:/springsource/workspaces/ws_credit_suisse_trial/credit_suisse_trial/target/classes/com/credit_suisse/app/web/**/*.class]
+2017-01-05 18:04:53 DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Resolved location pattern [classpath*:com/credit_suisse/app/web/**/*.class] to resources [file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\web\controller\WelcomeController$1.class], file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\web\controller\WelcomeController.class]]
+2017-01-05 18:04:53 DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [C:\springsource\workspaces\ws_credit_suisse_trial\credit_suisse_trial\target\classes\com\credit_suisse\app\web\controller\WelcomeController.class]
+2017-01-05 18:04:53 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method com.credit_suisse.app.config.db.H2DataSource.dataSource()
+2017-01-05 18:04:53 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method com.credit_suisse.app.config.db.H2DataSource.startDBManager()
+2017-01-05 18:04:53 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registered bean definition for imported @Configuration class org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration
+2017-01-05 18:04:53 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration.requestMappingHandlerMapping()
+2017-01-05 18:04:53 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration.mvcContentNegotiationManager()
+2017-01-05 18:04:53 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration.viewControllerHandlerMapping()
+2017-01-05 18:04:53 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration.beanNameHandlerMapping()
+2017-01-05 18:04:53 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration.resourceHandlerMapping()
+2017-01-05 18:04:53 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration.mvcResourceUrlProvider()
+2017-01-05 18:04:53 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration.defaultServletHandlerMapping()
+2017-01-05 18:04:53 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration.requestMappingHandlerAdapter()
+2017-01-05 18:04:53 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration.mvcConversionService()
+2017-01-05 18:04:53 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration.mvcValidator()
+2017-01-05 18:04:53 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration.mvcPathMatcher()
+2017-01-05 18:04:53 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration.mvcUrlPathHelper()
+2017-01-05 18:04:53 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration.mvcUriComponentsContributor()
+2017-01-05 18:04:53 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration.httpRequestHandlerAdapter()
+2017-01-05 18:04:53 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration.simpleControllerHandlerAdapter()
+2017-01-05 18:04:53 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration.handlerExceptionResolver()
+2017-01-05 18:04:53 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration.mvcViewResolver()
+2017-01-05 18:04:53 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method com.credit_suisse.app.config.SpringWebConfig.viewResolver()
+2017-01-05 18:04:53 INFO  o.s.c.a.ConfigurationClassBeanDefinitionReader - Skipping bean definition for [BeanMethod:name=taskManager,declaringClass=com.credit_suisse.app.config.SpringRootConfig]: a definition for bean 'taskManager' already exists. This top-level bean definition is considered as an override.
+2017-01-05 18:04:53 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method com.credit_suisse.app.config.SpringRootConfig.bootstrap()
+2017-01-05 18:04:53 DEBUG o.s.c.a.ConfigurationClassBeanDefinitionReader - Registering bean definition for @Bean method com.credit_suisse.app.config.SpringRootConfig.executorService()
+2017-01-05 18:04:53 DEBUG o.s.c.a.ConfigurationClassEnhancer - Successfully enhanced com.credit_suisse.app.config.SpringRootConfig; enhanced class name is: com.credit_suisse.app.config.SpringRootConfig$$EnhancerBySpringCGLIB$$3c30e093
+2017-01-05 18:04:53 DEBUG o.s.c.a.ConfigurationClassPostProcessor - Replacing bean definition 'springRootConfig' existing class name 'com.credit_suisse.app.config.SpringRootConfig' with enhanced class name 'com.credit_suisse.app.config.SpringRootConfig$$EnhancerBySpringCGLIB$$3c30e093'
+2017-01-05 18:04:53 DEBUG o.s.c.a.ConfigurationClassEnhancer - Successfully enhanced com.credit_suisse.app.config.db.H2DataSource; enhanced class name is: com.credit_suisse.app.config.db.H2DataSource$$EnhancerBySpringCGLIB$$c8dcd1d1
+2017-01-05 18:04:53 DEBUG o.s.c.a.ConfigurationClassPostProcessor - Replacing bean definition 'h2DataSource' existing class name 'com.credit_suisse.app.config.db.H2DataSource' with enhanced class name 'com.credit_suisse.app.config.db.H2DataSource$$EnhancerBySpringCGLIB$$c8dcd1d1'
+2017-01-05 18:04:53 DEBUG o.s.c.a.ConfigurationClassEnhancer - Successfully enhanced com.credit_suisse.app.config.SpringWebConfig; enhanced class name is: com.credit_suisse.app.config.SpringWebConfig$$EnhancerBySpringCGLIB$$d434af7b
+2017-01-05 18:04:53 DEBUG o.s.c.a.ConfigurationClassPostProcessor - Replacing bean definition 'springWebConfig' existing class name 'com.credit_suisse.app.config.SpringWebConfig' with enhanced class name 'com.credit_suisse.app.config.SpringWebConfig$$EnhancerBySpringCGLIB$$d434af7b'
+2017-01-05 18:04:53 DEBUG o.s.c.a.ConfigurationClassEnhancer - Successfully enhanced org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration; enhanced class name is: org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration$$EnhancerBySpringCGLIB$$e17c10cb
+2017-01-05 18:04:53 DEBUG o.s.c.a.ConfigurationClassPostProcessor - Replacing bean definition 'org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration' existing class name 'org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration' with enhanced class name 'org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration$$EnhancerBySpringCGLIB$$e17c10cb'
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+2017-01-05 18:04:53 INFO  o.s.b.f.a.AutowiredAnnotationBeanPostProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Eagerly caching bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor' to allow for resolving potential circular references
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Finished creating instance of bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'org.springframework.context.annotation.internalRequiredAnnotationProcessor'
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'org.springframework.context.annotation.internalRequiredAnnotationProcessor'
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Eagerly caching bean 'org.springframework.context.annotation.internalRequiredAnnotationProcessor' to allow for resolving potential circular references
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Finished creating instance of bean 'org.springframework.context.annotation.internalRequiredAnnotationProcessor'
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Eagerly caching bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor' to allow for resolving potential circular references
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Finished creating instance of bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor'
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor'
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Eagerly caching bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor' to allow for resolving potential circular references
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Finished creating instance of bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor'
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.enhancedConfigurationProcessor'
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.enhancedConfigurationProcessor'
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Eagerly caching bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.enhancedConfigurationProcessor' to allow for resolving potential circular references
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Finished creating instance of bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.enhancedConfigurationProcessor'
+2017-01-05 18:04:53 DEBUG o.s.w.c.s.AnnotationConfigWebApplicationContext - Unable to locate MessageSource with name 'messageSource': using default [org.springframework.context.support.DelegatingMessageSource@a4044b]
+2017-01-05 18:04:53 DEBUG o.s.w.c.s.AnnotationConfigWebApplicationContext - Unable to locate ApplicationEventMulticaster with name 'applicationEventMulticaster': using default [org.springframework.context.event.SimpleApplicationEventMulticaster@11f4e44]
+2017-01-05 18:04:53 DEBUG o.s.u.c.s.UiApplicationContextUtils - Unable to locate ThemeSource with name 'themeSource': using default [org.springframework.ui.context.support.ResourceBundleThemeSource@1741dc]
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@1330c44: defining beans [org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,springRootConfig,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor,org.springframework.context.annotation.ConfigurationClassPostProcessor.enhancedConfigurationProcessor,h2DataSource,springWebConfig,taskManager,instrumentPriceModifierDaoImpl,commonConstants,welcomeController,dataSource,startDBManager,org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration,requestMappingHandlerMapping,mvcContentNegotiationManager,viewControllerHandlerMapping,beanNameHandlerMapping,resourceHandlerMapping,mvcResourceUrlProvider,defaultServletHandlerMapping,requestMappingHandlerAdapter,mvcConversionService,mvcValidator,mvcPathMatcher,mvcUrlPathHelper,mvcUriComponentsContributor,httpRequestHandlerAdapter,simpleControllerHandlerAdapter,handlerExceptionResolver,mvcViewResolver,viewResolver,bootstrap,executorService]; root of factory hierarchy
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'org.springframework.context.annotation.internalRequiredAnnotationProcessor'
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'springRootConfig'
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'springRootConfig'
+2017-01-05 18:04:53 DEBUG o.s.c.a.CommonAnnotationBeanPostProcessor - Found init method on class [com.credit_suisse.app.config.SpringRootConfig$$EnhancerBySpringCGLIB$$3c30e093]: public void com.credit_suisse.app.config.SpringRootConfig.startDBManager()
+2017-01-05 18:04:53 DEBUG o.s.c.a.CommonAnnotationBeanPostProcessor - Registered init method on class [com.credit_suisse.app.config.SpringRootConfig$$EnhancerBySpringCGLIB$$3c30e093]: org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement@32abbf2d
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Eagerly caching bean 'springRootConfig' to allow for resolving potential circular references
+2017-01-05 18:04:53 DEBUG o.s.c.a.CommonAnnotationBeanPostProcessor - Invoking init method on bean 'springRootConfig': public void com.credit_suisse.app.config.SpringRootConfig.startDBManager()
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Finished creating instance of bean 'springRootConfig'
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor'
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.enhancedConfigurationProcessor'
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'h2DataSource'
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'h2DataSource'
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Eagerly caching bean 'h2DataSource' to allow for resolving potential circular references
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Finished creating instance of bean 'h2DataSource'
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'springWebConfig'
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'springWebConfig'
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Eagerly caching bean 'springWebConfig' to allow for resolving potential circular references
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Finished creating instance of bean 'springWebConfig'
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'taskManager'
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'taskManager'
+2017-01-05 18:04:53 DEBUG o.s.b.f.annotation.InjectionMetadata - Registered injected element on class [com.credit_suisse.app.core.TaskManager]: AutowiredMethodElement for public void com.credit_suisse.app.core.TaskManager.setExecutorService(java.util.concurrent.ExecutorService)
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Eagerly caching bean 'taskManager' to allow for resolving potential circular references
+2017-01-05 18:04:53 DEBUG o.s.b.f.annotation.InjectionMetadata - Processing injected element of bean 'taskManager': AutowiredMethodElement for public void com.credit_suisse.app.core.TaskManager.setExecutorService(java.util.concurrent.ExecutorService)
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'executorService'
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'executorService'
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'springRootConfig'
+threadPoolSize:0
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Eagerly caching bean 'executorService' to allow for resolving potential circular references
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Finished creating instance of bean 'executorService'
+2017-01-05 18:04:53 DEBUG o.s.b.f.a.AutowiredAnnotationBeanPostProcessor - Autowiring by type from bean name 'taskManager' to bean named 'executorService'
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Invoking afterPropertiesSet() on bean with name 'taskManager'
+2017-01-05 18:04:53 INFO  c.credit_suisse.app.core.TaskManager - Initializing TaskManager...
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Finished creating instance of bean 'taskManager'
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'instrumentPriceModifierDaoImpl'
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'instrumentPriceModifierDaoImpl'
+2017-01-05 18:04:53 DEBUG o.s.b.f.annotation.InjectionMetadata - Registered injected element on class [com.credit_suisse.app.dao.InstrumentPriceModifierDaoImpl]: AutowiredMethodElement for public void com.credit_suisse.app.dao.InstrumentPriceModifierDaoImpl.setNamedParameterJdbcTemplate(org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate)
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Eagerly caching bean 'instrumentPriceModifierDaoImpl' to allow for resolving potential circular references
+2017-01-05 18:04:53 DEBUG o.s.b.f.annotation.InjectionMetadata - Processing injected element of bean 'instrumentPriceModifierDaoImpl': AutowiredMethodElement for public void com.credit_suisse.app.dao.InstrumentPriceModifierDaoImpl.setNamedParameterJdbcTemplate(org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate)
+2017-01-05 18:04:53 WARN  o.s.w.c.s.AnnotationConfigWebApplicationContext - Exception encountered during context initialization - cancelling refresh attempt
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'instrumentPriceModifierDaoImpl': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire method: public void com.credit_suisse.app.dao.InstrumentPriceModifierDaoImpl.setNamedParameterJdbcTemplate(org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate); nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:334) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1210) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:537) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:476) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:303) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:299) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:194) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:755) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:757) ~[spring-context-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:480) ~[spring-context-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:403) [spring-web-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:306) [spring-web-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:106) [spring-web-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.eclipse.jetty.server.handler.ContextHandler.callContextInitialized(ContextHandler.java:800) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.servlet.ServletContextHandler.callContextInitialized(ServletContextHandler.java:444) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.ContextHandler.startContext(ContextHandler.java:791) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.servlet.ServletContextHandler.startContext(ServletContextHandler.java:294) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.webapp.WebAppContext.startWebapp(WebAppContext.java:1349) [jetty-webapp-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.maven.plugin.JettyWebAppContext.startWebapp(JettyWebAppContext.java:296) [jetty-maven-plugin-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.webapp.WebAppContext.startContext(WebAppContext.java:1342) [jetty-webapp-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:741) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.webapp.WebAppContext.doStart(WebAppContext.java:505) [jetty-webapp-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.maven.plugin.JettyWebAppContext.doStart(JettyWebAppContext.java:365) [jetty-maven-plugin-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.maven.plugin.JettyRunMojo.restartWebApp(JettyRunMojo.java:541) [jetty-maven-plugin-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.maven.plugin.JettyRunMojo$1.filesChanged(JettyRunMojo.java:494) [jetty-maven-plugin-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.Scanner.reportBulkChanges(Scanner.java:685) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.Scanner.reportDifferences(Scanner.java:539) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.Scanner.scan(Scanner.java:391) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.Scanner$1.run(Scanner.java:329) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at java.util.TimerThread.mainLoop(Timer.java:555) [na:1.8.0_60]
+	at java.util.TimerThread.run(Timer.java:505) [na:1.8.0_60]
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire method: public void com.credit_suisse.app.dao.InstrumentPriceModifierDaoImpl.setNamedParameterJdbcTemplate(org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate); nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:649) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:331) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	... 32 common frames omitted
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoSuchBeanDefinitionException(DefaultListableBeanFactory.java:1301) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1047) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:942) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:606) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	... 34 common frames omitted
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DefaultListableBeanFactory - Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@1330c44: defining beans [org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,springRootConfig,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor,org.springframework.context.annotation.ConfigurationClassPostProcessor.enhancedConfigurationProcessor,h2DataSource,springWebConfig,taskManager,instrumentPriceModifierDaoImpl,commonConstants,welcomeController,dataSource,startDBManager,org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration,requestMappingHandlerMapping,mvcContentNegotiationManager,viewControllerHandlerMapping,beanNameHandlerMapping,resourceHandlerMapping,mvcResourceUrlProvider,defaultServletHandlerMapping,requestMappingHandlerAdapter,mvcConversionService,mvcValidator,mvcPathMatcher,mvcUrlPathHelper,mvcUriComponentsContributor,httpRequestHandlerAdapter,simpleControllerHandlerAdapter,handlerExceptionResolver,mvcViewResolver,viewResolver,bootstrap,executorService]; root of factory hierarchy
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DisposableBeanAdapter - Invoking destroy() on bean with name 'taskManager'
+2017-01-05 18:04:53 INFO  c.credit_suisse.app.core.TaskManager - Destroying TaskManager...
+2017-01-05 18:04:53 DEBUG o.s.b.f.s.DisposableBeanAdapter - Invoking destroy method 'shutdown' on bean with name 'executorService'
+2017-01-05 18:04:53 ERROR o.s.web.context.ContextLoader - Context initialization failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'instrumentPriceModifierDaoImpl': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire method: public void com.credit_suisse.app.dao.InstrumentPriceModifierDaoImpl.setNamedParameterJdbcTemplate(org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate); nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:334) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1210) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:537) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:476) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:303) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:299) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:194) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:755) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:757) ~[spring-context-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:480) ~[spring-context-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:403) ~[spring-web-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:306) ~[spring-web-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:106) [spring-web-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.eclipse.jetty.server.handler.ContextHandler.callContextInitialized(ContextHandler.java:800) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.servlet.ServletContextHandler.callContextInitialized(ServletContextHandler.java:444) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.ContextHandler.startContext(ContextHandler.java:791) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.servlet.ServletContextHandler.startContext(ServletContextHandler.java:294) [jetty-servlet-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.webapp.WebAppContext.startWebapp(WebAppContext.java:1349) [jetty-webapp-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.maven.plugin.JettyWebAppContext.startWebapp(JettyWebAppContext.java:296) [jetty-maven-plugin-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.webapp.WebAppContext.startContext(WebAppContext.java:1342) [jetty-webapp-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:741) [jetty-server-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.webapp.WebAppContext.doStart(WebAppContext.java:505) [jetty-webapp-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.maven.plugin.JettyWebAppContext.doStart(JettyWebAppContext.java:365) [jetty-maven-plugin-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.maven.plugin.JettyRunMojo.restartWebApp(JettyRunMojo.java:541) [jetty-maven-plugin-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.maven.plugin.JettyRunMojo$1.filesChanged(JettyRunMojo.java:494) [jetty-maven-plugin-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.Scanner.reportBulkChanges(Scanner.java:685) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.Scanner.reportDifferences(Scanner.java:539) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.Scanner.scan(Scanner.java:391) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at org.eclipse.jetty.util.Scanner$1.run(Scanner.java:329) [jetty-util-9.2.11.v20150529.jar:9.2.11.v20150529]
+	at java.util.TimerThread.mainLoop(Timer.java:555) [na:1.8.0_60]
+	at java.util.TimerThread.run(Timer.java:505) [na:1.8.0_60]
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire method: public void com.credit_suisse.app.dao.InstrumentPriceModifierDaoImpl.setNamedParameterJdbcTemplate(org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate); nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:649) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:331) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	... 32 common frames omitted
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoSuchBeanDefinitionException(DefaultListableBeanFactory.java:1301) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1047) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:942) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:606) ~[spring-beans-4.1.6.RELEASE.jar:4.1.6.RELEASE]
+	... 34 common frames omitted
+[INFO] Restart completed at Thu Jan 05 18:04:53 CST 2017

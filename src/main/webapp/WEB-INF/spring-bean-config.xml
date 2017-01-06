@@ -1,0 +1,24 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans     
+        http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-4.1.xsd">
+
+    <bean id="instrumentPriceModifierDao" class="com.credit_suisse.app.dao.InstrumentPriceModifierDaoImpl" >
+		<property name="namedParameterJdbcTemplate" ref="jdbcTemplate" />
+	</bean>
+	
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate" >
+	    <!-- 
+		<property name="dataSource" ref="dataSource" />
+		 -->
+		 <!-- 
+		 <constructor-arg ref="dbcpDataSource" />
+		  -->
+		<constructor-arg ref="dataSource" />
+	</bean>
+	
+</beans>

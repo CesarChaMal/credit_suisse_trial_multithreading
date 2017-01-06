@@ -1,0 +1,7 @@
+DROP TABLE INSTRUMENT_PRICE_MODIFIER IF EXISTS;
+
+CREATE TABLE INSTRUMENT_PRICE_MODIFIER (
+  id bigint PRIMARY KEY auto_increment,
+  name VARCHAR2(256) not null unique,
+  multiplier NUMBER(10,2) not null
+);
