@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.credit_suisse.app.core.CalculatorEngine;
+import com.credit_suisse.app.core.module.AverageNewstInstrumentsModule;
 import com.credit_suisse.app.core.module.OnFlyModule;
 import com.credit_suisse.app.model.Instrument;
 import com.credit_suisse.app.model.InstrumentPriceModifier;
 import com.credit_suisse.app.model.newInstrument;
+import com.credit_suisse.app.util.CommonConstants;
 
 @Controller
 public class WelcomeController {
@@ -37,15 +39,14 @@ public class WelcomeController {
 //		ctx = new AnnotationConfigApplicationContext(SpringRootConfig.class);
 //		ctx = new ClassPathXmlApplicationContext("file:src/main/**/spring-bean-config.xml");
 
-		Instrument newInstrument = new newInstrument("INSTRUMENT3", 4.0d, new Date());
-		newInstrument.setInstrumentCalculateBehavior(new OnFlyModule(){
+		Instrument newInstrument1 = new newInstrument("INSTRUMENT3", 4.0d, new Date());
+		newInstrument1.setInstrumentCalculateBehavior(new OnFlyModule(){
 			@Override
 			public Double calculate() {
 				double sum = 0;
 				int counter = 0;
 				for (Instrument i : getInstruments()) {
-					System.out.println(i.getName());
-					System.out.println(i.getPrice());
+					logger.debug(CommonConstants.INSTRUMENT3 + " OnFlyModule Instruments: " + getInstruments().size());
 					sum += i.getPrice();
 					counter++;
 				}
@@ -53,9 +54,13 @@ public class WelcomeController {
 			}
 		});
 		
+		Instrument newInstrument2 = new newInstrument("INSTRUMENT9", 4.0d, new Date());
+		newInstrument2.setInstrumentCalculateBehavior(new AverageNewstInstrumentsModule(newInstrument2.getName()));
+		
 		CalculatorEngine calculator = new CalculatorEngine(inputPath);
 //		CalculatorEngine calculator = CalculatorEngine.getInstance(inputPath);
-//		calculator.addModule(newInstrument);
+		calculator.addModule(newInstrument1);
+		calculator.addModule(newInstrument2);
 
 		model.addAttribute("instruments", calculator.calculate());
 

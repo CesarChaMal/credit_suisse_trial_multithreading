@@ -29,7 +29,7 @@ public class InstrumentUtil {
 		}
 	};
 
-	public static Instrument defineOf(String line) {
+	public synchronized static Instrument defineOf(String line) {
 		Instrument instrument = null;
 		String[] arr = line.split("[,]");
 		if (arr.length == 3) {

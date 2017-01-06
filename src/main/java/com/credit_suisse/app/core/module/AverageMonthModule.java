@@ -4,10 +4,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.credit_suisse.app.model.Instrument;
 import com.credit_suisse.app.model.InstrumentCalculateBehavior;
+import com.credit_suisse.app.util.CommonConstants;
 
 public class AverageMonthModule implements InstrumentCalculateBehavior {
+
+	private static final Logger logger = LoggerFactory.getLogger(AverageMonthModule.class);
 
 	private static final Integer YEAR = 2014;
 	private static final Integer NOVEMBER = 10;
@@ -18,22 +23,25 @@ public class AverageMonthModule implements InstrumentCalculateBehavior {
 		instruments = new ArrayList<>(); 
 	}
 	
-	public void addInstruments(List<Instrument> instruments) {
+	public synchronized void addInstruments(List<Instrument> instruments) {
 		this.instruments = instruments;
 	}
 
-	public List<Instrument> getInstruments() {
+	public synchronized List<Instrument> getInstruments() {
 		return instruments;
 	}
 	
 	@Override
-	public Double calculate() {
+	public synchronized Double calculate() {
 		return getAverage();
 	}
 
-	private Double getAverage() {
+	private synchronized Double getAverage() {
 		double sum = 0;
 		int counter = 0;
+
+		logger.debug(CommonConstants.INSTRUMENT2 + " AverageMonthModule Instruments: " + getInstruments().size());
+		
 		for (Instrument i : getInstruments()) {
 			if (isNovember(i.getDate())) {
 				sum += i.getPrice();

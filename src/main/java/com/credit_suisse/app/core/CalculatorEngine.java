@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.TimerTask;
 import java.util.TreeMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,16 +35,19 @@ public class CalculatorEngine extends Thread {
 	private static final Logger logger = LoggerFactory.getLogger(CalculatorEngine.class);
 
 	private static final Map<String, List<Instrument>> INSTRUMENTS = new TreeMap<>();
+//	private static volatile Map<String, List<Instrument>> INSTRUMENTS = new ConcurrentHashMap<>();
 
 	private static final Map<String, Instrument> MODULES = new TreeMap<>();
+//	private static volatile Map<String, Instrument> MODULES = new ConcurrentHashMap<>();
 
 	private String inputPath = null;
 	
+	// commented out because causes synchronization issue
 	static {
-		init();
+//		init();
 	}
 
-	private static void init() {
+	private synchronized static void init() {
 		logger.debug("Init instruments");
 
 		for (int i = 1; i <= CommonConstants.INSTRUMENTS_COUNT; i++) {
@@ -74,17 +78,17 @@ public class CalculatorEngine extends Thread {
 	public CalculatorEngine(String inputPath) {
 		logger.debug(String.format("Input file path: %s", inputPath));
 		this.inputPath = inputPath;
-//		init();
+		init();
 	}
 	
-	public void addModule(Instrument instrument) {
+	public synchronized void addModule(Instrument instrument) {
 		logger.info(String.format("Add module %s for instrument %s", instrument.getClass().getName(),instrument.getName()));
 		String name = instrument.getName();
 		INSTRUMENTS.get(name).add(instrument);
 		this.addEngineModule(instrument);
 	}
 
-	private void addEngineModule(Instrument instrument) {
+	private synchronized void addEngineModule(Instrument instrument) {
 		String name = instrument.getName();
 		if (MODULES.containsKey(name) && INSTRUMENTS.containsKey(name)) {
 			if (CommonConstants.INSTRUMENT1.equalsIgnoreCase(name)) {
@@ -101,19 +105,19 @@ public class CalculatorEngine extends Thread {
 				moduleDest.addInstruments(module.getInstruments());
 				instrumentOri.setInstrumentCalculateBehavior(moduleDest);
 //				System.out.println(Arrays.deepToString(module.getInstruments().toArray()));
-//				module.refresh();
 			} else {
 				AverageNewstInstrumentsModule module = (AverageNewstInstrumentsModule) MODULES.get(name).getInstrumentCalculateBehavior();
 				module.getInstruments().add(instrument);
-//				addAndSortToLastTenInstruments(instrument);
 			}
 		}
 	}
 
-	public Map<String, Double> calculate() {
+	public synchronized Map<String, Double> calculate() {
 		Map<String, Double> result = new TreeMap<>();
 		parseFile();
 		Double multiplierValue = 1.0;
+		
+		logger.debug("MODULES.size: " + MODULES.size());
 		
 		for (Entry<String, Instrument> instrumentModule : MODULES.entrySet()) {
 			System.out.println(instrumentModule.getKey() + ":" + instrumentModule.getValue().calculate());
@@ -124,7 +128,7 @@ public class CalculatorEngine extends Thread {
 		return result;
 	}
 
-	private void parseFile() {
+	private synchronized void parseFile() {
 		String line = null;
 		try (BufferedReader reader = Files.newBufferedReader(new File(inputPath).toPath(), Charset.defaultCharset())) {
 			while ((line = reader.readLine()) != null) {
@@ -151,7 +155,6 @@ public class CalculatorEngine extends Thread {
 			} else if (CommonConstants.INSTRUMENT3.equalsIgnoreCase(name)) {
 				OnFlyModule module = (OnFlyModule) MODULES.get(name).getInstrumentCalculateBehavior();
 				module.getInstruments().add(instrument);
-//				module.refresh();
 			} else {
 				AverageNewstInstrumentsModule module = (AverageNewstInstrumentsModule) MODULES.get(name).getInstrumentCalculateBehavior();
 				module.getInstruments().add(instrument);
@@ -163,26 +166,26 @@ public class CalculatorEngine extends Thread {
 	public void run() {
 		logger.debug("Calculator Engine calculate");
 		
-		Instrument newInstrument = new newInstrument("INSTRUMENT3", 4.0d, new Date());
-		newInstrument.setInstrumentCalculateBehavior(new OnFlyModule(){
-			@Override
-			public Double calculate() {
-				double sum = 0;
-				int counter = 0;
-				for (Instrument i : getInstruments()) {
-					System.out.println(i.getName());
-					System.out.println(i.getPrice());
-					sum += i.getPrice();
-					counter++;
-				}
-				return sum*2;
-			}
-		});
+//		Instrument newInstrument = new newInstrument("INSTRUMENT3", 4.0d, new Date());
+//		newInstrument.setInstrumentCalculateBehavior(new OnFlyModule(){
+//			@Override
+//			public synchronized Double calculate() {
+//				double sum = 0;
+//				int counter = 0;
+//				for (Instrument i : getInstruments()) {
+//					System.out.println(i.getName());
+//					System.out.println(i.getPrice());
+//					sum += i.getPrice();
+//					counter++;
+//				}
+//				return sum*2;
+//			}
+//		});
 		
-		CalculatorEngine calculator = new CalculatorEngine(CommonConstants.INPUT_FILE);
+//		CalculatorEngine calculator = new CalculatorEngine(CommonConstants.INPUT_FILE);
 //		CalculatorEngine calculator = CalculatorEngine.getInstance(CommonConstants.INPUT_FILE);
-//		calculator.addModule(newInstrument);
-		calculator.calculate();
+//		this.addModule(newInstrument);
+		this.calculate();
 	}
 
 }

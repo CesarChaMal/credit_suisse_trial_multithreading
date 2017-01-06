@@ -43,26 +43,26 @@ public class Application {
 //		String inputPath = "src/main/resources/big_input.txt";
 //		String inputPath = "src/main/resources/huge_input.txt";
 
-		Instrument newInstrument = new newInstrument("INSTRUMENT3", 4.0d, new Date());
+//		Instrument newInstrument = new newInstrument("INSTRUMENT3", 4.0d, new Date());
 //		Instrument newInstrument = new newInstrument("INSTRUMENT3", 6.0d, DefinerInstrument.getDate("03-Jan-2017"));
-		newInstrument.setInstrumentCalculateBehavior(new OnFlyModule(){
-			@Override
-			public Double calculate() {
-				double sum = 0;
-				int counter = 0;
-				for (Instrument i : getInstruments()) {
-//					System.out.println(i.getName());
-//					System.out.println(i.getPrice());
-					sum += i.getPrice();
-					counter++;
-				}
-				return sum*2;
-			}
-		});
+//		newInstrument.setInstrumentCalculateBehavior(new OnFlyModule(){
+//			@Override
+//			public synchronized Double calculate() {
+//				double sum = 0;
+//				int counter = 0;
+//				for (Instrument i : getInstruments()) {
+////					System.out.println(i.getName());
+////					System.out.println(i.getPrice());
+//					sum += i.getPrice();
+//					counter++;
+//				}
+//				return sum*2;
+//			}
+//		});
 		
 		CalculatorEngine calculator = new CalculatorEngine(inputPath);
 //		CalculatorEngine calculator = CalculatorEngine.getInstance(inputPath);
-		calculator.addModule(newInstrument);
+//		calculator.addModule(newInstrument);
 		calculator.calculate();
 
 	}

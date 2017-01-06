@@ -3,6 +3,7 @@ package com.credit_suisse.app.core;
 import java.net.InetAddress;
 import java.util.Timer;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,6 +47,9 @@ public class TaskManager implements InitializingBean, DisposableBean, Applicatio
 	}
 
 	private void start() {
+	    logger.info("Starting TaskManager with " + numThreads + " threads...");
+		executorService = Executors.newFixedThreadPool(numThreads);
+	    
 		String hostname = null;
 		try{
 			hostname = InetAddress.getLocalHost().getHostName();

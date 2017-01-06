@@ -4,11 +4,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.credit_suisse.app.model.Instrument;
 import com.credit_suisse.app.model.InstrumentCalculateBehavior;
 import com.credit_suisse.app.util.CommonConstants;
 
 public class AverageNewstInstrumentsModule implements InstrumentCalculateBehavior {
+
+	private static final Logger logger = LoggerFactory.getLogger(AverageNewstInstrumentsModule.class);
 
 	private List<Instrument> instruments;
 	
@@ -27,24 +32,26 @@ public class AverageNewstInstrumentsModule implements InstrumentCalculateBehavio
 		this.instrument = instrument;
 	}
 	
-	public void addInstruments(List<Instrument> instruments) {
+	public synchronized void addInstruments(List<Instrument> instruments) {
 		this.instruments = instruments;
 	}
 
-	public List<Instrument> getInstruments() {
+	public synchronized List<Instrument> getInstruments() {
 		return instruments;
 	}
 	
 	@Override
-	public Double calculate() {
+	public synchronized Double calculate() {
 		return getSum();
 	}
 
-	private Double getSum() {
+	private synchronized Double getSum() {
 		double sum = 0;
 		int counter = 0;
 		int limit = CommonConstants.NEWST;
 		
+		logger.debug(instrument + " AverageNewstInstrumentsModule Instruments: " + getInstruments().size());
+
 		List<Instrument> instruments = getInstruments();
 		Collections.sort(instruments);
 		
