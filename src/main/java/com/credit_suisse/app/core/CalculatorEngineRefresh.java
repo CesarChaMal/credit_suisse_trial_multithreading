@@ -4,6 +4,8 @@ import java.util.TimerTask;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.credit_suisse.app.dao.InstrumentPriceModifierDao;
+import com.credit_suisse.app.servlet3.MyWebInitializer;
 import com.credit_suisse.app.util.CommonConstants;
 
 public class CalculatorEngineRefresh extends TimerTask {
@@ -12,9 +14,12 @@ public class CalculatorEngineRefresh extends TimerTask {
 	
 	private volatile CalculatorEngine calculatorEngine;
 	
-	private CalculatorEngineRefresh() {
+	private InstrumentPriceModifierDao instrumentPriceModifierDao;
+
+	private CalculatorEngineRefresh(InstrumentPriceModifierDao instrumentPriceModifierDao) {
 //		calculatorEngine = CalculatorEngine.getInstance(CommonConstants.INPUT_FILE);
-		calculatorEngine = new CalculatorEngine(CommonConstants.INPUT_FILE);
+		this.instrumentPriceModifierDao = instrumentPriceModifierDao;
+		calculatorEngine = new CalculatorEngine(instrumentPriceModifierDao);
 	}
 
 	private static final Logger logger = LoggerFactory.getLogger(CalculatorEngineRefresh.class);
@@ -25,11 +30,11 @@ public class CalculatorEngineRefresh extends TimerTask {
 		reloadCalculatorEngine();
 	}
 
-	public static CalculatorEngineRefresh getInstance() {
+	public static CalculatorEngineRefresh getInstance(InstrumentPriceModifierDao instrumentPriceModifierDao) {
 		if (INSTANCE == null) {
 			synchronized (CalculatorEngineRefresh.class) {
 				if (INSTANCE == null) {
-					INSTANCE = new CalculatorEngineRefresh();
+					INSTANCE = new CalculatorEngineRefresh(instrumentPriceModifierDao);
 				}
 			}
 		}
@@ -57,7 +62,7 @@ public class CalculatorEngineRefresh extends TimerTask {
 		   
 //		Thread t[] = new Thread[3];
 		Thread t[] = new Thread[1];
-		t[0] = new CalculatorEngine(CommonConstants.INPUT_FILE);
+		t[0] = new CalculatorEngine(instrumentPriceModifierDao);
 //		t[1] = thread1;
 //		t[2] = thread2;
 		cachemanager.setTask(t);

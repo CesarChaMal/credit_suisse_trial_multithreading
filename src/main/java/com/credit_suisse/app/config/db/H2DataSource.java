@@ -15,7 +15,6 @@ import org.springframework.stereotype.Component;
 
 @Configuration
 @Profile("h2")
-@Component("h2")
 public class H2DataSource {
 
 	// jdbc:h2:mem:testdb
@@ -28,9 +27,9 @@ public class H2DataSource {
 	}
 
 	// Start WebServer, access http://localhost:8082
-	@Bean(initMethod = "start", destroyMethod = "stop")
-	public Server startDBManager() throws SQLException {
-		return Server.createWebServer();
-	}
+//	@Bean(initMethod = "start", destroyMethod = "stop")
+//	public Server startDBManager() throws SQLException {
+//		return Server.createWebServer();
+//	}
 
 }

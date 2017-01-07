@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 
 @Configuration
 @Profile("derby")
-@Component("derby")
 public class DerbyDataSource {
 
 	//jdbc:derby:memory:testdb

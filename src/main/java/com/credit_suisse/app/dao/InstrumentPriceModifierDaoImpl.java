@@ -6,17 +6,24 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.credit_suisse.app.model.InstrumentPriceModifier;
 
+@Configuration
 @Repository
 //@Repository(value="InstrumentPriceModifierDaoImpl")
 public class InstrumentPriceModifierDaoImpl implements InstrumentPriceModifierDao {
 
+	private static final Logger logger = LoggerFactory.getLogger(InstrumentPriceModifierDaoImpl.class);
+
+	@Autowired
 	NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 	
 	@Autowired
@@ -78,6 +85,23 @@ public class InstrumentPriceModifierDaoImpl implements InstrumentPriceModifierDa
         return result.size() == 0 ? null : result;
 	}
 
+	@Override
+	public void setMultiplier(String instrumentName, double multiplier) {
+		Map<String, Object> params = new HashMap<String, Object>();
+        params.put("name", instrumentName);
+        params.put("multiplier", multiplier);
+
+        String sql = "UPDATE INSTRUMENT_PRICE_MODIFIER set multiplier=:multiplier where name=:name";
+
+        int status = namedParameterJdbcTemplate.update(sql, params);	
+        
+        if(status != 0){
+            logger.info("Multiplier data updated for Instrument " + params.get("name"));
+        } else {
+        	logger.info("No instrument found with name " + params.get("name"));
+        }	
+	}
+
 	private static final class InstrumentPriceModifierMapper implements RowMapper<InstrumentPriceModifier> {
 
 		public InstrumentPriceModifier mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -88,4 +112,5 @@ public class InstrumentPriceModifierDaoImpl implements InstrumentPriceModifierDa
 			return instrument;
 		}
 	}
+
 }
