@@ -44,18 +44,7 @@ public class TaskExecutor implements Runnable {
 			{
 				if(CommonConstants.WORKER_ON){
 					logger.info(workername + " Worker on");
-					String name = "";
-					double multiplier = 0;
-					for (int i = 1; i <= CommonConstants.INSTRUMENTS_COUNT; i++) {
-						name = "INSTRUMENT" + i;
-//						multiplier = (int) ((Math.random()*100) % 10) + 1;
-//						multiplier = ((Math.random()*100) % 10) + 1;
-						if(CommonConstants.MODIFIER_DOUBLE)
-							multiplier = InstrumentUtil.generateRandomNumberDouble(CommonConstants.MODIFIER_MIN, CommonConstants.MODIFIER_MAX);
-						else
-							multiplier = InstrumentUtil.generateRandomNumberInteger(CommonConstants.MODIFIER_MIN, CommonConstants.MODIFIER_MAX);
-						instrumentPriceModifierDao.setMultiplier(name, multiplier);
-					}
+					updateModifiers();
 					logger.info(workername + " Worker off");
 					
 					synchronized(this){
@@ -71,6 +60,21 @@ public class TaskExecutor implements Runnable {
 			}
 		}
 
+	}
+
+	public void updateModifiers() {
+		String name = "";
+		double multiplier = 0;
+		for (int i = 1; i <= CommonConstants.INSTRUMENTS_COUNT; i++) {
+			name = "INSTRUMENT" + i;
+//						multiplier = (int) ((Math.random()*100) % 10) + 1;
+//						multiplier = ((Math.random()*100) % 10) + 1;
+			if(CommonConstants.MODIFIER_DOUBLE)
+				multiplier = InstrumentUtil.generateRandomNumberDouble(CommonConstants.MODIFIER_MIN, CommonConstants.MODIFIER_MAX);
+			else
+				multiplier = InstrumentUtil.generateRandomNumberInteger(CommonConstants.MODIFIER_MIN, CommonConstants.MODIFIER_MAX);
+			instrumentPriceModifierDao.setMultiplier(name, multiplier);
+		}
 	}
 
 }
