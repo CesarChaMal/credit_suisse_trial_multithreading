@@ -66,4 +66,13 @@ public class InstrumentUtil {
 		}
 		return date;
 	}
+	
+	public static double generateRandomNumberDouble(int modifier_min, int modifier_max) {
+		return modifier_min + (Math.random() * ((modifier_max - modifier_min)));
+	} 
+	
+	public static int generateRandomNumberInteger(int modifier_min, int modifier_max) {
+		return modifier_min + (int)(Math.random() * ((modifier_max - modifier_min) + 1));
+	} 
+	
 }

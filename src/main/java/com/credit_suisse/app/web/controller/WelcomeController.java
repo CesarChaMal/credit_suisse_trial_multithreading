@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.credit_suisse.app.core.CalculatorEngine;
-import com.credit_suisse.app.core.module.AverageNewstInstrumentsModule;
+import com.credit_suisse.app.core.module.AverageNewsInstrumentsModule;
 import com.credit_suisse.app.core.module.OnFlyModule;
 import com.credit_suisse.app.dao.InstrumentPriceModifierDao;
 import com.credit_suisse.app.model.Instrument;
@@ -62,13 +62,13 @@ public class WelcomeController {
 			}
 		});
 		
-		Instrument newInstrument2 = new newInstrument("INSTRUMENT9", 4.0d, new Date());
-		newInstrument2.setInstrumentCalculateBehavior(new AverageNewstInstrumentsModule(newInstrument2.getName()));
+//		Instrument newInstrument2 = new newInstrument("INSTRUMENT9", 4.0d, new Date());
+//		newInstrument2.setInstrumentCalculateBehavior(new AverageNewsInstrumentsModule(newInstrument2.getName()));
 		
 		CalculatorEngine calculator = new CalculatorEngine(inputPath);
 //		CalculatorEngine calculator = CalculatorEngine.getInstance(inputPath);
 		calculator.addModule(newInstrument1);
-		calculator.addModule(newInstrument2);
+//		calculator.addModule(newInstrument2);
 
 		model.addAttribute("modifiers", modifiers);
 		model.addAttribute("instruments", calculator.calculate(instrumentPriceModifierDao));

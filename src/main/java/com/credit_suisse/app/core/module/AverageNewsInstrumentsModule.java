@@ -11,9 +11,9 @@ import com.credit_suisse.app.model.Instrument;
 import com.credit_suisse.app.model.InstrumentCalculateBehavior;
 import com.credit_suisse.app.util.CommonConstants;
 
-public class AverageNewstInstrumentsModule implements InstrumentCalculateBehavior {
+public class AverageNewsInstrumentsModule implements InstrumentCalculateBehavior {
 
-	private static final Logger logger = LoggerFactory.getLogger(AverageNewstInstrumentsModule.class);
+	private static final Logger logger = LoggerFactory.getLogger(AverageNewsInstrumentsModule.class);
 
 	private List<Instrument> instruments;
 	
@@ -27,7 +27,7 @@ public class AverageNewstInstrumentsModule implements InstrumentCalculateBehavio
 		this.instrument = instrument;
 	}
 
-	public AverageNewstInstrumentsModule(String instrument) {
+	public AverageNewsInstrumentsModule(String instrument) {
 		instruments = new ArrayList<>(); 
 		this.instrument = instrument;
 	}

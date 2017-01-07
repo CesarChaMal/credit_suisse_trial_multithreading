@@ -46,10 +46,10 @@ public class Bootstrap implements InitializingBean, ApplicationContextAware, App
     Properties systemProperties;
 
     @Value("${Manager_Startup}")
-    private boolean manager_Startup;
+    private boolean manager_startup;
 
     @Value("${Worker_Startup}")
-    private boolean worker_Startup;
+    private boolean worker_startup;
     
     @Value("${RefreshMillis}")
     private long refreshMillis;
@@ -73,10 +73,22 @@ public class Bootstrap implements InitializingBean, ApplicationContextAware, App
     private String log;
     
     @Value("${Instruments_Count}")
-    private int instruments_Count;
+    private int instruments_count;
     
     @Value("${Newst}")
     private int newst;
+    
+    @Value("${Modifier_Min}")
+    private int modifier_min;
+    
+    @Value("${Modifier_Max}")
+    private int modifier_max;
+    
+    @Value("${Modifier_Double}")
+    private boolean modifier_double;
+    
+    @Value("${Modifiers}")
+    private boolean modifiers;
     
     public Bootstrap() { }
     
@@ -85,16 +97,21 @@ public class Bootstrap implements InitializingBean, ApplicationContextAware, App
         if (appProperties == null) {
             logger.error("The properties was not found, cannot bootstrap!!");
         }
-        CommonConstants.MANAGER_ON = manager_Startup;
-        CommonConstants.WORKER_ON = worker_Startup;
+        CommonConstants.MANAGER_ON = manager_startup;
+        CommonConstants.WORKER_ON = worker_startup;
         CommonConstants.REFRESH_MILLIS = refreshMillis;
         CommonConstants.SLEEP_MILLIS = sleepMillis;
         CommonConstants.THREAD_POOL_SIZE = threadPoolSize;
         CommonConstants.MAX_THREADS = maxThreads;
         CommonConstants.WORKER_PROFILE = workerProfile;
         CommonConstants.INPUT_FILE = inputFile;
-        CommonConstants.INSTRUMENTS_COUNT = instruments_Count;
+        CommonConstants.INSTRUMENTS_COUNT = instruments_count;
         CommonConstants.NEWST = newst;
+		CommonConstants.MODIFIER_MIN = modifier_min;
+        CommonConstants.MODIFIER_MAX = modifier_max;
+        CommonConstants.MODIFIER_DOUBLE = modifier_double;
+        CommonConstants.MODIFIERS = modifiers;
+        
     }
 
     public void setApplicationContext(ApplicationContext context)

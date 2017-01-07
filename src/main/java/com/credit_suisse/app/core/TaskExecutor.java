@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.credit_suisse.app.dao.InstrumentPriceModifierDao;
 import com.credit_suisse.app.model.Instrument;
 import com.credit_suisse.app.util.CommonConstants;
+import com.credit_suisse.app.util.InstrumentUtil;
 import com.credit_suisse.app.util.emWorkerProfile;
 
 public class TaskExecutor implements Runnable {
@@ -42,18 +43,20 @@ public class TaskExecutor implements Runnable {
 			try
 			{
 				if(CommonConstants.WORKER_ON){
-					logger.debug(workername + " Worker on");
-					
-//					instrumentPriceModifierDao.setMultiplier("INSTRUMENT1", 10);
-					
+					logger.info(workername + " Worker on");
 					String name = "";
 					double multiplier = 0;
 					for (int i = 1; i <= CommonConstants.INSTRUMENTS_COUNT; i++) {
 						name = "INSTRUMENT" + i;
 //						multiplier = (int) ((Math.random()*100) % 10) + 1;
-						multiplier = ((Math.random()*100) % 10) + 1;
+//						multiplier = ((Math.random()*100) % 10) + 1;
+						if(CommonConstants.MODIFIER_DOUBLE)
+							multiplier = InstrumentUtil.generateRandomNumberDouble(CommonConstants.MODIFIER_MIN, CommonConstants.MODIFIER_MAX);
+						else
+							multiplier = InstrumentUtil.generateRandomNumberInteger(CommonConstants.MODIFIER_MIN, CommonConstants.MODIFIER_MAX);
 						instrumentPriceModifierDao.setMultiplier(name, multiplier);
 					}
+					logger.info(workername + " Worker off");
 					
 					synchronized(this){
 						try {
@@ -68,6 +71,7 @@ public class TaskExecutor implements Runnable {
 			}
 		}
 
-	} 
+	}
+
 }
 

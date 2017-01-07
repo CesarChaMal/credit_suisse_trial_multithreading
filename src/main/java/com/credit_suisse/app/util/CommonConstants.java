@@ -22,4 +22,8 @@ public class CommonConstants {
 	public static String INPUT_FILE = "src/main/resources/input.txt";
 	public static String WORKER_PROFILE = "Instrument-1";
 	public static String LOG = "logs/log";
+	public static int MODIFIER_MIN = 1;
+	public static int MODIFIER_MAX = 10;
+	public static boolean MODIFIER_DOUBLE = true;
+	public static boolean MODIFIERS = true;
 }

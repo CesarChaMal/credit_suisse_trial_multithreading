@@ -2,7 +2,7 @@ package com.credit_suisse.app.model;
 
 import java.util.Date;
 
-import com.credit_suisse.app.core.module.AverageNewstInstrumentsModule;
+import com.credit_suisse.app.core.module.AverageNewsInstrumentsModule;
 
 public class newInstrument extends Instrument {
 
@@ -12,7 +12,7 @@ public class newInstrument extends Instrument {
 
 	public newInstrument(String name, Double price, Date date) {
 		super(name, price, date);
-		this.instrumentCalculateBehavior = new AverageNewstInstrumentsModule(name); 
+		this.instrumentCalculateBehavior = new AverageNewsInstrumentsModule(name); 
 	}
 
 }
