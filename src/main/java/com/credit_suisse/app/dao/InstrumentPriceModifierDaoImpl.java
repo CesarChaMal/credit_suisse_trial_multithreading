@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -23,14 +24,19 @@ public class InstrumentPriceModifierDaoImpl implements InstrumentPriceModifierDa
 
 	private static final Logger logger = LoggerFactory.getLogger(InstrumentPriceModifierDaoImpl.class);
 
-	@Autowired
 	NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+
+	JdbcTemplate jdbcTemplate;
 	
 	@Autowired
 	public void setNamedParameterJdbcTemplate(NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
 		this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
 	}
 	
+	public void setdbcTemplate(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
+
 	@Override
 	public InstrumentPriceModifier findById(Long id) {
 		Map<String, Object> params = new HashMap<String, Object>();

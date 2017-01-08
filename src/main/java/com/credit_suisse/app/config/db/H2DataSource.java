@@ -27,9 +27,9 @@ public class H2DataSource {
 	}
 
 	// Start WebServer, access http://localhost:8082
-//	@Bean(initMethod = "start", destroyMethod = "stop")
-//	public Server startDBManager() throws SQLException {
-//		return Server.createWebServer();
-//	}
+	@Bean(initMethod = "start", destroyMethod = "stop")
+	public Server startDBManager() throws SQLException {
+		return Server.createWebServer();
+	}
 
 }

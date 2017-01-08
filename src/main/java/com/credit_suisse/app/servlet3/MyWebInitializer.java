@@ -84,11 +84,4 @@ public class MyWebInitializer extends AbstractAnnotationConfigDispatcherServletI
         return context;
     }
 
-    @PostConstruct
-	public void startDBManager() {
-		System.out.println(instrumentPriceModifierDao);
-		List<InstrumentPriceModifier> modifiers = instrumentPriceModifierDao.findAll();
-		modifiers.forEach(System.out::println);
-	}
-
 }
