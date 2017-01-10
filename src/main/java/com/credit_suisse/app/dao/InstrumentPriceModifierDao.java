@@ -9,7 +9,6 @@ import com.credit_suisse.app.model.InstrumentPriceModifier;
 
 @Configuration
 @Repository
-//@Repository(value="InstrumentPriceModifierDao")
 public interface InstrumentPriceModifierDao {
 
 	InstrumentPriceModifier findById(Long id);

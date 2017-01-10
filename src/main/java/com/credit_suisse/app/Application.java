@@ -36,36 +36,26 @@ public class Application {
 
 	public static void main(String[] args) {
 
-//		String inputPath = "c:\\temp\\input.txt";
-//		String inputPath = "c:\\temp\\big_input.txt";
-//		String inputPath = "c:\\temp\\huge_input.txt";
-		
 		String inputPath = "src/main/resources/input.txt";
-//		String inputPath = "src/main/resources/big_input.txt";
-//		String inputPath = "src/main/resources/huge_input.txt";
 
 		InstrumentPriceModifierDao instrumentPriceModifierDao = null;
 
-//		Instrument newInstrument = new newInstrument("INSTRUMENT3", 4.0d, new Date());
-//		Instrument newInstrument = new newInstrument("INSTRUMENT3", 6.0d, DefinerInstrument.getDate("03-Jan-2017"));
-//		newInstrument.setInstrumentCalculateBehavior(new OnFlyModule(){
-//			@Override
-//			public synchronized Double calculate() {
-//				double sum = 0;
-//				int counter = 0;
-//				for (Instrument i : getInstruments()) {
-////					System.out.println(i.getName());
-////					System.out.println(i.getPrice());
-//					sum += i.getPrice();
-//					counter++;
-//				}
-//				return sum*2;
-//			}
-//		});
+		Instrument newInstrument = new newInstrument("INSTRUMENT3", 4.0d, new Date());
+		newInstrument.setInstrumentCalculateBehavior(new OnFlyModule(){
+			@Override
+			public synchronized Double calculate() {
+				double sum = 0;
+				int counter = 0;
+				for (Instrument i : getInstruments()) {
+					sum += i.getPrice();
+					counter++;
+				}
+				return sum*2;
+			}
+		});
 		
 		CalculatorEngine calculator = new CalculatorEngine(inputPath);
-//		CalculatorEngine calculator = CalculatorEngine.getInstance(inputPath);
-//		calculator.addModule(newInstrument);
+		calculator.addModule(newInstrument);
 		calculator.calculate(instrumentPriceModifierDao=null);
 
 	}

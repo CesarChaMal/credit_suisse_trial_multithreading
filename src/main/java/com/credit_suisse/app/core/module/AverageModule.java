@@ -1,7 +1,10 @@
 package com.credit_suisse.app.core.module;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.OptionalDouble;
 import java.util.stream.Collectors;
 
@@ -37,7 +40,7 @@ public class AverageModule implements InstrumentCalculateBehavior {
 
 	private synchronized Double getAverage() {
 		logger.debug(CommonConstants.INSTRUMENT1 + " AverageModule Instruments: " + getInstruments().size());
-		OptionalDouble average = getInstruments().stream().mapToDouble(o -> o.getPrice()).average();
+		OptionalDouble average = getInstruments().stream().filter(Objects::nonNull).filter(o -> o.getPrice()!=null).mapToDouble(o -> o.getPrice()).average();
 		return average.getAsDouble();
 	}
 	

@@ -2,6 +2,7 @@ package com.credit_suisse.app.core.module;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.OptionalDouble;
 
 import org.slf4j.Logger;
@@ -33,14 +34,12 @@ public class OnFlyModule implements InstrumentCalculateBehavior {
 	
 	@Override
 	public synchronized Double calculate() {
-//		return result;
-//		return getAverage(multiplier);
 		return getSum();
 	}
 
 	private synchronized Double getAverage() {
 		logger.debug("OnFlyModule Instruments: " + getInstruments().size());
-		OptionalDouble average = getInstruments().stream().mapToDouble(o -> o.getPrice()).average();
+		OptionalDouble average = getInstruments().stream().filter(Objects::nonNull).filter(o -> o.getPrice()!=null).mapToDouble(o -> o.getPrice()).average();
 		return average.getAsDouble();
 	}
 	
@@ -61,7 +60,7 @@ public class OnFlyModule implements InstrumentCalculateBehavior {
 	
 	private synchronized Double getSum() {
 		logger.debug(CommonConstants.INSTRUMENT3 + " OnFlyModule Instruments: " + getInstruments().size());
-		double sum = instruments.stream().filter(o -> o.getPrice() >= 0).mapToDouble(Instrument::getPrice).sum();
+		double sum = instruments.stream().filter(Objects::nonNull).filter(o -> o.getPrice()!=null).filter(o -> o.getPrice() >= 0).mapToDouble(Instrument::getPrice).sum();
 		return sum;
 	}
 	

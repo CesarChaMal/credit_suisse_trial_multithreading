@@ -29,7 +29,7 @@ public class ProcessingFileTest {
 
 	private static final String INSTRUMENT = "INSTRUMENT1";
 
-//	@Test
+	@Test
 	public void averageProcessingTest() {
 
 		INSTRUMENTS.put(INSTRUMENT, new ArrayList<Instrument>());

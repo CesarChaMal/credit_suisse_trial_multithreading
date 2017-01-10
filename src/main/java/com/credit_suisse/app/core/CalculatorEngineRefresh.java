@@ -17,7 +17,6 @@ public class CalculatorEngineRefresh extends TimerTask {
 	private InstrumentPriceModifierDao instrumentPriceModifierDao;
 
 	private CalculatorEngineRefresh(InstrumentPriceModifierDao instrumentPriceModifierDao) {
-//		calculatorEngine = CalculatorEngine.getInstance(CommonConstants.INPUT_FILE);
 		this.instrumentPriceModifierDao = instrumentPriceModifierDao;
 		calculatorEngine = new CalculatorEngine(instrumentPriceModifierDao);
 	}
@@ -43,28 +42,9 @@ public class CalculatorEngineRefresh extends TimerTask {
 
 	public void reloadCalculatorEngine(){
 		ThreadManager cachemanager = new ThreadManager();
-		
-		Thread thread1 = new Thread(){
-			public void run(){
-				System.out.println("Thread Running");
-			}
-		};
-//		thread1.start();
-		
-		Runnable myRunnable = new Runnable(){
-		     public void run(){
-		        System.out.println("Runnable running");
-		     }
-		};
-
-		Thread thread2 = new Thread(myRunnable);
-//		thread2.start();
 		   
-//		Thread t[] = new Thread[3];
 		Thread t[] = new Thread[1];
 		t[0] = new CalculatorEngine(instrumentPriceModifierDao);
-//		t[1] = thread1;
-//		t[2] = thread2;
 		cachemanager.setTask(t);
 		cachemanager.start();
 	}

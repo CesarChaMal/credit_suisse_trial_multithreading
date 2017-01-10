@@ -19,7 +19,6 @@ import com.credit_suisse.app.model.InstrumentPriceModifier;
 
 @Configuration
 @Repository
-//@Repository(value="InstrumentPriceModifierDaoImpl")
 public class InstrumentPriceModifierDaoImpl implements InstrumentPriceModifierDao {
 
 	private static final Logger logger = LoggerFactory.getLogger(InstrumentPriceModifierDaoImpl.class);
@@ -73,7 +72,6 @@ public class InstrumentPriceModifierDaoImpl implements InstrumentPriceModifierDa
 		
 		String sql = "SELECT * FROM INSTRUMENT_PRICE_MODIFIER WHERE name=:name";
 		
-//		InstrumentPriceModifier result = namedParameterJdbcTemplate.queryForObject(sql, params, new InstrumentPriceModifierMapper());
 		List<InstrumentPriceModifier> result = namedParameterJdbcTemplate.query(sql, params, new InstrumentPriceModifierMapper());
 		
 		return result.size() == 0 ? null : result;

@@ -27,7 +27,6 @@ import com.credit_suisse.app.util.CommonConstants;
 
 @Configuration
 @ComponentScan({ "com.credit_suisse.app" })
-//@ImportResource(value = {"file:src/main/**/db-derby-config.xml","file:src/main/**/db-h2-config.xml","file:src/main/**/db-hsqldb-config.xml","file:src/main/**/spring-bean-config.xml"})
 @Import( {DerbyDataSource.class, H2DataSource.class, HsqlDataSource.class, SpringWebConfig.class} )
 public class SpringRootConfig {
 
@@ -52,14 +51,12 @@ public class SpringRootConfig {
 
 	@Value("${ThreadPoolSize}")
     private int threadPoolSize;
-//    private int threadPoolSize = CommonConstants.THREAD_POOL_SIZE;
     
     @Bean
     public Bootstrap bootstrap() {
         return new Bootstrap();
     }
     
-//    @Bean
     public TaskManager taskManager(InstrumentPriceModifierDao instrumentPriceModifierDao) {
     	
         return new TaskManager(instrumentPriceModifierDao);
@@ -80,24 +77,7 @@ public class SpringRootConfig {
 //		DatabaseManagerSwing.main(new String[] { "--url", "jdbc:derby:memory:testdb", "--user", "", "--password", "" });
 
 		//h2
-		DatabaseManagerSwing.main(new String[] { "--url", "jdbc:h2:mem:testdb", "--user", "sa", "--password", "" });
+//		DatabaseManagerSwing.main(new String[] { "--url", "jdbc:h2:mem:testdb", "--user", "sa", "--password", "" });
 	}
-	
-//	//MethodInvokingBean example
-//	@PostConstruct
-//	public void startDBM() {
-//		MethodInvokingBean mBean = new MethodInvokingBean();
-//
-//		mBean.setTargetClass(DatabaseManagerSwing.class);
-//		mBean.setTargetMethod("main");
-//		String[] args = new String[] { "--url", "jdbc:hsqldb:mem:testdb", "--user", "sa", "--password", "" };
-//		mBean.setArguments(args);
-//		try {
-//			mBean.prepare();
-//			mBean.invoke();
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//	}
 
 }

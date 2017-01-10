@@ -3,6 +3,7 @@ package com.credit_suisse.app.core.module;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.OptionalDouble;
 
 import org.slf4j.Logger;
@@ -39,7 +40,7 @@ public class AverageMonthModule implements InstrumentCalculateBehavior {
 
 	private synchronized Double getAverage() {
 		logger.debug(CommonConstants.INSTRUMENT2 + " AverageMonthModule Instruments: " + getInstruments().size());
-		OptionalDouble average = getInstruments().stream().filter(o -> isNovember(o.getDate()) ).mapToDouble(o -> o.getPrice()).average();
+		OptionalDouble average = getInstruments().stream().filter(Objects::nonNull).filter(o -> o.getPrice()!=null).filter(o -> isNovember(o.getDate()) ).mapToDouble(o -> o.getPrice()).average();
 		return average.getAsDouble();
 	}
 	

@@ -44,29 +44,17 @@ public class MyWebInitializer extends AbstractAnnotationConfigDispatcherServletI
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
 		return new Class[] { SpringRootConfig.class };
-//		return new Class[] { SpringRootConfig.class, H2DataSource.class, DerbyDataSource.class, HsqlDataSource.class };
-//		return new Class[] { SpringRootConfig.class, SpringWebConfig.class, Bootstrap.class, PropertyConfig.class, H2DataSource.class, DerbyDataSource.class, HsqlDataSource.class };
 	}
 
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
 		return new Class[] { SpringWebConfig.class };
-//		return new Class[] { SpringWebConfig.class, H2DataSource.class, DerbyDataSource.class, HsqlDataSource.class };
-//		return new Class[] { SpringRootConfig.class, SpringWebConfig.class, Bootstrap.class, PropertyConfig.class, H2DataSource.class, DerbyDataSource.class, HsqlDataSource.class };
 	}
-//
+
 	@Override
 	protected String[] getServletMappings() {
 		return new String[] { "/" };
 	}
-
-//	@Override
-//	public void onStartup(ServletContext servletContext) throws ServletException {
-//		super.onStartup(servletContext);
-//		servletContext.setInitParameter("spring.profiles.active", "hsql");
-//		servletContext.setInitParameter("spring.profiles.active", "derby");
-//		servletContext.setInitParameter("spring.profiles.active", "h2");
-//	}
 
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {

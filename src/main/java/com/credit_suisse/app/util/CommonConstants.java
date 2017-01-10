@@ -8,11 +8,8 @@ public class CommonConstants {
     public static final String INSTRUMENT2 = "INSTRUMENT2";
     public static final String INSTRUMENT3 = "INSTRUMENT3";
     public static final String NEW_INSTRUMENT = "NEW_INSTRUMENT";
-//    public static final Integer INSTRUMENTS_COUNT = 10000;
     public static Integer INSTRUMENTS_COUNT = 10;
-//    public static final Integer INSTRUMENTS_COUNT = 7;
     public static Integer NEWST = 10;
-//    public static final Integer NEWST = 3;
 	public static boolean MANAGER_ON = false;
 	public static boolean WORKER_ON = false;
 	public static long REFRESH_MILLIS = 5000;

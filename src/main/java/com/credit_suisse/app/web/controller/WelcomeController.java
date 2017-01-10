@@ -36,16 +36,7 @@ public class WelcomeController {
 
 		logger.debug(Arrays.toString(modifiers.toArray()));
 
-//		String inputPath = "c:\\temp\\input.txt";
-//		String inputPath = "c:\\temp\\big_input.txt";
-//		String inputPath = "c:\\temp\\huge_input.txt";
-		
 		String inputPath = "src/main/resources/input.txt";
-//		String inputPath = "src/main/resources/big_input.txt";
-//		String inputPath = "src/main/resources/huge_input.txt";
-
-//		ctx = new AnnotationConfigApplicationContext(SpringRootConfig.class);
-//		ctx = new ClassPathXmlApplicationContext("file:src/main/**/spring-bean-config.xml");
 
 		Instrument newInstrument1 = new newInstrument("INSTRUMENT3", 4.0d, new Date());
 		newInstrument1.setInstrumentCalculateBehavior(new OnFlyModule(){
@@ -62,13 +53,8 @@ public class WelcomeController {
 			}
 		});
 		
-//		Instrument newInstrument2 = new newInstrument("INSTRUMENT9", 4.0d, new Date());
-//		newInstrument2.setInstrumentCalculateBehavior(new AverageNewsInstrumentsModule(newInstrument2.getName()));
-		
 		CalculatorEngine calculator = new CalculatorEngine(inputPath);
-//		CalculatorEngine calculator = CalculatorEngine.getInstance(inputPath);
 		calculator.addModule(newInstrument1);
-//		calculator.addModule(newInstrument2);
 
 		model.addAttribute("modifiers", modifiers);
 		model.addAttribute("instruments", calculator.calculate(instrumentPriceModifierDao));

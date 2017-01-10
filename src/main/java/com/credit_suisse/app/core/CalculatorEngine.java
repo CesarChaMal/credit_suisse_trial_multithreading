@@ -29,24 +29,13 @@ import com.credit_suisse.app.util.CommonConstants;
 import com.credit_suisse.app.util.InstrumentUtil;
 import com.credit_suisse.app.util.PartitioningSpliterator;
 
-//@Configuration
-//@ComponentScan({ "com.credit_suisse.app" })
-//@ComponentScan({ "com.credit_suisse.app.config", "com.credit_suisse.app.config.db", "com.credit_suisse.app.dao" })
-//@ImportResource(value = {"file:src/main/**/db-derby-config.xml","file:src/main/**/db-h2-config.xml","file:src/main/**/db-hsqldb-config.xml","file:src/main/**/spring-bean-config.xml"})
-//@Import( {DerbyDataSource.class, H2DataSource.class, HsqlDataSource.class, SpringRootConfig.class, SpringWebConfig.class} )
-//@Import( {DerbyDataSource.class, H2DataSource.class, HsqlDataSource.class, InstrumentPriceModifierDao.class, InstrumentPriceModifierDaoImpl.class} )
-//@ContextConfiguration(locations = {"file:src/main/**/db-derby-config.xml","file:src/main/**/db-h2-config.xml","file:src/main/**/db-hsqldb-config.xml","file:src/main/**/spring-bean-config.xml"})
 public class CalculatorEngine extends Thread {
 
 	private static final Logger logger = LoggerFactory.getLogger(CalculatorEngine.class);
 
 	private static final Map<String, List<Instrument>> INSTRUMENTS = new TreeMap<>();
-	// private static volatile Map<String, List<Instrument>> INSTRUMENTS = new
-	// ConcurrentHashMap<>();
 
 	private static final Map<String, Instrument> MODULES = new TreeMap<>();
-	// private static volatile Map<String, Instrument> MODULES = new
-	// ConcurrentHashMap<>();
 
 	private String inputPath = null;
 
@@ -90,7 +79,7 @@ public class CalculatorEngine extends Thread {
 	public CalculatorEngine(String inputPath) {
 		this.inputPath = inputPath;
 		logger.debug(String.format("Input file path: %s", inputPath));
-		// init();
+		init();
 	}
 
 	public CalculatorEngine() {
@@ -110,31 +99,6 @@ public class CalculatorEngine extends Thread {
 
 			Instrument instrument = InstrumentFactory.createInstrument(name);
 			MODULES.put(name, instrument);
-
-			// if (name.equals(CommonConstants.INSTRUMENT1)){
-			// Instrument instrument1 = new
-			// Instrument1(CommonConstants.INSTRUMENT1);
-			// instrument1.setInstrumentCalculateBehavior(new AverageModule());
-			// MODULES.put(CommonConstants.INSTRUMENT1, instrument1);
-			// } else if (name.equals(CommonConstants.INSTRUMENT2)){
-			// Instrument instrument2 = new
-			// Instrument2(CommonConstants.INSTRUMENT2);
-			// instrument2.setInstrumentCalculateBehavior(new
-			// AverageMonthModule());
-			// MODULES.put(CommonConstants.INSTRUMENT2, instrument2);
-			// } else if (name.equals(CommonConstants.INSTRUMENT3)){
-			// Instrument instrument3 = new
-			// Instrument3(CommonConstants.INSTRUMENT3);
-			// instrument3.setInstrumentCalculateBehavior(new OnFlyModule());
-			// MODULES.put(CommonConstants.INSTRUMENT3, instrument3);
-			// } else{
-			// Instrument newInstrument = new
-			// newInstrument(CommonConstants.NEW_INSTRUMENT);
-			// newInstrument.setInstrumentCalculateBehavior(new
-			// AverageNewstInstrumentsModule(name));
-			// MODULES.put(name, newInstrument);
-			// }
-
 		}
 
 	}
@@ -151,31 +115,6 @@ public class CalculatorEngine extends Thread {
 		String name = instrument.getName();
 		if (MODULES.containsKey(name) && INSTRUMENTS.containsKey(name)) {
 			CalculatorEngineFactory.create(name, MODULES.get(name), instrument, true);
-
-			// if (CommonConstants.INSTRUMENT1.equalsIgnoreCase(name)) {
-			// AverageModule module = (AverageModule)
-			// MODULES.get(name).getInstrumentCalculateBehavior();
-			// module.getInstruments().add(instrument);
-			// } else if (CommonConstants.INSTRUMENT2.equalsIgnoreCase(name)) {
-			// AverageMonthModule module = (AverageMonthModule)
-			// MODULES.get(name).getInstrumentCalculateBehavior();
-			// module.getInstruments().add(instrument);
-			// } else if (CommonConstants.INSTRUMENT3.equalsIgnoreCase(name)) {
-			// Instrument instrumentOri = MODULES.get(name);
-			// OnFlyModule module = (OnFlyModule)
-			// instrumentOri.getInstrumentCalculateBehavior();
-			// module.getInstruments().add(instrument);
-			// OnFlyModule moduleDest = (OnFlyModule)
-			// instrument.getInstrumentCalculateBehavior();
-			// moduleDest.addInstruments(module.getInstruments());
-			// instrumentOri.setInstrumentCalculateBehavior(moduleDest);
-			//// System.out.println(Arrays.deepToString(module.getInstruments().toArray()));
-			// } else {
-			// AverageNewsInstrumentsModule module =
-			// (AverageNewsInstrumentsModule)
-			// MODULES.get(name).getInstrumentCalculateBehavior();
-			// module.getInstruments().add(instrument);
-			// }
 		}
 	}
 
@@ -199,8 +138,6 @@ public class CalculatorEngine extends Thread {
 
 			if (CommonConstants.MODIFIERS) {
 				compute = instrumentValue * multiplierValue;
-				// compute = Double.parseDouble(formatter.format(instrumentValue
-				// * multiplierValue));
 			} else {
 				compute = instrumentValue;
 			}
@@ -208,7 +145,6 @@ public class CalculatorEngine extends Thread {
 			logger.info(instrumentModule.getKey() + ":" + instrumentValue);
 			logger.info("Multiplier:" + multiplierValue);
 			logger.info("Result: " + compute + "\n");
-			// result.put(instrumentModule.getKey(), );
 			result.put(instrumentModule.getKey(), compute);
 		}
 		return result;
@@ -234,20 +170,9 @@ public class CalculatorEngine extends Thread {
 	    		.filter(instrument-> InstrumentUtil.isWorkDay(InstrumentUtil.getDate(instrument.split(",")[1])) )
 	    		.forEach(instrument -> add(InstrumentUtil.defineOf(instrument)))
     		);
-//    		stream.forEach(System.out::println);
     	} catch (IOException e) {
     		e.printStackTrace();
     	}
-    	
-//    	try (Stream<String> stream = Files.lines(Paths.get(inputPath))) {
-//    		stream
-//    		.filter(instrument-> InstrumentUtil.isWorkDay(InstrumentUtil.getDate(instrument.split(",")[1])) )
-//    		.forEach(instrument -> add(InstrumentUtil.defineOf(instrument)));
-//    		
-////    		stream.forEach(System.out::println);
-//    	} catch (IOException e) {
-//    		e.printStackTrace();
-//    	}    	
 	}
 
 	public static void add(Instrument instrument) {
@@ -256,42 +181,7 @@ public class CalculatorEngine extends Thread {
 		if (MODULES.containsKey(name) && INSTRUMENTS.containsKey(name)) {
 			INSTRUMENTS.get(name).add(instrument);
 			CalculatorEngineFactory.create(name, MODULES.get(name), instrument, false);
-
-			// manager.setStrategy(new CalculatorEngineAverageModule());
-			// manager.add(name, MODULES.get(name), instrument);
-			//
-			// manager.setStrategy(new CalculatorEngineAverageMonthModule());
-			// manager.add(name, MODULES.get(name), instrument);
-			//
-			// manager.setStrategy(new CalculatorEngineOnFlyModule());
-			// manager.add(name, MODULES.get(name), instrument);
-			//
-			// manager.setStrategy(new
-			// CalculatorEngineAverageNewsInstrumentsModule());
-			// manager.add(name, MODULES.get(name), instrument);
 		}
-
-		// if (MODULES.containsKey(name) && INSTRUMENTS.containsKey(name)) {
-		// INSTRUMENTS.get(name).add(instrument);
-		// if (CommonConstants.INSTRUMENT1.equalsIgnoreCase(name)) {
-		// AverageModule module = (AverageModule)
-		// MODULES.get(name).getInstrumentCalculateBehavior();
-		// module.getInstruments().add(instrument);
-		// } else if (CommonConstants.INSTRUMENT2.equalsIgnoreCase(name)) {
-		// AverageMonthModule module = (AverageMonthModule)
-		// MODULES.get(name).getInstrumentCalculateBehavior();
-		// module.getInstruments().add(instrument);
-		// } else if (CommonConstants.INSTRUMENT3.equalsIgnoreCase(name)) {
-		// OnFlyModule module = (OnFlyModule)
-		// MODULES.get(name).getInstrumentCalculateBehavior();
-		// module.getInstruments().add(instrument);
-		// } else {
-		// AverageNewstInstrumentsModule module =
-		// (AverageNewstInstrumentsModule)
-		// MODULES.get(name).getInstrumentCalculateBehavior();
-		// module.getInstruments().add(instrument);
-		// }
-		// }
 	}
 
 	@Override
@@ -302,25 +192,27 @@ public class CalculatorEngine extends Thread {
 		List<InstrumentPriceModifier> modifiers = instrumentPriceModifierDao.findAll();
 		modifiers.forEach(System.out::println);
 
-		// Instrument newInstrument = new newInstrument("INSTRUMENT3", 4.0d, new
-		// Date());
-		// newInstrument.setInstrumentCalculateBehavior(new OnFlyModule(){
-		// @Override
-		// public synchronized Double calculate() {
-		// double sum = 0;
-		// int counter = 0;
-		// for (Instrument i : getInstruments()) {
-		// System.out.println(i.getName());
-		// System.out.println(i.getPrice());
-		// sum += i.getPrice();
-		// counter++;
-		// }
-		// return sum*2;
-		// }
-		// });
-		//
-		// this.addModule(newInstrument);
+//		Instrument newInstrument = new newInstrument("INSTRUMENT3", 4.0d, new Date());
+//		newInstrument.setInstrumentCalculateBehavior(new OnFlyModule() {
+//			@Override
+//			public synchronized Double calculate() {
+//				double sum = 0;
+//				int counter = 0;
+//				for (Instrument i : getInstruments()) {
+//					System.out.println(i.getName());
+//					System.out.println(i.getPrice());
+//					sum += i.getPrice();
+//					counter++;
+//				}
+//				return sum * 2;
+//			}
+//		});
+//
+//		this.addModule(newInstrument);
 		this.calculate(instrumentPriceModifierDao);
+		Map<String, Double> prices = new TreeMap<>();
+		prices = this.calculate(instrumentPriceModifierDao);
+		prices.entrySet().stream().forEach(System.out::println);
 	}
 
 }
