@@ -3,6 +3,7 @@ Credit Suisse Trial to get a job in Poland
 ###1. Technologies used
 * Maven 3.0
 * Spring 4.1.6.RELEASE
+* Spring MVC 4.1.6.RELEASE
 * H2 1.4.187
 
 ###2. To Run this project locally
@@ -43,7 +44,34 @@ Modifier_Max=10
 Modifier_Double=true
 
 
+It can be use this class to generate test cases  
 
+com.credit_suisse.app.execs.InstrumentFileGenerator
+
+
+Design Patterns used
+
+Static Factory
+Singleton
+Strategy
+Builder
+Dependency Injection
+Dao
+Dto
+Iterator
+Decorator
+Command
+
+OOO Principles applied
+
+Single-responsiblity principle (All the classes should follow this principle as an example TaskManager class)
+Open-closed principle (Static Factory added for CalculatorEngine to not violate this principle)
+Liskov substitution principle (Decorator, Strategy, Composite for example used for the Instrument class)
+Interface segregation principle (Any of the calculations modules classes)
+Dependency Inversion Principle (Dependency Injection and Strategy for example used in CalculatorEngineManager class)
+
+
+Trial Description
 
 In the financial world we're operating on a term "financial instrument". You can think of it as of a collection of prices of currencies, commodities, derivatives, etc.
 
