@@ -165,5 +165,14 @@
 			</plugin>
 
 		</plugins>
+		<sourceDirectory>src</sourceDirectory>
+		<resources>
+			<resource>
+				<directory>src/conf/properties</directory>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+		</resources>
 	</build>
 </project>
