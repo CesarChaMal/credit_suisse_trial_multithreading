@@ -13,43 +13,42 @@ $ mvn jetty:run
 
 ###3. app.properties provided for configuration
 
-# To activate o deactive calculation engine 
+####To activate o deactive calculation engine 
 Manager_Startup=true
-# To activate o deactive the price modifier worker  
+####To activate o deactive the price modifier worker  
 Worker_Startup=true
-# Time in miliseconds for the calculation engine to compute the instruments prices 
+####Time in miliseconds for the calculation engine to compute the instruments prices 
 RefreshMillis=3600000
-# Time in miliseconds for the price modifier worker to update prices 
+####Time in miliseconds for the price modifier worker to update prices 
 SleepMillis=5000
-# Number of threads for the calculation engine 
+####Number of threads for the calculation engine 
 MaxThreads=1
-# Number of threads for the workers 
+####Number of threads for the workers 
 ThreadPoolSize=10
-# Name for the worker 
+####Name for the worker 
 WorkerProfile=Instrument-2
-# Name for the input file of the instruments 
+####Name for the input file of the instruments 
 InputFile=src/main/resources/input.txt
-# Max number of instruments allowed  
+####Max number of instruments allowed  
 Instruments_Count=10
-# Max number of lastest instruments to sum this only for the instruments type 3  
+####Max number of lastest instruments to sum this only for the instruments type 3  
 Newst=10
-# To Activate or deactivate modifiers  
+####To Activate or deactivate modifiers  
 Modifiers=true
-# Initial range of the modifiers generated for the price modifier worker  
+####Initial range of the modifiers generated for the price modifier worker  
 Modifier_Min=1
-# Final range of the modifiers generated for the price modifier worker  
+####Final range of the modifiers generated for the price modifier worker  
 Modifier_Max=10
-# To enable the price modifier worker generate random doubles otherwise worker generate 
-# random integers
+####To enable the price modifier worker generate random doubles otherwise worker generate random integers
 Modifier_Double=true
 
 
-It can be use this class to generate test cases  
+####It can be use this class to generate test cases  
 
 com.credit_suisse.app.execs.InstrumentFileGenerator
 
 
-Design Patterns used
+####Design Patterns used
 
 Static Factory
 Singleton
@@ -62,7 +61,7 @@ Iterator
 Decorator
 Command
 
-OOO Principles applied
+####OOO Principles applied
 
 Single-responsiblity principle (All the classes should follow this principle as an example TaskManager class)
 Open-closed principle (Static Factory added for CalculatorEngine to not violate this principle)
@@ -71,7 +70,7 @@ Interface segregation principle (Any of the calculations modules classes)
 Dependency Inversion Principle (Dependency Injection and Strategy for example used in CalculatorEngineManager class)
 
 
-Trial Description
+#Trial Description
 
 In the financial world we're operating on a term "financial instrument". You can think of it as of a collection of prices of currencies, commodities, derivatives, etc.
 
