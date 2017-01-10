@@ -66,7 +66,7 @@ public class Application {
 		CalculatorEngine calculator = new CalculatorEngine(inputPath);
 //		CalculatorEngine calculator = CalculatorEngine.getInstance(inputPath);
 //		calculator.addModule(newInstrument);
-		calculator.calculate(instrumentPriceModifierDao);
+		calculator.calculate(instrumentPriceModifierDao=null);
 
 	}
 }

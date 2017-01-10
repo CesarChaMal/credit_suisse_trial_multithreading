@@ -4,22 +4,26 @@ import com.credit_suisse.app.model.Instrument;
 
 public class CalculatorEngineFactory {
 
-	public static void create(String name, Instrument module, Instrument instrument) {
+	public static void create(String name, Instrument module, Instrument instrument, boolean addModule) {
 		CalculatorEngineManager manager = new CalculatorEngineManager();
 		manager.setStrategy(new CalculatorEngineAverageModule());
-		manager.add(name, module, instrument);
-		manager.addEngineModule(name, module, instrument);
+		executeStrategy(name, module, instrument, addModule, manager);
 
 		manager.setStrategy(new CalculatorEngineAverageMonthModule());
-		manager.add(name, module, instrument);
-		manager.addEngineModule(name, module, instrument);
+		executeStrategy(name, module, instrument, addModule, manager);
 
 		manager.setStrategy(new CalculatorEngineOnFlyModule());
-		manager.add(name, module, instrument);
-		manager.addEngineModule(name, module, instrument);
+		executeStrategy(name, module, instrument, addModule, manager);
 
 		manager.setStrategy(new CalculatorEngineAverageNewsInstrumentsModule());
-		manager.add(name, module, instrument);
-		manager.addEngineModule(name, module, instrument);
+		executeStrategy(name, module, instrument, addModule, manager);
+	}
+
+	public static void executeStrategy(String name, Instrument module, Instrument instrument, boolean addModule,
+			CalculatorEngineManager manager) {
+		if (addModule)
+			manager.addEngineModule(name, module, instrument);
+		else
+			manager.add(name, module, instrument);
 	}
 }

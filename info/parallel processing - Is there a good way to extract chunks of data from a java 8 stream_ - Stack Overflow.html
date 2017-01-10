@@ -1,0 +1,2219 @@
+<!DOCTYPE html>
+<!-- saved from url=(0110)http://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream -->
+<html itemscope="" itemtype="http://schema.org/QAPage"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>parallel processing - Is there a good way to extract chunks of data from a java 8 stream? - Stack Overflow</title>
+    <link rel="shortcut icon" href="https://cdn.sstatic.net/Sites/stackoverflow/img/favicon.ico?v=4f32ecc8f43d">
+    <link rel="apple-touch-icon image_src" href="https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a)">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="http://stackoverflow.com/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="stackoverflow.com">
+    <meta property="og:type" content="website">
+
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded">
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="Is there a good way to extract chunks of data from a java 8 stream?">
+    <meta name="twitter:description" property="og:description" itemprop="description" content="I an ETL process I&#39;m retrieving a lot of entities from a Spring Data Repository. I&#39;m then  using a parallel stream to map the entities to different ones. 
+I can either use a consumer to store those...">
+    <meta property="og:url" content="http://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream">
+    <link rel="canonical" href="http://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream">
+
+    
+    
+    <script type="text/javascript" async="" src="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/ados"></script><script async="" src="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/quant.js.download"></script><script async="" src="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/beacon.js.download"></script><script async="" src="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/analytics.js.download"></script><script type="text/javascript" async="" src="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/ados.js.download"></script><script src="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/jquery.min.js.download"></script>
+    <script src="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/stub.en.js.download"></script>
+    <link rel="stylesheet" type="text/css" href="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/all.css">
+
+            <link rel="alternate" type="application/atom+xml" title="Feed for question &#39;Is there a good way to extract chunks of data from a java 8 stream?&#39;" href="http://stackoverflow.com/feeds/question/25408350">
+            <meta name="twitter:app:country" content="US">
+            <meta name="twitter:app:name:iphone" content="Stack Exchange iOS">
+            <meta name="twitter:app:id:iphone" content="871299723">
+            <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream">
+            <meta name="twitter:app:name:ipad" content="Stack Exchange iOS">
+            <meta name="twitter:app:id:ipad" content="871299723">
+            <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream">
+            <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+            <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream">
+            <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+        <script>
+        
+            StackExchange.ready(function () {
+                                    
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.initSnippetRenderer();
+                    });
+                    
+
+                StackExchange.using("postValidation", function () {
+                    StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+                });
+
+                
+                StackExchange.question.init({votesCast:[],autoShowCommentHelp:true,showAnswerHelp:true,totalCommentCount:0,shownCommentCount:0,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:25408350});
+
+                styleCode();
+
+                    StackExchange.realtime.subscribeToQuestion('1', '25408350');
+                                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text', true); });
+
+            });
+        </script>
+
+
+    <script>
+        StackExchange.ready(function () {
+                        StackExchange.realtime.init('wss://qa.sockets.stackexchange.com,ws://qa.sockets.stackexchange.com');
+            StackExchange.realtime.subscribeToReputationNotifications('1');
+                StackExchange.realtime.subscribeToTopBarNotifications('1');
+        });
+    </script>
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","networkMetaHostname":"meta.stackexchange.com","serverTime":1483953909,"routeName":"Questions/Show","site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"id":1,"enableInsertDocLinkDialog":true,"enableSocialMediaInSharePopup":true},"user":{"fkey":"80e3e7f927c3a47b372b1a58dcfc48e1","rep":51,"isRegistered":true,"userType":3,"userId":5052018,"accountId":6530852,"gravatar":"<div class=\"gravatar-wrapper-32\"><img src=\"https://graph.facebook.com/10153030999866313/picture?type=large\" alt=\"\" width=\"32\" height=\"32\"></div>","profileUrl":"http://stackoverflow.com/users/5052018/cesar-chavez","canSeeDeletedPosts":false,"ab":{"question_show_tweaks":{"v":"altern_unansw_cta","g":2},"question_page_hero":{"v":"delay_hero_3","g":1},"mobile_signup_link":{"v":"simplified_signup_form:rdn","g":2}}},"realtime":{"newest":false,"active":false,"tagged":true,"staleDisconnectIntervalInHours":0,"workerIframeDomain":"https://cdn.sstatic.net"},"events":{"postType":{"question":1},"postEditionSection":{"title":1,"body":2,"tags":3}},"story":{"minCompleteBodyLength":75}}, {"site":{"allowImageUploads":true,"enableUserHovercards":true,"styleCode":true,"enableNewLinkInsertDialog":true,"enableNewHeaderDesign":true,"enableImgurHttps":true},"comments":{},"tags":{},"accounts":{"currentPasswordRequiredForChangingStackIdPassword":true},"flags":{"allowRetractingFlags":true},"analytics":{"clientTimingsAbsoluteTimeout":30000,"clientTimingsDebounceTimeout":1000},"snippets":{"snippetsEnabled":true,"renderDomain":"stacksnippets.net"},"markdown":{"asteriskIntraWordEmphasis":true}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"a6c44b1fbbe5","js/moderator.en.js":"cbd9a328c047","js/full-anon.en.js":"fff5b3628ccc","js/full.en.js":"53cad7e6923d","js/wmd.en.js":"6802ff529d8f","js/third-party/jquery.autocomplete.min.js":"d3b8fa7fdf74","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"8c3bd5e12250","js/help.en.js":"af6d61ae5ea0","js/tageditor.en.js":"51d04565688f","js/tageditornew.en.js":"8ed9d778d3fd","js/inline-tag-editing.en.js":"2ddfa79492e7","js/revisions.en.js":"834877a0c912","js/review.en.js":"513a3fcfed2e","js/tagsuggestions.en.js":"bb4721d888d2","js/post-validation.en.js":"d606c5dadfeb","js/explore-qlist.en.js":"e71f14781288","js/events.en.js":"6f925c50a0c3","js/keyboard-shortcuts.en.js":"51892ca34d92","js/external-editor.en.js":"235e80f649d7","js/external-editor.en.js":"235e80f649d7","js/snippet-javascript.en.js":"c681521379d1","js/snippet-javascript-codemirror.en.js":"a3c34a58ab98"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+<script async="" src="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/full.en.js.download"></script><script async="" src="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/snippet-javascript.en.js.download"></script><script async="" src="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/post-validation.en.js.download"></script><script async="" src="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/prettify-full.en.js.download"></script><script async="" src="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/external-editor.en.js.download"></script><script async="" src="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/wmd.en.js.download"></script><script type="text/javascript" src="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/adFeedback.js.download"></script><link rel="stylesheet" href="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/adFeedback.css"><style type="text/css"> .wmd-snippet-button span { background-position: 0 0; } .wmd-snippet-button:hover span { background-position: 0 -40px; }</style></head>
+<body class="question-page new-topbar">
+    <noscript>&lt;div id="noscript-padding"&gt;&lt;/div&gt;</noscript>
+            <script>(function () { var old = $.fn.contents; $.fn.contents = function () { try { return old.apply(this, arguments); } catch (e) { return $([]); } } })()</script>
+        
+
+
+
+
+    <div id="notify-container"></div>
+    <div id="custom-header"></div>
+
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+
+    <div class="topbar-dialog siteSwitcher-dialog dno">
+        <div class="header">
+            <h3><a href="http://stackoverflow.com/">current community</a>
+            </h3>
+        </div>
+        <div class="modal-content current-site-container">
+            <ul class="current-site">
+                    <li>
+                            <div class="related-links">
+                    <a href="http://chat.stackoverflow.com/" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:6 })">chat</a>
+                    <a href="http://stackoverflow.com/users/logout" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:8 })">log out</a>
+    </div>
+
+
+
+
+    <a href="http://stackoverflow.com/" class="current-site-link site-link js-gps-track" data-id="1" data-gps-track="
+        site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+    </a>
+
+                    </li>
+                    <li class="related-site">
+                            <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                        
+
+
+
+    <a href="http://meta.stackoverflow.com/" class="site-link js-gps-track" data-id="552" data-gps-track="
+            site.switch({ target_site:552, item_type:3 }),
+        site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+        Meta Stack Overflow
+    </a>
+
+                    </li>
+            </ul>
+        </div>
+
+        <div class="header" id="your-communities-header">
+            <h3>
+                    <a href="http://stackexchange.com/users/6530852/?tab=accounts">your communities</a>
+            </h3>
+
+                <a href="http://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream#" id="edit-pinned-sites">edit</a>
+                <a href="http://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream#" id="cancel-pinned-sites" style="display: none;">cancel</a>
+        </div>
+        <div class="modal-content" id="your-communities-section">
+
+                <ul class="my-sites">
+                        <li>
+                            
+
+
+
+    <a href="http://stackoverflow.com/" class="site-link js-gps-track" data-id="1" data-gps-track="
+            site.switch({ target_site:1, item_type:3 }),
+        site_switcher.click({ item_type:1 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+            <span class="rep-score">51</span>
+    </a>
+
+                        </li>
+                        <li>
+                            
+
+
+
+    <a href="http://es.stackoverflow.com/" class="site-link js-gps-track" data-id="637" data-gps-track="
+            site.switch({ target_site:637, item_type:3 }),
+        site_switcher.click({ item_type:1 })">
+        <div class="site-icon favicon favicon-es" title="Stack Overflow en español"></div>
+        Stack Overflow en español
+            <span class="rep-score">1</span>
+    </a>
+
+                        </li>
+                </ul>
+                    <div class="pinned-site-editor-container" style="display: none;">
+                        <input id="js-site-search-txt" type="text" class="site-filter-input" value="" placeholder="Add a Stack Exchange community">
+                        <input type="submit" id="pin-site-btn" value="Add" disabled="disabled">
+                        <ul class="js-found-sites found-sites"></ul>
+                        <ul class="pinned-site-list sortable" data-custom-list="False">
+                        </ul>
+                        <input type="submit" value="Save" id="save-pinned-sites-btn" disabled="disabled">
+                        <a href="http://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream#" id="reset-pinned-sites">reset to default list</a>
+                    </div>
+        </div>
+
+        <div class="header">
+            <h3><a href="http://stackexchange.com/sites">more stack exchange communities</a>
+            </h3>
+            <a href="http://stackoverflow.blog/" class="fr">company blog</a>
+        </div>
+        <div class="modal-content">
+                <div class="child-content"></div>
+        </div>        
+    </div>
+        </div>
+
+        <div class="network-items">
+                <a href="http://stackexchange.com/" class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track" data-gps-track="site_switcher.show" title="A list of all 163 Stack Exchange sites">
+                    <span class="hidden-text">Stack Exchange</span>
+                </a>
+
+    <a href="http://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream#" class="topbar-icon icon-inbox yes-hover js-inbox-button" title="Recent inbox messages">
+        <span class="hidden-text">Inbox</span>
+        <span class="unread-count" style="display:none"></span>
+    </a>
+    <a href="http://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream#" class="topbar-icon icon-achievements yes-hover js-achievements-button" data-unread-class="" title="Recent achievements: reputation, badges, and privileges earned">
+        <span class="hidden-text">Reputation and Badges</span>
+        <span class="unread-count" style="display:none">
+            
+        </span>
+    </a>
+        </div>
+
+        <div class="topbar-links">
+
+                <a href="http://stackoverflow.com/users/5052018/cesar-chavez" class="profile-me js-gps-track" data-gps-track="profile_summary.click()">
+                    
+                    <div class="gravatar-wrapper-24" title="Cesar Chavez"><img src="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/picture" alt="" width="24" height="24" class="avatar-me js-avatar-me"></div>
+
+                    <div class="links-container topbar-flair">
+
+                        <span class="reputation" title="your reputation: 51">
+                            51
+                        </span>
+<span title="1 silver badge"><span class="badge2"></span><span class="badgecount">1</span></span><span title="4 bronze badges"><span class="badge3"></span><span class="badgecount">4</span></span>                    </div>
+                </a>
+                <div class="links-container">
+                    <span class="topbar-menu-links">
+
+
+
+
+        <a href="http://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream#" class="icon-help js-help-button" title="Help Center and other resources">
+            help
+            <span class="triangle"></span>
+        </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="http://stackoverflow.com/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="http://stackoverflow.com/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                        <li>
+                            <a href="http://meta.stackoverflow.com/" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                                Meta
+                                <span class="item-summary">
+                                    Discuss the workings and policies of this site
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://stackoverflow.com/company/about" class="js-gps-track" data-gps-track="help_popup.click({ item_type:6 })">
+                                About Us
+                                <span class="item-summary">
+                                    Learn more about Stack Overflow the company
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.stackoverflowbusiness.com/?ref=topbar_help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:7 })">
+                                Business
+                                <span class="item-summary">
+                                    Learn more about hiring developers or posting ads with us
+                                </span>
+                            </a>
+                        </li>
+            </ul>
+        </div>
+    </div>
+                                            </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="http://stackoverflow.com/search" method="get" autocomplete="off">
+                        <input name="q" type="text" placeholder="Search Q&amp;A" value="" tabindex="1" autocomplete="off" maxlength="240">
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script>
+        StackExchange.ready(function() { StackExchange.topbar.init(); });
+    </script>
+
+    <div class="container">
+        <div id="header">
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="http://stackoverflow.com/">
+                    Stack Overflow
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                            <li class="youarehere">
+        <a id="nav-questions" href="http://stackoverflow.com/questions" class="js-gps-track" data-gps-track="top_nav.click({is_current:true, location:3, destination:1})">
+        Questions
+        </a>
+    </li>
+
+    <li>
+        <a id="nav-jobs" href="http://stackoverflow.com/jobs?med=site-ui&amp;ref=jobs-tab" class="js-gps-track" data-gps-track="top_nav.click({is_current:false, location:3, destination:6})">
+        Jobs
+        </a>
+    </li>
+                            <li>
+        <a id="nav-docs" href="http://stackoverflow.com/documentation" class="js-gps-track" data-gps-track="top_nav.click({is_current:false, location:3, destination:7})">
+        Documentation
+        </a>
+    </li>
+                            <li>
+        <a id="nav-tags" href="http://stackoverflow.com/tags" class="js-gps-track" data-gps-track="top_nav.click({is_current:false, location:3, destination:2})">
+        Tags
+        </a>
+    </li>
+
+                            <li>
+        <a id="nav-users" href="http://stackoverflow.com/users" class="js-gps-track" data-gps-track="top_nav.click({is_current:false, location:3, destination:3})">
+        Users
+        </a>
+    </li>
+
+                            <li>
+        <a id="nav-badges" href="http://stackoverflow.com/help/badges" class="js-gps-track" data-gps-track="top_nav.click({is_current:false, location:3, destination:4})">
+        Badges
+        </a>
+    </li>
+
+                    </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion" href="http://stackoverflow.com/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        <div id="content" class="snippet-hidden">
+            
+
+<div itemscope="" itemtype="http://schema.org/Question">
+    <link itemprop="image" href="https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+			<div id="question-header">
+                <h1 itemprop="name"><a href="http://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream" class="question-hyperlink">Is there a good way to extract chunks of data from a java 8 stream?</a></h1>
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question" data-questionid="25408350" id="question">
+
+    <script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk681103412",4).setZone(43); });
+            </script>
+            <div class="everyonelovesstackoverflow adzerk-vote" id="adzerk681103412"><a href="http://engine.adzerk.net/r?e=eyJhdiI6MTMxNDE4LCJhdCI6NCwiYnQiOjAsImNtIjo0MDI0ODYsImNoIjoxMTc4LCJjayI6e30sImNyIjoxNDMyMDc2LCJkaSI6ImRjZTUyNzhlNmM2YTQwYjZiMDQ5ZTA3YzMzZWU2ZjUyIiwiZG0iOjEsImZjIjoxNjQ0OTgwLCJmbCI6MTQyNzg4NiwiaXAiOiIxODkuMjA4LjQuMzQiLCJrdyI6InBhcmFsbGVsLXByb2Nlc3NpbmcsamF2YS04LGphdmEtc3RyZWFtLHgtdXNlci1yZWdpc3RlcmVkLHgtY3Jvc3Mtc2l0ZS1zZXJ2ZXJmYXVsdC5jb20iLCJudyI6MjIsInBjIjowLCJlYyI6MCwicHIiOjE2MDQsInJ0IjoyLCJyZiI6Imh0dHBzOi8vd3d3Lmdvb2dsZS5jb20ubXgvIiwic3QiOjgyNzcsInVrIjoidWUxLWY2MzA4MzlhMmU0ZjQ4MzJhMDQ5NjRhNGVhNTVlZmQ4Iiwiem4iOjQzLCJ0cyI6MTQ4Mzk1MzkxMDUxMywiYmYiOnRydWUsInBuIjoiYWR6ZXJrNjgxMTAzNDEyIiwidXIiOiJodHRwOi8vZXMuc3RhY2tvdmVyZmxvdy5jb20_dXRtX3NvdXJjZT1zdGFja292ZXJmbG93LmNvbSZ1dG1fbWVkaXVtPWFkJnV0bV9jYW1wYWlnbj1zb2VzLTEmdXRtX2NvbnRlbnQ9bGItdmVuIn0&amp;s=kxYxG_3sip-Yp53uakuG_aK9WJw" rel="nofollow" target="_blank" title=""><img src="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/bb03c5343c45463ca79c601a589fabce.png" title="" alt="" border="0" width="728" height="90"></a><div class="adzerk-vote-controls" style="display: none;"><div class="adzerk-vote-option adzerk-vote-up"><div class="adzerk-vote-icon"></div></div><div class="adzerk-vote-option adzerk-vote-down"><div class="adzerk-vote-icon"></div></div></div><div class="adzerk-vote-survey" style="display:none;"><form><span>No problem. We won't show you that ad again. Why didn't you like it?</span><ul><li><label><input type="radio" value="12" name="downvoteReason">Uninteresting</label></li><li><label><input type="radio" value="13" name="downvoteReason">Misleading</label></li><li><label><input type="radio" value="14" name="downvoteReason">Offensive</label></li><li><label><input type="radio" value="15" name="downvoteReason">Repetitive</label></li><li><label><input type="radio" value="16" name="downvoteReason">Other</label></li></ul><a href="http://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream#" class="adzerk-vote-cancel">Oops! I didn't mean to do this.</a></form></div><img height="0px" width="0px" border="0" style="position:absolute;" src="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/i.gif"></div>    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="25408350">
+        <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">15</span>
+        <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+
+        <a class="star-off" href="http://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream#" title="Click to mark as favorite question (click again to undo)">favorite</a>
+        <div class="favoritecount"><b>2</b></div>
+
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+<p>I an ETL process I'm retrieving a lot of entities from a Spring Data Repository. I'm then  using a parallel stream to map the entities to different ones. 
+I can either use a consumer to store those new entities in another repository one by one or collect them into a List and store that in a single bulk operation.
+The first is costly while the later might exceed the available memory.</p>
+
+<p>Is there a good way to collect a certain amount of elements in the stream (like limit does), consume that chunk, and keep on going in parallel until all elements are processed?</p>
+    </div>
+    <div class="post-taglist">
+        <a href="http://stackoverflow.com/questions/tagged/parallel-processing" class="post-tag js-gps-track" title="show questions tagged &#39;parallel-processing&#39;" rel="tag">parallel-processing</a> <a href="http://stackoverflow.com/questions/tagged/java-8" class="post-tag js-gps-track" title="show questions tagged &#39;java-8&#39;" rel="tag">java-8</a> <a href="http://stackoverflow.com/questions/tagged/java-stream" class="post-tag js-gps-track" title="" rel="tag">java-stream</a> 
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/q/25408350/5052018" title="short permalink to this question" class="short-link" id="link-post-25408350">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/25408350/edit" class="suggest-edit-post" title="revise and improve this post">edit</a><span class="lsep">|</span><a href="http://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream#" class="flag-post-link" title="flag this post for serious problems or moderator attention" data-postid="25408350">flag</a></div>        
+    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="http://stackoverflow.com/posts/25408350/revisions" title="show all edits to this post">edited <span title="2015-02-14 00:20:34Z" class="relativetime">Feb 14 '15 at 0:20</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/1441122/stuart-marks"><div class="gravatar-wrapper-32"><img src="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/XM5u8.jpg" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/1441122/stuart-marks">Stuart Marks</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 43,687" dir="ltr">43.7k</span><span title="8 gold badges"><span class="badge1"></span><span class="badgecount">8</span></span><span title="97 silver badges"><span class="badge2"></span><span class="badgecount">97</span></span><span title="135 bronze badges"><span class="badge3"></span><span class="badgecount">135</span></span>
+        </div>
+    </div>
+</div>    </td>
+    <td class="post-signature owner">
+        <div class="user-info user-hover">
+    <div class="user-action-time">
+        asked <span title="2014-08-20 15:10:44Z" class="relativetime">Aug 20 '14 at 15:10</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/498457/christoph-grimmer-dietrich"><div class="gravatar-wrapper-32"><img src="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/eTHJH.jpg" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/498457/christoph-grimmer-dietrich">Christoph Grimmer-Dietrich</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">2,056</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="20 silver badges"><span class="badge2"></span><span class="badgecount">20</span></span><span title="46 bronze badges"><span class="badge3"></span><span class="badgecount">46</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</div>
+</td>
+        </tr>
+                    
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-25408350" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="true" data-cansee="false" data-comments-unavailable="false" data-addlink-disabled="false">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+				    <tfoot>
+					    <tr>
+						    <td></td>
+						    <td class="comment-form">
+							    <form id="add-comment-25408350" class="" data-placeholdertext="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments."></form>
+						    </td>
+					    </tr>
+				    </tfoot>
+		    </table>
+	    </div>
+
+        <div id="comments-link-25408350">
+
+                <a class="js-add-link comments-link " title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments." href="http://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream#">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="http://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream#" onclick=""></a>
+        </div>         
+    </td>
+</tr>        </tbody></table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								4 Answers
+                                <span style="display:none;" itemprop="answerCount">4</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="http://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream?answertab=active#tab-top" data-nav-xhref="" title="Answers with the latest activity first" data-value="active" data-shortcut="A">
+            active</a>
+        <a href="http://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream?answertab=oldest#tab-top" data-nav-xhref="" title="Answers in the order they were provided" data-value="oldest" data-shortcut="O">
+            oldest</a>
+        <a class="youarehere" href="http://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream?answertab=votes#tab-top" data-nav-xhref="" title="Answers with the highest score first" data-value="votes" data-shortcut="V">
+            votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="25507602"></a>
+<div id="answer-25507602" class="answer" data-answerid="25507602" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="25507602">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">13</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>My approach to bulk operations with chunking is to use a partitioning spliterator wrapper, and another wrapper which overrides the default splitting policy (arithmetic progression of batch sizes in increments of 1024) to simple fixed-batch splitting. Use it like this:</p>
+
+<pre class="lang-java prettyprint prettyprinted"><code><span class="typ">Stream</span><span class="pun">&lt;</span><span class="typ">OriginalType</span><span class="pun">&gt;</span><span class="pln"> existingStream </span><span class="pun">=</span><span class="pln"> </span><span class="pun">...;</span><span class="pln">
+</span><span class="typ">Stream</span><span class="pun">&lt;</span><span class="typ">List</span><span class="pun">&lt;</span><span class="typ">OriginalType</span><span class="pun">&gt;&gt;</span><span class="pln"> partitioned </span><span class="pun">=</span><span class="pln"> partition</span><span class="pun">(</span><span class="pln">existingStream</span><span class="pun">,</span><span class="pln"> </span><span class="lit">100</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">);</span><span class="pln">
+partitioned</span><span class="pun">.</span><span class="pln">forEach</span><span class="pun">(</span><span class="pln">chunk </span><span class="pun">-&gt;</span><span class="pln"> </span><span class="pun">...</span><span class="pln"> process the chunk </span><span class="pun">...);</span></code></pre>
+
+<p>Here is the full code:</p>
+
+<pre class="lang-java prettyprint prettyprinted"><code><span class="kwd">import</span><span class="pln"> java</span><span class="pun">.</span><span class="pln">util</span><span class="pun">.</span><span class="typ">ArrayList</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> java</span><span class="pun">.</span><span class="pln">util</span><span class="pun">.</span><span class="typ">List</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> java</span><span class="pun">.</span><span class="pln">util</span><span class="pun">.</span><span class="typ">Spliterator</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> java</span><span class="pun">.</span><span class="pln">util</span><span class="pun">.</span><span class="typ">Spliterators</span><span class="pun">.</span><span class="typ">AbstractSpliterator</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> java</span><span class="pun">.</span><span class="pln">util</span><span class="pun">.</span><span class="pln">function</span><span class="pun">.</span><span class="typ">Consumer</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> java</span><span class="pun">.</span><span class="pln">util</span><span class="pun">.</span><span class="pln">stream</span><span class="pun">.</span><span class="typ">Stream</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> java</span><span class="pun">.</span><span class="pln">util</span><span class="pun">.</span><span class="pln">stream</span><span class="pun">.</span><span class="typ">StreamSupport</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">class</span><span class="pln"> </span><span class="typ">PartitioningSpliterator</span><span class="pun">&lt;</span><span class="pln">E</span><span class="pun">&gt;</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">AbstractSpliterator</span><span class="pun">&lt;</span><span class="typ">List</span><span class="pun">&lt;</span><span class="pln">E</span><span class="pun">&gt;&gt;</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">private</span><span class="pln"> </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">Spliterator</span><span class="pun">&lt;</span><span class="pln">E</span><span class="pun">&gt;</span><span class="pln"> spliterator</span><span class="pun">;</span><span class="pln">
+  </span><span class="kwd">private</span><span class="pln"> </span><span class="kwd">final</span><span class="pln"> </span><span class="kwd">int</span><span class="pln"> partitionSize</span><span class="pun">;</span><span class="pln">
+
+  </span><span class="kwd">public</span><span class="pln"> </span><span class="typ">PartitioningSpliterator</span><span class="pun">(</span><span class="typ">Spliterator</span><span class="pun">&lt;</span><span class="pln">E</span><span class="pun">&gt;</span><span class="pln"> toWrap</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">int</span><span class="pln"> partitionSize</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">super</span><span class="pun">(</span><span class="pln">toWrap</span><span class="pun">.</span><span class="pln">estimateSize</span><span class="pun">(),</span><span class="pln"> toWrap</span><span class="pun">.</span><span class="pln">characteristics</span><span class="pun">()</span><span class="pln"> </span><span class="pun">|</span><span class="pln"> </span><span class="typ">Spliterator</span><span class="pun">.</span><span class="pln">NONNULL</span><span class="pun">);</span><span class="pln">
+    </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">partitionSize </span><span class="pun">&lt;=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">)</span><span class="pln"> </span><span class="kwd">throw</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">IllegalArgumentException</span><span class="pun">(</span><span class="pln">
+        </span><span class="str">"Partition size must be positive, but was "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> partitionSize</span><span class="pun">);</span><span class="pln">
+    </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">spliterator </span><span class="pun">=</span><span class="pln"> toWrap</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">partitionSize </span><span class="pun">=</span><span class="pln"> partitionSize</span><span class="pun">;</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+
+  </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> </span><span class="pun">&lt;</span><span class="pln">E</span><span class="pun">&gt;</span><span class="pln"> </span><span class="typ">Stream</span><span class="pun">&lt;</span><span class="typ">List</span><span class="pun">&lt;</span><span class="pln">E</span><span class="pun">&gt;&gt;</span><span class="pln"> partition</span><span class="pun">(</span><span class="typ">Stream</span><span class="pun">&lt;</span><span class="pln">E</span><span class="pun">&gt;</span><span class="pln"> in</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">int</span><span class="pln"> size</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">StreamSupport</span><span class="pun">.</span><span class="pln">stream</span><span class="pun">(</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">PartitioningSpliterator</span><span class="pun">(</span><span class="pln">in</span><span class="pun">.</span><span class="pln">spliterator</span><span class="pun">(),</span><span class="pln"> size</span><span class="pun">),</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+
+  </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> </span><span class="pun">&lt;</span><span class="pln">E</span><span class="pun">&gt;</span><span class="pln"> </span><span class="typ">Stream</span><span class="pun">&lt;</span><span class="typ">List</span><span class="pun">&lt;</span><span class="pln">E</span><span class="pun">&gt;&gt;</span><span class="pln"> partition</span><span class="pun">(</span><span class="typ">Stream</span><span class="pun">&lt;</span><span class="pln">E</span><span class="pun">&gt;</span><span class="pln"> in</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">int</span><span class="pln"> size</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">int</span><span class="pln"> batchSize</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">StreamSupport</span><span class="pun">.</span><span class="pln">stream</span><span class="pun">(</span><span class="pln">
+        </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">FixedBatchSpliterator</span><span class="pun">&lt;&gt;(</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">PartitioningSpliterator</span><span class="pun">&lt;&gt;(</span><span class="pln">in</span><span class="pun">.</span><span class="pln">spliterator</span><span class="pun">(),</span><span class="pln"> size</span><span class="pun">),</span><span class="pln"> batchSize</span><span class="pun">),</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+
+  </span><span class="lit">@Override</span><span class="pln"> </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">boolean</span><span class="pln"> tryAdvance</span><span class="pun">(</span><span class="typ">Consumer</span><span class="pun">&lt;?</span><span class="pln"> </span><span class="kwd">super</span><span class="pln"> </span><span class="typ">List</span><span class="pun">&lt;</span><span class="pln">E</span><span class="pun">&gt;&gt;</span><span class="pln"> action</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">ArrayList</span><span class="pun">&lt;</span><span class="pln">E</span><span class="pun">&gt;</span><span class="pln"> partition </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">ArrayList</span><span class="pun">&lt;&gt;(</span><span class="pln">partitionSize</span><span class="pun">);</span><span class="pln">
+    </span><span class="kwd">while</span><span class="pln"> </span><span class="pun">(</span><span class="pln">spliterator</span><span class="pun">.</span><span class="pln">tryAdvance</span><span class="pun">(</span><span class="pln">partition</span><span class="pun">::</span><span class="pln">add</span><span class="pun">)</span><span class="pln"> 
+           </span><span class="pun">&amp;&amp;</span><span class="pln"> partition</span><span class="pun">.</span><span class="pln">size</span><span class="pun">()</span><span class="pln"> </span><span class="pun">&lt;</span><span class="pln"> partitionSize</span><span class="pun">);</span><span class="pln">
+    </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">partition</span><span class="pun">.</span><span class="pln">isEmpty</span><span class="pun">())</span><span class="pln"> </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">false</span><span class="pun">;</span><span class="pln">
+    action</span><span class="pun">.</span><span class="pln">accept</span><span class="pun">(</span><span class="pln">partition</span><span class="pun">);</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">;</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+
+  </span><span class="lit">@Override</span><span class="pln"> </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">long</span><span class="pln"> estimateSize</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">final</span><span class="pln"> </span><span class="kwd">long</span><span class="pln"> est </span><span class="pun">=</span><span class="pln"> spliterator</span><span class="pun">.</span><span class="pln">estimateSize</span><span class="pun">();</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> est </span><span class="pun">==</span><span class="pln"> </span><span class="typ">Long</span><span class="pun">.</span><span class="pln">MAX_VALUE</span><span class="pun">?</span><span class="pln"> est
+         </span><span class="pun">:</span><span class="pln"> est </span><span class="pun">/</span><span class="pln"> partitionSize </span><span class="pun">+</span><span class="pln"> </span><span class="pun">(</span><span class="pln">est </span><span class="pun">%</span><span class="pln"> partitionSize </span><span class="pun">&gt;</span><span class="pln"> </span><span class="lit">0</span><span class="pun">?</span><span class="pln"> </span><span class="lit">1</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="lit">0</span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+
+<hr>
+
+<pre class="lang-java prettyprint prettyprinted"><code><span class="kwd">import</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> java</span><span class="pun">.</span><span class="pln">util</span><span class="pun">.</span><span class="typ">Spliterators</span><span class="pun">.</span><span class="pln">spliterator</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">import</span><span class="pln"> java</span><span class="pun">.</span><span class="pln">util</span><span class="pun">.</span><span class="typ">Comparator</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> java</span><span class="pun">.</span><span class="pln">util</span><span class="pun">.</span><span class="typ">Spliterator</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> java</span><span class="pun">.</span><span class="pln">util</span><span class="pun">.</span><span class="pln">function</span><span class="pun">.</span><span class="typ">Consumer</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">abstract</span><span class="pln"> </span><span class="kwd">class</span><span class="pln"> </span><span class="typ">FixedBatchSpliteratorBase</span><span class="pun">&lt;</span><span class="pln">T</span><span class="pun">&gt;</span><span class="pln"> </span><span class="kwd">implements</span><span class="pln"> </span><span class="typ">Spliterator</span><span class="pun">&lt;</span><span class="pln">T</span><span class="pun">&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">private</span><span class="pln"> </span><span class="kwd">final</span><span class="pln"> </span><span class="kwd">int</span><span class="pln"> batchSize</span><span class="pun">;</span><span class="pln">
+  </span><span class="kwd">private</span><span class="pln"> </span><span class="kwd">final</span><span class="pln"> </span><span class="kwd">int</span><span class="pln"> characteristics</span><span class="pun">;</span><span class="pln">
+  </span><span class="kwd">private</span><span class="pln"> </span><span class="kwd">long</span><span class="pln"> est</span><span class="pun">;</span><span class="pln">
+
+  </span><span class="kwd">public</span><span class="pln"> </span><span class="typ">FixedBatchSpliteratorBase</span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> characteristics</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">int</span><span class="pln"> batchSize</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">long</span><span class="pln"> est</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    characteristics </span><span class="pun">|=</span><span class="pln"> ORDERED</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">((</span><span class="pln">characteristics </span><span class="pun">&amp;</span><span class="pln"> SIZED</span><span class="pun">)</span><span class="pln"> </span><span class="pun">!=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">)</span><span class="pln"> characteristics </span><span class="pun">|=</span><span class="pln"> SUBSIZED</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">characteristics </span><span class="pun">=</span><span class="pln"> characteristics</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">batchSize </span><span class="pun">=</span><span class="pln"> batchSize</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">est </span><span class="pun">=</span><span class="pln"> est</span><span class="pun">;</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+  </span><span class="kwd">public</span><span class="pln"> </span><span class="typ">FixedBatchSpliteratorBase</span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> characteristics</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">int</span><span class="pln"> batchSize</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">this</span><span class="pun">(</span><span class="pln">characteristics</span><span class="pun">,</span><span class="pln"> batchSize</span><span class="pun">,</span><span class="pln"> </span><span class="typ">Long</span><span class="pun">.</span><span class="pln">MAX_VALUE</span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+  </span><span class="kwd">public</span><span class="pln"> </span><span class="typ">FixedBatchSpliteratorBase</span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> characteristics</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">this</span><span class="pun">(</span><span class="pln">characteristics</span><span class="pun">,</span><span class="pln"> </span><span class="lit">64</span><span class="pun">,</span><span class="pln"> </span><span class="typ">Long</span><span class="pun">.</span><span class="pln">MAX_VALUE</span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+
+  </span><span class="lit">@Override</span><span class="pln"> </span><span class="kwd">public</span><span class="pln"> </span><span class="typ">Spliterator</span><span class="pun">&lt;</span><span class="pln">T</span><span class="pun">&gt;</span><span class="pln"> trySplit</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">HoldingConsumer</span><span class="pun">&lt;</span><span class="pln">T</span><span class="pun">&gt;</span><span class="pln"> holder </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">HoldingConsumer</span><span class="pun">&lt;&gt;();</span><span class="pln">
+    </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(!</span><span class="pln">tryAdvance</span><span class="pun">(</span><span class="pln">holder</span><span class="pun">))</span><span class="pln"> </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">Object</span><span class="pun">[]</span><span class="pln"> a </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Object</span><span class="pun">[</span><span class="pln">batchSize</span><span class="pun">];</span><span class="pln">
+    </span><span class="kwd">int</span><span class="pln"> j </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">do</span><span class="pln"> a</span><span class="pun">[</span><span class="pln">j</span><span class="pun">]</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> holder</span><span class="pun">.</span><span class="pln">value</span><span class="pun">;</span><span class="pln"> </span><span class="kwd">while</span><span class="pln"> </span><span class="pun">(++</span><span class="pln">j </span><span class="pun">&lt;</span><span class="pln"> batchSize </span><span class="pun">&amp;&amp;</span><span class="pln"> tryAdvance</span><span class="pun">(</span><span class="pln">holder</span><span class="pun">));</span><span class="pln">
+    </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">est </span><span class="pun">!=</span><span class="pln"> </span><span class="typ">Long</span><span class="pun">.</span><span class="pln">MAX_VALUE</span><span class="pun">)</span><span class="pln"> est </span><span class="pun">-=</span><span class="pln"> j</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> spliterator</span><span class="pun">(</span><span class="pln">a</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> j</span><span class="pun">,</span><span class="pln"> characteristics</span><span class="pun">());</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+  </span><span class="lit">@Override</span><span class="pln"> </span><span class="kwd">public</span><span class="pln"> </span><span class="typ">Comparator</span><span class="pun">&lt;?</span><span class="pln"> </span><span class="kwd">super</span><span class="pln"> T</span><span class="pun">&gt;</span><span class="pln"> getComparator</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">hasCharacteristics</span><span class="pun">(</span><span class="pln">SORTED</span><span class="pun">))</span><span class="pln"> </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">throw</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">IllegalStateException</span><span class="pun">();</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+  </span><span class="lit">@Override</span><span class="pln"> </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">long</span><span class="pln"> estimateSize</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="kwd">return</span><span class="pln"> est</span><span class="pun">;</span><span class="pln"> </span><span class="pun">}</span><span class="pln">
+  </span><span class="lit">@Override</span><span class="pln"> </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">int</span><span class="pln"> characteristics</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="kwd">return</span><span class="pln"> characteristics</span><span class="pun">;</span><span class="pln"> </span><span class="pun">}</span><span class="pln">
+
+  </span><span class="kwd">static</span><span class="pln"> </span><span class="kwd">final</span><span class="pln"> </span><span class="kwd">class</span><span class="pln"> </span><span class="typ">HoldingConsumer</span><span class="pun">&lt;</span><span class="pln">T</span><span class="pun">&gt;</span><span class="pln"> </span><span class="kwd">implements</span><span class="pln"> </span><span class="typ">Consumer</span><span class="pun">&lt;</span><span class="pln">T</span><span class="pun">&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="typ">Object</span><span class="pln"> value</span><span class="pun">;</span><span class="pln">
+    </span><span class="lit">@Override</span><span class="pln"> </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> accept</span><span class="pun">(</span><span class="pln">T value</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">value </span><span class="pun">=</span><span class="pln"> value</span><span class="pun">;</span><span class="pln"> </span><span class="pun">}</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+
+<hr>
+
+<pre class="lang-java prettyprint prettyprinted"><code><span class="kwd">import</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> java</span><span class="pun">.</span><span class="pln">util</span><span class="pun">.</span><span class="pln">stream</span><span class="pun">.</span><span class="typ">StreamSupport</span><span class="pun">.</span><span class="pln">stream</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">import</span><span class="pln"> java</span><span class="pun">.</span><span class="pln">util</span><span class="pun">.</span><span class="typ">Spliterator</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> java</span><span class="pun">.</span><span class="pln">util</span><span class="pun">.</span><span class="pln">function</span><span class="pun">.</span><span class="typ">Consumer</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> java</span><span class="pun">.</span><span class="pln">util</span><span class="pun">.</span><span class="pln">stream</span><span class="pun">.</span><span class="typ">Stream</span><span class="pun">;</span><span class="pln">
+
+</span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">class</span><span class="pln"> </span><span class="typ">FixedBatchSpliterator</span><span class="pun">&lt;</span><span class="pln">T</span><span class="pun">&gt;</span><span class="pln"> </span><span class="kwd">extends</span><span class="pln"> </span><span class="typ">FixedBatchSpliteratorBase</span><span class="pun">&lt;</span><span class="pln">T</span><span class="pun">&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">private</span><span class="pln"> </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">Spliterator</span><span class="pun">&lt;</span><span class="pln">T</span><span class="pun">&gt;</span><span class="pln"> spliterator</span><span class="pun">;</span><span class="pln">
+
+  </span><span class="kwd">public</span><span class="pln"> </span><span class="typ">FixedBatchSpliterator</span><span class="pun">(</span><span class="typ">Spliterator</span><span class="pun">&lt;</span><span class="pln">T</span><span class="pun">&gt;</span><span class="pln"> toWrap</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">int</span><span class="pln"> batchSize</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">long</span><span class="pln"> est</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">super</span><span class="pun">(</span><span class="pln">toWrap</span><span class="pun">.</span><span class="pln">characteristics</span><span class="pun">(),</span><span class="pln"> batchSize</span><span class="pun">,</span><span class="pln"> est</span><span class="pun">);</span><span class="pln">
+    </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">spliterator </span><span class="pun">=</span><span class="pln"> toWrap</span><span class="pun">;</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+  </span><span class="kwd">public</span><span class="pln"> </span><span class="typ">FixedBatchSpliterator</span><span class="pun">(</span><span class="typ">Spliterator</span><span class="pun">&lt;</span><span class="pln">T</span><span class="pun">&gt;</span><span class="pln"> toWrap</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">int</span><span class="pln"> batchSize</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">this</span><span class="pun">(</span><span class="pln">toWrap</span><span class="pun">,</span><span class="pln"> batchSize</span><span class="pun">,</span><span class="pln"> toWrap</span><span class="pun">.</span><span class="pln">estimateSize</span><span class="pun">());</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+  </span><span class="kwd">public</span><span class="pln"> </span><span class="typ">FixedBatchSpliterator</span><span class="pun">(</span><span class="typ">Spliterator</span><span class="pun">&lt;</span><span class="pln">T</span><span class="pun">&gt;</span><span class="pln"> toWrap</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">this</span><span class="pun">(</span><span class="pln">toWrap</span><span class="pun">,</span><span class="pln"> </span><span class="lit">64</span><span class="pun">,</span><span class="pln"> toWrap</span><span class="pun">.</span><span class="pln">estimateSize</span><span class="pun">());</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+
+  </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> </span><span class="pun">&lt;</span><span class="pln">T</span><span class="pun">&gt;</span><span class="pln"> </span><span class="typ">Stream</span><span class="pun">&lt;</span><span class="pln">T</span><span class="pun">&gt;</span><span class="pln"> withBatchSize</span><span class="pun">(</span><span class="typ">Stream</span><span class="pun">&lt;</span><span class="pln">T</span><span class="pun">&gt;</span><span class="pln"> in</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">int</span><span class="pln"> batchSize</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> stream</span><span class="pun">(</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">FixedBatchSpliterator</span><span class="pun">&lt;&gt;(</span><span class="pln">in</span><span class="pun">.</span><span class="pln">spliterator</span><span class="pun">(),</span><span class="pln"> batchSize</span><span class="pun">),</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+
+  </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">static</span><span class="pln"> </span><span class="pun">&lt;</span><span class="pln">T</span><span class="pun">&gt;</span><span class="pln"> </span><span class="typ">FixedBatchSpliterator</span><span class="pun">&lt;</span><span class="pln">T</span><span class="pun">&gt;</span><span class="pln"> batchedSpliterator</span><span class="pun">(</span><span class="typ">Spliterator</span><span class="pun">&lt;</span><span class="pln">T</span><span class="pun">&gt;</span><span class="pln"> toWrap</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">int</span><span class="pln"> batchSize</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">FixedBatchSpliterator</span><span class="pun">&lt;&gt;(</span><span class="pln">toWrap</span><span class="pun">,</span><span class="pln"> batchSize</span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+
+  </span><span class="lit">@Override</span><span class="pln"> </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">boolean</span><span class="pln"> tryAdvance</span><span class="pun">(</span><span class="typ">Consumer</span><span class="pun">&lt;?</span><span class="pln"> </span><span class="kwd">super</span><span class="pln"> T</span><span class="pun">&gt;</span><span class="pln"> action</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> spliterator</span><span class="pun">.</span><span class="pln">tryAdvance</span><span class="pun">(</span><span class="pln">action</span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+  </span><span class="lit">@Override</span><span class="pln"> </span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> forEachRemaining</span><span class="pun">(</span><span class="typ">Consumer</span><span class="pun">&lt;?</span><span class="pln"> </span><span class="kwd">super</span><span class="pln"> T</span><span class="pun">&gt;</span><span class="pln"> action</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    spliterator</span><span class="pun">.</span><span class="pln">forEachRemaining</span><span class="pun">(</span><span class="pln">action</span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/25507602/5052018" title="short permalink to this answer" class="short-link" id="link-post-25507602">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/25507602/edit" class="suggest-edit-post" title="revise and improve this post">edit</a><span class="lsep">|</span><a href="http://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream#" class="flag-post-link" title="flag this post for serious problems or moderator attention" data-postid="25507602">flag</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="http://stackoverflow.com/posts/25507602/revisions" title="show all edits to this post">edited <span title="2015-08-18 12:27:28Z" class="relativetime">Aug 18 '15 at 12:27</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2014-08-26 13:54:32Z" class="relativetime">Aug 26 '14 at 13:54</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/1103872/marko-topolnik"><div class="gravatar-wrapper-32"><img src="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/84b1acc3351c02f560dea7ac7f76ac8d" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/1103872/marko-topolnik">Marko Topolnik</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 118,380" dir="ltr">118k</span><span title="15 gold badges"><span class="badge1"></span><span class="badgecount">15</span></span><span title="155 silver badges"><span class="badge2"></span><span class="badgecount">155</span></span><span title="258 bronze badges"><span class="badge3"></span><span class="badgecount">258</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-25507602" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="true" data-cansee="false" data-comments-unavailable="false" data-addlink-disabled="false">
+
+
+
+    <tr id="comment-57545053" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                <a class="comment-up comment-up-off" title="this comment adds something useful to the post">upvote</a>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                                <td>
+                                    <a class="comment-flag" title="Flag this comment for serious problems or moderator attention">flag</a>
+                                </td>
+                        </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Shouldn't <code>getComparator()</code> be defined in <code>FixedBatchSpliterator</code> and delegate, i.e: <code>return spliterator.getComparator();</code>  ?</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/239101/david-soroko" title="2,704 reputation" class="comment-user">David Soroko</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream#comment57545053_25507602"><span title="2016-01-20 15:51:02Z" class="relativetime-clean">Jan 20 '16 at 15:51</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-57581322" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                <a class="comment-up comment-up-off" title="this comment adds something useful to the post">upvote</a>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                                <td>
+                                    <a class="comment-flag" title="Flag this comment for serious problems or moderator attention">flag</a>
+                                </td>
+                        </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Possibly. The <code>getComparator()</code> API remains somewhat of a mystery to me.</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/1103872/marko-topolnik" title="118,380 reputation" class="comment-user">Marko Topolnik</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream#comment57581322_25507602"><span title="2016-01-21 12:36:08Z" class="relativetime-clean">Jan 21 '16 at 12:36</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-69456195" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                <a class="comment-up comment-up-off" title="this comment adds something useful to the post">upvote</a>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                                <td>
+                                    <a class="comment-flag" title="Flag this comment for serious problems or moderator attention">flag</a>
+                                </td>
+                        </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">what is the difference between <code>FixedBatchSpliterator</code> and <code>PartitioningSpliterator</code> ? I don't get the <code>partition(existingStream, 100, 1)</code></span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/1243048/titmael" title="398 reputation" class="comment-user">Titmael</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream#comment69456195_25507602"><span title="2016-12-13 16:39:39Z" class="relativetime-clean">Dec 13 '16 at 16:39</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-69483790" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="cool">1</span>
+                        </td>
+                        <td>
+                                <a class="comment-up comment-up-off" title="this comment adds something useful to the post">upvote</a>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                                <td>
+                                    <a class="comment-flag" title="Flag this comment for serious problems or moderator attention">flag</a>
+                                </td>
+                        </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@Titmael <code>FixedBatchSpliterator</code> is about non-semantic batching of data delivered to ecah worker thread. The effects of this batching are not visible to user-supplied lambdas. <code>PartitioningSpliterator</code>, on the other hand, produces chunks of data explicitly passed to your lambda.</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/1103872/marko-topolnik" title="118,380 reputation" class="comment-user">Marko Topolnik</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream#comment69483790_25507602"><span title="2016-12-14 10:43:23Z" class="relativetime-clean">Dec 14 '16 at 10:43</span></a></span>
+                        <span class="edited-yes" title="this comment was edited 2 times"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-69484907" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                <a class="comment-up comment-up-off" title="this comment adds something useful to the post">upvote</a>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                                <td>
+                                    <a class="comment-flag" title="Flag this comment for serious problems or moderator attention">flag</a>
+                                </td>
+                        </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">In my case I need to split my stream in chunks of 500 items, I can use only <code>PartitioningSpliterator#partition(Stream&lt;E&gt; in, int size)</code> ?</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/1243048/titmael" title="398 reputation" class="comment-user">Titmael</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream#comment69484907_25507602"><span title="2016-12-14 11:13:20Z" class="relativetime-clean">Dec 14 '16 at 11:13</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+				    <tfoot>
+					    <tr>
+						    <td></td>
+						    <td class="comment-form">
+							    <form id="add-comment-25507602" class="" data-placeholdertext="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."></form>
+						    </td>
+					    </tr>
+				    </tfoot>
+		    </table>
+	    </div>
+
+        <div id="comments-link-25507602">
+
+                <a class="js-add-link comments-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”." href="http://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream#">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="http://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk1492943611",4).setZone(44); });
+            </script>
+            <div class="everyonelovesstackoverflow adzerk-vote" id="adzerk1492943611"><iframe id="ados_frame_adzerk1492943611_2660476" frameborder="0" scrolling="no" height="90" width="728" src="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/saved_resource.html"></iframe><div class="adzerk-vote-controls" style="display: none;"><div class="adzerk-vote-option adzerk-vote-up"><div class="adzerk-vote-icon"></div></div><div class="adzerk-vote-option adzerk-vote-down"><div class="adzerk-vote-icon"></div></div></div><div class="adzerk-vote-survey" style="display:none;"><form><span>No problem. We won't show you that ad again. Why didn't you like it?</span><ul><li><label><input type="radio" value="12" name="downvoteReason">Uninteresting</label></li><li><label><input type="radio" value="13" name="downvoteReason">Misleading</label></li><li><label><input type="radio" value="14" name="downvoteReason">Offensive</label></li><li><label><input type="radio" value="15" name="downvoteReason">Repetitive</label></li><li><label><input type="radio" value="16" name="downvoteReason">Other</label></li></ul><a href="http://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream#" class="adzerk-vote-cancel">Oops! I didn't mean to do this.</a></form></div><img height="0px" width="0px" border="0" style="position:absolute;" src="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/i(1).gif"></div>
+  
+<a name="25408987"></a>
+<div id="answer-25408987" class="answer" data-answerid="25408987" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="25408987">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>You might be able to write your own <code>Collector</code> that accumulates entities and then performs bulk updates.</p>
+
+<p>The <code>Collector.accumulator()</code> method can add the entities to an internal temp cache until the cache grows too large.  When the cache is large enough you can do a bulk store into your other repository.</p>
+
+<p><code>Collector.merge()</code> needs to combine 2 thread's Collector's caches into a single cache (and possibly merge)</p>
+
+<p>Finally, the <code>Collector.finisher()</code> method is called when the Stream is done so store anything left in the cache here too.</p>
+
+<p>Since you are already using a parallel stream and seem OK with doing multiple loads at the same time, I assume you have thread safety already handled.</p>
+
+<p><strong>UPDATE</strong></p>
+
+<p>My comment regarding thread safety and parallel streams was referring to the actual saving/storing into the repository, not concurrency in your temp collection.</p>
+
+<p>Each Collector should (I think) be run in its own thread. A parallel stream should create multiple collector instances by calling <code>supplier()</code> multiple times.  So you can treat a collector instance as single threaded and it should work fine.</p>
+
+<p>For example in the Javadoc for <code>java.util.IntSummaryStatistics</code> it says:</p>
+
+<blockquote>
+This implementation is not thread safe. However, it is safe to use Collectors.toIntStatistics() on a parallel stream, because the parallel implementation of Stream.collect() provides the necessary partitioning, isolation, and merging of results for safe and efficient parallel execution. 
+</blockquote>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/25408987/5052018" title="short permalink to this answer" class="short-link" id="link-post-25408987">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/25408987/edit" class="suggest-edit-post" title="revise and improve this post">edit</a><span class="lsep">|</span><a href="http://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream#" class="flag-post-link" title="flag this post for serious problems or moderator attention" data-postid="25408987">flag</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="http://stackoverflow.com/posts/25408987/revisions" title="show all edits to this post">edited <span title="2014-08-21 18:12:14Z" class="relativetime">Aug 21 '14 at 18:12</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2014-08-20 15:41:07Z" class="relativetime">Aug 20 '14 at 15:41</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/2616073/dkatzel"><div class="gravatar-wrapper-32"><img src="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/8b0b2c38a8f7657b6504f67f714cc2f7" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/2616073/dkatzel">dkatzel</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 19,891" dir="ltr">19.9k</span><span title="2 gold badges"><span class="badge1"></span><span class="badgecount">2</span></span><span title="23 silver badges"><span class="badge2"></span><span class="badgecount">23</span></span><span title="43 bronze badges"><span class="badge3"></span><span class="badgecount">43</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-25408987" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="true" data-cansee="false" data-comments-unavailable="false" data-addlink-disabled="false">
+
+
+
+    <tr id="comment-39653648" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                <a class="comment-up comment-up-off" title="this comment adds something useful to the post">upvote</a>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                                <td>
+                                    <a class="comment-flag" title="Flag this comment for serious problems or moderator attention">flag</a>
+                                </td>
+                        </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">When filling a concurrency save collection by either using peek() or  Collector.accumulator() I can not safely determine when my cache has reached, say, 1000 entries. I would have to lock the collection, take the count, retrieve all entries if filled to my desired level, and release the collection again. Which will kill parallelism dead. I had hope that there is a <i>good</i> way to do it somewhere hidden in the stream API...</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/498457/christoph-grimmer-dietrich" title="2,056 reputation" class="comment-user owner">Christoph Grimmer-Dietrich</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream#comment39653648_25408987"><span title="2014-08-21 06:37:56Z" class="relativetime-clean">Aug 21 '14 at 6:37</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-39678717" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="cool">1</span>
+                        </td>
+                        <td>
+                                <a class="comment-up comment-up-off" title="this comment adds something useful to the post">upvote</a>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                                <td>
+                                    <a class="comment-flag" title="Flag this comment for serious problems or moderator attention">flag</a>
+                                </td>
+                        </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@ChristophGrimmer-Dietrich I'm not sure you need to worry about that.  Each Collector <i>should</i> (I think) be run in its own thread.  A parrallel stream should create multiple collector instances by calling <code>supplier()</code> multiple times.  I will update my answer</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/2616073/dkatzel" title="19,891 reputation" class="comment-user">dkatzel</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream#comment39678717_25408987"><span title="2014-08-21 18:09:24Z" class="relativetime-clean">Aug 21 '14 at 18:09</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+				    <tfoot>
+					    <tr>
+						    <td></td>
+						    <td class="comment-form">
+							    <form id="add-comment-25408987" class="" data-placeholdertext="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."></form>
+						    </td>
+					    </tr>
+				    </tfoot>
+		    </table>
+	    </div>
+
+        <div id="comments-link-25408987">
+
+                <a class="js-add-link comments-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”." href="http://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream#">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="http://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="28510052"></a>
+<div id="answer-28510052" class="answer" data-answerid="28510052" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="28510052">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<pre class="lang-java prettyprint prettyprinted"><code><span class="pln">  </span><span class="lit">@Test</span><span class="pln">
+</span><span class="kwd">public</span><span class="pln"> </span><span class="kwd">void</span><span class="pln"> streamTest</span><span class="pun">(){</span><span class="pln">
+
+    </span><span class="typ">Stream</span><span class="pun">&lt;</span><span class="typ">Integer</span><span class="pun">&gt;</span><span class="pln"> data </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Stream</span><span class="pun">.</span><span class="pln">generate</span><span class="pun">(()</span><span class="pln"> </span><span class="pun">-&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="com">//Block on IO</span><span class="pln">
+        </span><span class="kwd">return</span><span class="pln"> blockOnIO</span><span class="pun">();</span><span class="pln">
+    </span><span class="pun">});</span><span class="pln">
+
+
+    </span><span class="typ">AtomicInteger</span><span class="pln"> countDown </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">AtomicInteger</span><span class="pun">(</span><span class="lit">1000</span><span class="pun">);</span><span class="pln">
+    </span><span class="kwd">final</span><span class="pln"> </span><span class="typ">ArrayList</span><span class="pun">[]</span><span class="pln"> buffer </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">ArrayList</span><span class="pun">[]{</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">ArrayList</span><span class="pun">&lt;</span><span class="typ">Integer</span><span class="pun">&gt;()};</span><span class="pln">
+    </span><span class="typ">Object</span><span class="pln"> syncO </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Object</span><span class="pun">();</span><span class="pln">
+    data</span><span class="pun">.</span><span class="pln">parallel</span><span class="pun">().</span><span class="pln">unordered</span><span class="pun">().</span><span class="pln">map</span><span class="pun">(</span><span class="pln">i </span><span class="pun">-&gt;</span><span class="pln"> i </span><span class="pun">*</span><span class="pln"> </span><span class="lit">1000</span><span class="pun">).</span><span class="pln">forEach</span><span class="pun">(</span><span class="pln">i</span><span class="pun">-&gt;{</span><span class="pln">
+        </span><span class="typ">System</span><span class="pun">.</span><span class="pln">out</span><span class="pun">.</span><span class="pln">println</span><span class="pun">(</span><span class="typ">String</span><span class="pun">.</span><span class="pln">format</span><span class="pun">(</span><span class="str">"FE %s %d"</span><span class="pun">,</span><span class="typ">Thread</span><span class="pun">.</span><span class="pln">currentThread</span><span class="pun">().</span><span class="pln">getName</span><span class="pun">(),</span><span class="pln"> buffer</span><span class="pun">[</span><span class="lit">0</span><span class="pun">].</span><span class="pln">size</span><span class="pun">()));</span><span class="pln">
+        </span><span class="kwd">int</span><span class="pln"> c</span><span class="pun">;</span><span class="pln">
+        </span><span class="typ">ArrayList</span><span class="pun">&lt;</span><span class="typ">Integer</span><span class="pun">&gt;</span><span class="pln"> export</span><span class="pun">=</span><span class="kwd">null</span><span class="pun">;</span><span class="pln">
+        </span><span class="kwd">synchronized</span><span class="pln"> </span><span class="pun">(</span><span class="pln">syncO</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            c </span><span class="pun">=</span><span class="pln"> countDown</span><span class="pun">.</span><span class="pln">addAndGet</span><span class="pun">(-</span><span class="lit">1</span><span class="pun">);</span><span class="pln">
+            buffer</span><span class="pun">[</span><span class="lit">0</span><span class="pun">].</span><span class="pln">add</span><span class="pun">(</span><span class="pln">i</span><span class="pun">);</span><span class="pln">
+            </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">c </span><span class="pun">==</span><span class="pln"> </span><span class="lit">0</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                export</span><span class="pun">=</span><span class="pln">buffer</span><span class="pun">[</span><span class="lit">0</span><span class="pun">];</span><span class="pln">
+                buffer</span><span class="pun">[</span><span class="lit">0</span><span class="pun">]</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">ArrayList</span><span class="pun">&lt;</span><span class="typ">Integer</span><span class="pun">&gt;();</span><span class="pln">
+                countDown</span><span class="pun">.</span><span class="pln">set</span><span class="pun">(</span><span class="lit">1000</span><span class="pun">);</span><span class="pln">
+            </span><span class="pun">}</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+        </span><span class="kwd">if</span><span class="pun">(</span><span class="pln">export </span><span class="pun">!=</span><span class="kwd">null</span><span class="pun">){</span><span class="pln">
+            sendBatch</span><span class="pun">(</span><span class="pln">export</span><span class="pun">);</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="pun">});</span><span class="pln">
+    </span><span class="com">//export any remaining</span><span class="pln">
+    sendBatch</span><span class="pun">(</span><span class="pln">buffer</span><span class="pun">[</span><span class="lit">0</span><span class="pun">]);</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="typ">Integer</span><span class="pln"> blockOnIO</span><span class="pun">(){</span><span class="pln">
+    </span><span class="kwd">try</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="typ">Thread</span><span class="pun">.</span><span class="pln">sleep</span><span class="pun">(</span><span class="lit">50</span><span class="pun">);</span><span class="pln">
+        </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">Integer</span><span class="pun">.</span><span class="pln">valueOf</span><span class="pun">((</span><span class="kwd">int</span><span class="pun">)</span><span class="typ">Math</span><span class="pun">.</span><span class="pln">random</span><span class="pun">()*</span><span class="lit">1000</span><span class="pun">);</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">catch</span><span class="pln"> </span><span class="pun">(</span><span class="typ">InterruptedException</span><span class="pln"> e</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">throw</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">RuntimeException</span><span class="pun">(</span><span class="pln">e</span><span class="pun">);</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="kwd">void</span><span class="pln"> sendBatch</span><span class="pun">(</span><span class="typ">ArrayList</span><span class="pln"> al</span><span class="pun">){</span><span class="pln">
+    </span><span class="kwd">assert</span><span class="pln"> al</span><span class="pun">.</span><span class="pln">size</span><span class="pun">()</span><span class="pln"> </span><span class="pun">==</span><span class="pln"> </span><span class="lit">1000</span><span class="pun">;</span><span class="pln">
+    </span><span class="typ">System</span><span class="pun">.</span><span class="pln">out</span><span class="pun">.</span><span class="pln">println</span><span class="pun">(</span><span class="typ">String</span><span class="pun">.</span><span class="pln">format</span><span class="pun">(</span><span class="str">"LOAD %s %d"</span><span class="pun">,</span><span class="typ">Thread</span><span class="pun">.</span><span class="pln">currentThread</span><span class="pun">().</span><span class="pln">getName</span><span class="pun">(),</span><span class="pln"> al</span><span class="pun">.</span><span class="pln">size</span><span class="pun">()));</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+
+<p>This is maybe somewhat old-fashion but should achieve batching with a minimum of locking. </p>
+
+<p>It will produce output as</p>
+
+<pre class="lang-java prettyprint prettyprinted"><code><span class="pln">FE </span><span class="typ">ForkJoinPool</span><span class="pun">.</span><span class="pln">commonPool</span><span class="pun">-</span><span class="pln">worker</span><span class="pun">-</span><span class="lit">2</span><span class="pln"> </span><span class="lit">996</span><span class="pln">
+FE </span><span class="typ">ForkJoinPool</span><span class="pun">.</span><span class="pln">commonPool</span><span class="pun">-</span><span class="pln">worker</span><span class="pun">-</span><span class="lit">5</span><span class="pln"> </span><span class="lit">996</span><span class="pln">
+FE </span><span class="typ">ForkJoinPool</span><span class="pun">.</span><span class="pln">commonPool</span><span class="pun">-</span><span class="pln">worker</span><span class="pun">-</span><span class="lit">4</span><span class="pln"> </span><span class="lit">998</span><span class="pln">
+FE </span><span class="typ">ForkJoinPool</span><span class="pun">.</span><span class="pln">commonPool</span><span class="pun">-</span><span class="pln">worker</span><span class="pun">-</span><span class="lit">3</span><span class="pln"> </span><span class="lit">999</span><span class="pln">
+LOAD </span><span class="typ">ForkJoinPool</span><span class="pun">.</span><span class="pln">commonPool</span><span class="pun">-</span><span class="pln">worker</span><span class="pun">-</span><span class="lit">3</span><span class="pln"> </span><span class="lit">1000</span><span class="pln">
+FE </span><span class="typ">ForkJoinPool</span><span class="pun">.</span><span class="pln">commonPool</span><span class="pun">-</span><span class="pln">worker</span><span class="pun">-</span><span class="lit">6</span><span class="pln"> </span><span class="lit">0</span><span class="pln">
+FE </span><span class="typ">ForkJoinPool</span><span class="pun">.</span><span class="pln">commonPool</span><span class="pun">-</span><span class="pln">worker</span><span class="pun">-</span><span class="lit">1</span><span class="pln"> </span><span class="lit">2</span><span class="pln">
+FE </span><span class="typ">ForkJoinPool</span><span class="pun">.</span><span class="pln">commonPool</span><span class="pun">-</span><span class="pln">worker</span><span class="pun">-</span><span class="lit">7</span><span class="pln"> </span><span class="lit">2</span><span class="pln">
+FE </span><span class="typ">ForkJoinPool</span><span class="pun">.</span><span class="pln">commonPool</span><span class="pun">-</span><span class="pln">worker</span><span class="pun">-</span><span class="lit">2</span><span class="pln"> </span><span class="lit">4</span></code></pre>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/28510052/5052018" title="short permalink to this answer" class="short-link" id="link-post-28510052">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/28510052/edit" class="suggest-edit-post" title="revise and improve this post">edit</a><span class="lsep">|</span><a href="http://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream#" class="flag-post-link" title="flag this post for serious problems or moderator attention" data-postid="28510052">flag</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2015-02-13 22:47:30Z" class="relativetime">Feb 13 '15 at 22:47</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/4565235/david-lilljegren"><div class="gravatar-wrapper-32"><img src="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/photo.jpg" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/4565235/david-lilljegren">David Lilljegren</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">101</span><span title="3 bronze badges"><span class="badge3"></span><span class="badgecount">3</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-28510052" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="true" data-cansee="false" data-comments-unavailable="false" data-addlink-disabled="false">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+				    <tfoot>
+					    <tr>
+						    <td></td>
+						    <td class="comment-form">
+							    <form id="add-comment-28510052" class="" data-placeholdertext="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."></form>
+						    </td>
+					    </tr>
+				    </tfoot>
+		    </table>
+	    </div>
+
+        <div id="comments-link-28510052">
+
+                <a class="js-add-link comments-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”." href="http://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream#">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="http://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="39063378"></a>
+<div id="answer-39063378" class="answer" data-answerid="39063378" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="39063378">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">0</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>You could use a custom collector to do this elegantly.</p>
+
+<p>Please see my answer to a similar question here:</p>
+
+<p><a href="http://stackoverflow.com/questions/30641383/java-8-stream-with-batch-processing/39058988#39058988" title="Custom batch processing collector">Custom batch processing collector</a></p>
+
+<p>Then, you can simply batch process the stream in parallel using the above collector to store the records back in your repository, example usage:</p>
+
+<pre class="lang-java prettyprint prettyprinted"><code><span class="typ">List</span><span class="pun">&lt;</span><span class="typ">Integer</span><span class="pun">&gt;</span><span class="pln"> input </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Arrays</span><span class="pun">.</span><span class="pln">asList</span><span class="pun">(</span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="lit">2</span><span class="pun">,</span><span class="pln"> </span><span class="lit">3</span><span class="pun">,</span><span class="pln"> </span><span class="lit">4</span><span class="pun">,</span><span class="pln"> </span><span class="lit">5</span><span class="pun">,</span><span class="pln"> </span><span class="lit">6</span><span class="pun">,</span><span class="pln"> </span><span class="lit">7</span><span class="pun">,</span><span class="pln"> </span><span class="lit">8</span><span class="pun">,</span><span class="pln"> </span><span class="lit">9</span><span class="pun">,</span><span class="pln"> </span><span class="lit">10</span><span class="pun">);</span><span class="pln">
+
+</span><span class="kwd">int</span><span class="pln"> batchSize </span><span class="pun">=</span><span class="pln"> </span><span class="lit">3</span><span class="pun">;</span><span class="pln">
+</span><span class="typ">Consumer</span><span class="pun">&lt;</span><span class="typ">List</span><span class="pun">&lt;</span><span class="typ">Integer</span><span class="pun">&gt;&gt;</span><span class="pln"> batchProcessor </span><span class="pun">=</span><span class="pln"> xs </span><span class="pun">-&gt;</span><span class="pln"> repository</span><span class="pun">.</span><span class="pln">save</span><span class="pun">(</span><span class="pln">xs</span><span class="pun">);</span><span class="pln">
+
+input</span><span class="pun">.</span><span class="pln">parallelStream</span><span class="pun">()</span><span class="pln">
+     </span><span class="pun">.</span><span class="pln">map</span><span class="pun">(</span><span class="pln">i </span><span class="pun">-&gt;</span><span class="pln"> i </span><span class="pun">+</span><span class="pln"> </span><span class="lit">1</span><span class="pun">)</span><span class="pln">
+     </span><span class="pun">.</span><span class="pln">collect</span><span class="pun">(</span><span class="typ">StreamUtils</span><span class="pun">.</span><span class="pln">batchCollector</span><span class="pun">(</span><span class="pln">batchSize</span><span class="pun">,</span><span class="pln"> batchProcessor</span><span class="pun">));</span></code></pre>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/39063378/5052018" title="short permalink to this answer" class="short-link" id="link-post-39063378">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/39063378/edit" class="suggest-edit-post" title="revise and improve this post">edit</a><span class="lsep">|</span><a href="http://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream#" class="flag-post-link" title="flag this post for serious problems or moderator attention" data-postid="39063378">flag</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2016-08-21 10:51:36Z" class="relativetime">Aug 21 '16 at 10:51</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/2311919/rohitvats"><div class="gravatar-wrapper-32"><img src="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/d5f09e9e29d876529be6b0f90d8d86f1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/2311919/rohitvats">rohitvats</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">633</span><span title="3 silver badges"><span class="badge2"></span><span class="badgecount">3</span></span><span title="8 bronze badges"><span class="badge3"></span><span class="badgecount">8</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-39063378" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="true" data-cansee="false" data-comments-unavailable="false" data-addlink-disabled="false">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+				    <tfoot>
+					    <tr>
+						    <td></td>
+						    <td class="comment-form">
+							    <form id="add-comment-39063378" class="" data-placeholdertext="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."></form>
+						    </td>
+					    </tr>
+				    </tfoot>
+		    </table>
+	    </div>
+
+        <div id="comments-link-39063378">
+
+                <a class="js-add-link comments-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”." href="http://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream#">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="http://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+									<a name="new-answer"></a>
+						<form id="post-form" action="http://stackoverflow.com/questions/25408350/answer/submit" method="post" class="post-form">
+						    <input type="hidden" id="post-id" value="25408350">
+                            <input type="hidden" id="qualityBanWarningShown" name="qualityBanWarningShown" value="false">
+                            <input type="hidden" name="referrer" value="https://www.google.com.mx/">
+							<h2 class="space">Your Answer</h2>
+
+
+            <script>
+            StackExchange.ifUsing("editor", function () {
+                StackExchange.using("externalEditor", function () {
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.init();
+                    });
+                });
+            }, "code-snippets");
+        </script>
+    
+
+<script>
+    StackExchange.ready(function() {
+        initTagRenderer("".split(" "), "".split(" "));
+       
+        StackExchange.using("externalEditor", function() {
+                // Have to fire editor after snippets, if snippets enabled
+                if (StackExchange.settings.snippets.snippetsEnabled) {
+                    StackExchange.using("snippets", function() {
+                        createEditor();
+                    });
+                }
+                else {
+                    createEditor();
+                }
+            });
+
+            function createEditor() {
+                prepareEditor({
+                    heartbeatType: 'answer',
+                convertImagesToLinks: false,
+                reputationToPostImages: null,
+                bindNavPrevention: true,
+                postfix: "",
+                    onDemand: false,
+                    discardSelector: ".discard-answer"
+                    ,immediatelyShowMarkdownHelp:true
+                    });
+                
+
+        }
+    });  
+</script>
+
+
+<div id="post-editor" class="post-editor js-post-editor">
+
+    <div style="position: relative;">     
+        <div class="wmd-container">
+            <div id="wmd-button-bar" class="wmd-button-bar"><ul id="wmd-button-row" class="wmd-button-row"><li class="wmd-button" id="wmd-bold-button" title="Strong &lt;strong&gt; Ctrl+B" style="left: 0px;"><span style="background-position: 0px 0px;"></span></li><li class="wmd-button" id="wmd-italic-button" title="Emphasis &lt;em&gt; Ctrl+I" style="left: 25px;"><span style="background-position: -20px 0px;"></span></li><li class="wmd-spacer wmd-spacer1" id="wmd-spacer1"></li><li class="wmd-button" id="wmd-link-button" title="Hyperlink &lt;a&gt; Ctrl+L" style="left: 75px;"><span style="background-position: -40px 0px;"></span></li><li class="wmd-button" id="wmd-quote-button" title="Blockquote &lt;blockquote&gt; Ctrl+Q" style="left: 100px;"><span style="background-position: -60px 0px;"></span></li><li class="wmd-button" id="wmd-code-button" title="Code Sample &lt;pre&gt;&lt;code&gt; Ctrl+K" style="left: 125px;"><span style="background-position: -80px 0px;"></span></li><li class="wmd-button" id="wmd-image-button" title="Image &lt;img&gt; Ctrl+G" style="left: 150px;"><span style="background-position: -100px 0px;"></span></li><li class="wmd-button wmd-snippet-button" style="left:175px" id="wmd-snippet-button" title="JavaScript/HTML/CSS snippet Ctrl-M"><span style="background-image: url(&quot;/content/Shared/balsamiq/wmd-mockup-button.png&quot;);"></span></li><li class="wmd-spacer wmd-spacer2" id="wmd-spacer2" style="left: 220px;"></li><li class="wmd-button" id="wmd-olist-button" title="Numbered List &lt;ol&gt; Ctrl+O" style="left: 225px;"><span style="background-position: -120px 0px;"></span></li><li class="wmd-button" id="wmd-ulist-button" title="Bulleted List &lt;ul&gt; Ctrl+U" style="left: 250px;"><span style="background-position: -140px 0px;"></span></li><li class="wmd-button" id="wmd-heading-button" title="Heading &lt;h1&gt;/&lt;h2&gt; Ctrl+H" style="left: 275px;"><span style="background-position: -160px 0px;"></span></li><li class="wmd-button" id="wmd-hr-button" title="Horizontal Rule &lt;hr&gt; Ctrl+R" style="left: 300px;"><span style="background-position: -180px 0px;"></span></li><li class="wmd-spacer wmd-spacer3" id="wmd-spacer3" style="left: 346px;"></li><li class="wmd-button" id="wmd-undo-button" title="Undo - Ctrl+Z" style="left: 350px;"><span style="background-position: -200px -20px;"></span></li><li class="wmd-button" id="wmd-redo-button" title="Redo - Ctrl+Y" style="left: 375px;"><span style="background-position: -220px -20px;"></span></li><li class="wmd-button wmd-help-button active-help" id="wmd-help-button" title="Markdown Editing Help" style="right: 0px;"><span style="background-position: -240px 0px;"></span></li><div id="mdhelp" class="mdhelp" style="right: -13px; width: 660px; top: 41px;">
+    <ul id="mdhelp-tabs" class="mdhelp-tabs">
+        <li data-tab="mdhelp-links" data-buttons="link">Links</li>
+        <li data-tab="mdhelp-images" data-buttons="image">Images</li>
+        <li data-tab="mdhelp-styles" data-buttons="bold,italic,heading">Styling/Headers</li>
+        <li data-tab="mdhelp-lists" data-buttons="olist,ulist">Lists</li>
+        <li data-tab="mdhelp-blockquotes" data-buttons="quote">Blockquotes</li>
+        <li data-tab="mdhelp-code" data-buttons="code">Code</li>
+        <li data-tab="mdhelp-html"> HTML </li>
+        <li style="float:right"><a href="http://stackoverflow.com/editing-help" target="_blank">advanced help »</a></li>
+    </ul>
+    
+    <div class="mdhelp-tab" id="mdhelp-links">
+            <p>
+                In most cases, a plain URL will be recognized as such and automatically linked:
+            </p>
+            <pre>Visit http://area51.stackexchange.com/ regularly!
+Use angle brackets to force linking: Have you seen &lt;http://superuser.com&gt;?
+</pre>
+            <p>
+                To create fancier links, use Markdown:
+            </p>
+                <pre>Here's [a link](http://www.example.com/)! And a reference-style link to [a panda][1].
+References don't have to be [numbers][question].
+
+ [1]: http://notfound.stackexchange.com/
+ [question]: http://english.stackexchange.com/questions/11481
+</pre>
+                <p>You can add tooltips to links:</p>
+<pre>Click [here](http://diy.stackexchange.com<span class="spaces">&nbsp;</span>"this text appears when you mouse over")!
+This works with [reference links][blog] as well.
+
+ [blog]: http://blog.stackoverflow.com/<span class="spaces">&nbsp;</span>"click here for updates"
+</pre>
+    </div>
+
+    <div class="mdhelp-tab" id="mdhelp-images">
+        <p>Images are exactly like links, but they have an exclamation point in front of them:</p>
+        <pre>![a busy cat](https://cdn.sstatic.net/Sites/stackoverflow/img/error-lolcat-problemz.jpg)
+![two muppets][1]
+
+ [1]: http://i.imgur.com/I5DFV.jpg "tooltip"
+</pre>
+        <p>
+            The word in square brackets is the alt text, which gets displayed if the browser
+ can't show the image. Be sure to include meaningful alt text for screen-reading
+ software.
+        </p>
+   
+    </div>
+    <div class="mdhelp-tab" id="mdhelp-styles">
+        <div class="col1">
+            <p>Be sure to use text styling sparingly; only where it helps readability.</p>
+                <pre>*This is italicized*, and so
+is _this_.
+
+**This is bold**, just like __this__.
+
+You can ***combine*** them
+if you ___really have to___.
+</pre>
+        
+        </div>
+        <div class="col2">
+            <p>
+                To break your text into sections, you can use headers:
+            </p>
+                <pre>A Large Header
+==============
+
+Smaller Subheader
+-----------------
+</pre>
+            <p>
+                Use hash marks if you need several levels of headers:</p>
+    <pre># Header 1 #
+## Header 2 ##
+### Header 3 ###
+</pre>
+
+            
+        </div>
+
+    </div>
+    <div class="mdhelp-tab" id="mdhelp-lists">
+        <p>Both bulleted and numbered lists are possible:</p>
+        <div class="col1">
+<pre>-<span class="spaces">&nbsp;</span>Use a minus sign for a bullet
++<span class="spaces">&nbsp;</span>Or plus sign
+*<span class="spaces">&nbsp;</span>Or an asterisk
+
+1.<span class="spaces">&nbsp;</span>Numbered lists are easy
+2.<span class="spaces">&nbsp;</span>Markdown keeps track of
+ the numbers for you
+7.<span class="spaces">&nbsp;</span>So this will be item 3.
+</pre>
+        </div>
+        <div class="col2">
+<pre>1.<span class="spaces">&nbsp;</span>Lists in a list item:
+<span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</span>-<span class="spaces">&nbsp;</span>Indented four spaces.
+<span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>*<span class="spaces">&nbsp;</span>indented eight spaces.
+<span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</span>-<span class="spaces">&nbsp;</span>Four spaces again.
+2.<span class="spaces">&nbsp;&nbsp;</span>You can have multiple
+<span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</span>paragraphs in a list items.
+<span class="spaces">&nbsp;</span>
+<span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</span>Just be sure to indent.
+</pre>        
+        </div>
+    </div>
+
+    <div class="mdhelp-tab" id="mdhelp-blockquotes">
+        <div class="col1">
+            <pre>&gt; Create a blockquote by
+&gt; prepending “&gt;” to each line.
+&gt;
+&gt; Other formatting also works here, e.g.
+&gt;
+&gt; 1. Lists or
+&gt; 2. Headings:
+&gt;
+&gt; ## Quoted Heading ##
+</pre>
+        </div>
+        <div class="col2">
+                <p>
+                    You can even put blockquotes in blockquotes:
+                </p>
+                <pre>&gt; A standard blockquote is indented
+&gt; &gt; A nested blockquote is indented more
+&gt; &gt; &gt; &gt; You can nest to any depth.
+</pre>
+        </div>
+    </div>
+
+    <div class="mdhelp-tab" id="mdhelp-code">
+        <p>
+            To create code blocks or other preformatted text, indent by four spaces:
+        </p>
+        <pre><span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</span>This will be displayed in a monospaced font. The first four spaces
+<span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</span>will be stripped off, but all other whitespace will be preserved.
+<span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</span>Markdown and HTML are turned off in code blocks:
+<span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</span>&lt;i&gt;This is not italic&lt;/i&gt;, and [this is not a link](http://example.com)
+</pre>
+        <p>
+            To create not a block, but an inline code span, use backticks:
+        </p>
+        <pre>The `$` character is just a shortcut for `window.jQuery`.
+</pre>
+        <p>
+            If you want to have a preformatted block within a list, indent by eight spaces:
+        </p>
+        <pre>1. This is normal text.
+2. So is this, but now follows a code block:
+<span class="spaces">&nbsp;</span>
+<span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Skip a line and indent eight spaces.
+<span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>That's four spaces for the list
+<span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>and four to trigger the code block.
+</pre>
+    </div>
+
+    <div class="mdhelp-tab" id="mdhelp-html">
+        <p>
+            If you need to do something that Markdown can't handle, use HTML. Note that <a href="http://meta.stackexchange.com/questions/1777/what-html-tags-are-allowed" target="_blank">we only support a very strict subset of HTML!</a>
+        </p>
+        <pre>Strikethrough humor is &lt;strike&gt;funny&lt;/strike&gt;.
+</pre>
+        <p>
+            Markdown is smart enough not to mangle your span-level HTML:
+        </p>
+        <pre>&lt;b&gt;Markdown works *fine* in here.&lt;/b&gt;
+</pre>
+        <p>
+            Block-level HTML elements have a few restrictions:
+        </p>
+        <ol>
+            <li>They must be separated from surrounding text by blank lines.</li>
+            <li>The begin and end tags of the outermost block element must not be indented.</li>
+            <li>Markdown can't be used within HTML blocks.</li>
+        </ol>
+        <br>
+        <pre>&lt;pre&gt;
+ You can &lt;em&gt;not&lt;/em&gt; use Markdown in here.
+&lt;/pre&gt;
+</pre>
+    </div>
+
+    <div class="cbt"></div>
+</div></ul></div>
+            <div style="clear: both; height: 28px;"></div><textarea id="wmd-input" class="wmd-input processed" name="post-text" cols="92" rows="15" tabindex="101" data-min-length=""></textarea>
+        <div class="grippie" style="margin-right: 0px;"></div></div>
+    </div>
+
+    <div class="fl" style="margin-top: 8px; height:24px;">&nbsp;</div>
+    <div id="draft-saved" class="draft-saved community-option fl" style="margin-top: 8px; height:24px; display:none;">draft saved</div>
+
+    <div id="draft-discarded" class="draft-discarded community-option fl" style="margin-top: 8px; height:24px; display:none;">draft discarded</div>
+
+    <div class="community-option">
+        <input id="communitymode" name="communitymode" type="checkbox">
+        <label for="communitymode" title="Marking an answer community wiki encourages others to edit it by lowering the reputation barrier required to edit. However, you will not gain any upvote reputation from it. This cannot be undone.">community wiki</label>
+    </div>
+
+
+    <div id="wmd-preview" class="wmd-preview"></div>
+    <div></div>
+    <div class="edit-block">
+        <input id="fkey" name="fkey" type="hidden" value="80e3e7f927c3a47b372b1a58dcfc48e1">
+        <input id="author" name="author" type="text">
+    </div>
+
+
+
+</div>
+							<div style="position: relative;">
+								
+								
+							</div>
+           
+															<div class="form-submit cbt">
+									<input id="submit-button" type="submit" value="Post Your Answer" tabindex="110">
+									<a href="http://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream#" class="btn-clear discard-answer dno">discard</a>
+								</div>
+						</form>
+
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you're looking for?							Browse other questions tagged <a href="http://stackoverflow.com/questions/tagged/parallel-processing" class="post-tag" title="show questions tagged &#39;parallel-processing&#39;" rel="tag">parallel-processing</a> <a href="http://stackoverflow.com/questions/tagged/java-8" class="post-tag" title="show questions tagged &#39;java-8&#39;" rel="tag">java-8</a> <a href="http://stackoverflow.com/questions/tagged/java-stream" class="post-tag" title="show questions tagged &#39;java-stream&#39;" rel="tag">java-stream</a>  or <a href="http://stackoverflow.com/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tbody><tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2014-08-20 15:10:44Z"><b>2 years ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+			                        <b>5543 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="http://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream?lastactivity" class="lastactivity-link" title="2016-08-21 10:51:36Z">4 months ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </tbody></table>
+			    </div>
+			<div class="module community-bulletin" data-tracker="cb=1">
+    <div class="related">
+                <div class="bulletin-title">
+                    Featured on Meta
+                </div>
+                <hr>
+    <div class="spacer">
+        <div class="bulletin-item-type">
+                <a href="http://meta.stackexchange.com/questions/289398/if-youre-gonna-talk-politics-you-must-respect-those-who-disagree?cb=1" class="question-hyperlink">
+<div class="favicon favicon-stackexchangemeta" title="Meta Stack Exchange"></div>                </a>
+            </div>
+                <div class="bulletin-item-content">
+                    <a href="http://meta.stackexchange.com/questions/289398/if-youre-gonna-talk-politics-you-must-respect-those-who-disagree?cb=1" class="question-hyperlink">If you're gonna talk Politics, you must respect those who disagree</a>
+                </div>
+                <br class="cbt">
+            </div>
+    <div class="spacer">
+        <div class="bulletin-item-type">
+                <a href="http://meta.stackoverflow.com/questions/340960/a-post-mortem-on-the-recent-developer-story-information-leak?cb=1" class="question-hyperlink">
+<div class="favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>                </a>
+            </div>
+                <div class="bulletin-item-content">
+                    <a href="http://meta.stackoverflow.com/questions/340960/a-post-mortem-on-the-recent-developer-story-information-leak?cb=1" class="question-hyperlink">A Post-Mortem on the Recent Developer Story Information Leak</a>
+                </div>
+                <br class="cbt">
+            </div>
+                <div class="bulletin-title">
+                    Hot Meta Posts
+                </div>
+                <hr>
+    <div class="spacer">
+        <div class="bulletin-item-type">
+                <span title="Vote score (upvotes - downvotes)">13</span>
+            </div>
+                <div class="bulletin-item-content">
+                    <a href="http://meta.stackoverflow.com/questions/341124/how-should-self-answers-that-copy-another-answer-be-flagged?cb=1" class="question-hyperlink">How should self-answers that copy another answer be flagged?</a>
+                </div>
+                <br class="cbt">
+            </div>
+    <div class="spacer">
+        <div class="bulletin-item-type">
+                <span title="Vote score (upvotes - downvotes)">18</span>
+            </div>
+                <div class="bulletin-item-content">
+                    <a href="http://meta.stackoverflow.com/questions/341019/what-are-the-dynamics-of-the-stack-overflow-community?cb=1" class="question-hyperlink">What are the dynamics of the Stack Overflow community?</a>
+                </div>
+                <br class="cbt">
+            </div>
+    <div class="spacer">
+        <div class="bulletin-item-type">
+                <span title="Vote score (upvotes - downvotes)">5</span>
+            </div>
+                <div class="bulletin-item-content">
+                    <a href="http://meta.stackoverflow.com/questions/341130/what-about-all-these-long-forgotten-duplicates?cb=1" class="question-hyperlink">What about all these long-forgotten duplicates?</a>
+                </div>
+                <br class="cbt">
+            </div>
+    </div>
+</div>			
+			<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk877218293",[5,17,2221]).setZone(45); });
+            </script>
+            <div class="everyonelovesstackoverflow adzerk-vote" id="adzerk877218293"><iframe id="ados_frame_adzerk877218293_2660475" frameborder="0" scrolling="no" height="250" width="300" src="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/saved_resource(1).html"></iframe><div class="adzerk-vote-controls" style="display: none;"><div class="adzerk-vote-option adzerk-vote-up"><div class="adzerk-vote-icon"></div></div><div class="adzerk-vote-option adzerk-vote-down"><div class="adzerk-vote-icon"></div></div></div><div class="adzerk-vote-survey" style="display:none;"><form><span>No problem. We won't show you that ad again. Why didn't you like it?</span><ul><li><label><input type="radio" value="12" name="downvoteReason">Uninteresting</label></li><li><label><input type="radio" value="13" name="downvoteReason">Misleading</label></li><li><label><input type="radio" value="14" name="downvoteReason">Offensive</label></li><li><label><input type="radio" value="15" name="downvoteReason">Repetitive</label></li><li><label><input type="radio" value="16" name="downvoteReason">Other</label></li></ul><a href="http://stackoverflow.com/questions/25408350/is-there-a-good-way-to-extract-chunks-of-data-from-a-java-8-stream#" class="adzerk-vote-cancel">Oops! I didn't mean to do this.</a></form></div><img height="0px" width="0px" border="0" style="position:absolute;" src="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/i(2).gif"></div>
+            <div id="hireme"></div>
+        <script>
+window.clcfl_request = 'AuUtJ2hxONQIJKdjAF6zgwECAAAAAgAAAANXAAAAfHBhcmFsbGVsLXByb2Nlc3Npbmd8amF2YS04fGphdmEtc3RyZWFtfHgtdXNlci1yZWdpc3RlcmVkfHgtY3Jvc3Mtc2l0ZS1zZXJ2ZXJmYXVsdC5jb218AF0j5ZrVcZVBEno';
+;(function(n){var t,r,i;try{if(typeof[].indexOf!="function")return;if(window.attachEvent&&!window.addEventListener)return;if(n.allowed[0]!=="*"&&n.allowed.indexOf(location.hostname)===-1)return;t=window;t.clc=t.clc||{};r=t.clc_request||t.clcfl_request;r||console.warn("clc_request missing");t.clc.init=t.clc.init||[];t.clc.init.push(function(n){return n.load()});t.clc.options=n;i=document.createElement("script");i.async=!0;i.src=n.lib;document.body.appendChild(i)}catch(u){console.error("[clc] Error in loader:",u)}}).call(null, {"azw":true,"kt":2000,"tto":true,"autoload":true,"d":{"sb":["hireme","clc-sb"],"tlb":["careers1","clc-tlb"],"mlb":["careers3","clc-mlb"]},"allowed":["stackoverflow.com","serverfault.com","blog.codinghorror.com","talent.stackoverflow.com"],"h":"clc.stackoverflow.com","u":"//clc.stackoverflow.com/markup.js","lib":"//cdn.sstatic.net/clc/clc.min.js?v=1492847a8483"});        </script>
+			<div class="module" id="chat-feature">
+
+    <h4><a href="http://chat.stackoverflow.com/" id="h-chat-link" title="76 users active in 43 rooms the last 60 minutes">76 People Chatting</a></h4>
+    <div class="related" id="ad502-rooms"><div class="ad502-room"><h3 class="ad502-room-h3"><span class="ad502-room-title" title="JavaScript"><a href="http://chat.stackoverflow.com/rooms/17">JavaScript</a></span></h3><span title="2017-01-09 07:36:37Z" class="ad502-last-message">1 hour ago - <a href="http://chat.stackoverflow.com/users/2412895">KarelG</a></span><br><div class="ad502-users"><a href="http://chat.stackoverflow.com/users/2412895"><img height="23" width="23" title="KarelG: 1 hour ago" src="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/p3J02.jpg"></a><a href="http://chat.stackoverflow.com/users/893578"><img height="23" width="23" title="Sheepy: 1 hour ago" src="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/RdhGt.jpg"></a><a href="http://chat.stackoverflow.com/users/5936814"><img height="23" width="23" title="Flying Gambit: 2 hours ago" src="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/kXAuR.jpg"></a><a href="http://chat.stackoverflow.com/users/1947276"><img height="23" width="23" title="little pootis: 2 hours ago" src="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/F8tJi.jpg"></a><a href="http://chat.stackoverflow.com/users/957731"><img height="23" width="23" title="ivarni: 2 hours ago" src="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/tp9dK.jpg"></a><a href="http://chat.stackoverflow.com/users/560756"><img height="23" width="23" title="Mary Daisy Sanchez: 3 hours ago" src="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/FDyu2.jpg"></a><a href="http://chat.stackoverflow.com/users/4982809"><img height="23" width="23" title="Zhengquan Bai: 3 hours ago" src="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/Bk9SN.jpg"></a></div></div><div class="ad502-room"><h3 class="ad502-room-h3"><span class="ad502-room-title" title="PHP"><a href="http://chat.stackoverflow.com/rooms/11">PHP</a></span></h3><span title="2017-01-09 07:09:51Z" class="ad502-last-message">2 hours ago - <a href="http://chat.stackoverflow.com/users/2834339">Patrick</a></span><br><div class="ad502-users"><a href="http://chat.stackoverflow.com/users/1658631"><img height="23" width="23" title="Joe Watkins: 2 hours ago" src="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/T17OR.jpg"></a><a href="http://chat.stackoverflow.com/users/208809"><img height="23" width="23" title="Gordon: 2 hours ago" src="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/3eaa19bdd5f9f61fff5f7265734c6c09"></a><a href="http://chat.stackoverflow.com/users/560756"><img height="23" width="23" title="Mary Daisy Sanchez: 3 hours ago" src="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/FDyu2.jpg"></a><a href="http://chat.stackoverflow.com/users/2852427"><img height="23" width="23" title="Ekin: 4 hours ago" src="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/PReKY.jpg"></a><a href="http://chat.stackoverflow.com/users/3942918"><img height="23" width="23" title="Paul Crovella: 4 hours ago" src="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/Rup3Y.jpg"></a><a href="http://chat.stackoverflow.com/users/2439754"><img height="23" width="23" title="Trowski: 5 hours ago" src="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/ff52be277448d60987ee029864145638"></a><a href="http://chat.stackoverflow.com/users/5701450"><img height="23" width="23" title="Akshay: 5 hours ago" src="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/photo(1).jpg"></a></div></div></div>
+    <script>
+    // <!--
+        StackExchange.ready(
+        function () {
+            var options = {
+                chatUrl: 'http://chat.stackoverflow.com',
+                reloadUrl: '/api/recent-chat',
+                preloadData: {"activeUsers":76,"activeRooms":43,"rooms":[{"name":"JavaScript","id":17,"lastPost":1483947397,"posts":3763455,"users":[{"name":"KarelG","id":2412895,"emailhash":"!https://i.stack.imgur.com/p3J02.jpg?s=128\u0026g=1","lastPost":1483947397},{"name":"Sheepy","id":893578,"emailhash":"!https://i.stack.imgur.com/RdhGt.jpg?s=128\u0026g=1","lastPost":1483947240},{"name":"Flying Gambit","id":5936814,"emailhash":"!https://i.stack.imgur.com/kXAuR.jpg?s=128\u0026g=1","lastPost":1483946331},{"name":"little pootis","id":1947276,"emailhash":"!https://i.stack.imgur.com/F8tJi.jpg?s=128\u0026g=1","lastPost":1483946304},{"name":"ivarni","id":957731,"emailhash":"!https://i.stack.imgur.com/tp9dK.jpg?s=128\u0026g=1","lastPost":1483945747},{"name":"Mary Daisy Sanchez","id":560756,"emailhash":"!https://i.stack.imgur.com/FDyu2.jpg?s=128\u0026g=1","lastPost":1483942099},{"name":"Zhengquan Bai","id":4982809,"emailhash":"!https://i.stack.imgur.com/Bk9SN.jpg?s=128\u0026g=1","lastPost":1483941788}],"messages":[{"date":1483947397,"user":"KarelG","userid":2412895}],"singleImage":false,"tags":["ecmascript","ecmascript-6","javascript","nodejs","typescript"]},{"name":"PHP","id":11,"lastPost":1483945791,"posts":2611084,"users":[{"name":"Joe Watkins","id":1658631,"emailhash":"!https://i.stack.imgur.com/T17OR.jpg?s=128\u0026g=1","lastPost":1483945339},{"name":"Gordon","id":208809,"emailhash":"3eaa19bdd5f9f61fff5f7265734c6c09","lastPost":1483943727},{"name":"Mary Daisy Sanchez","id":560756,"emailhash":"!https://i.stack.imgur.com/FDyu2.jpg?s=128\u0026g=1","lastPost":1483939929},{"name":"Ekin","id":2852427,"emailhash":"!https://i.stack.imgur.com/PReKY.jpg?s=128\u0026g=1","lastPost":1483938413},{"name":"Paul Crovella","id":3942918,"emailhash":"!https://i.stack.imgur.com/Rup3Y.jpg?s=128\u0026g=1","lastPost":1483938387},{"name":"Trowski","id":2439754,"emailhash":"ff52be277448d60987ee029864145638","lastPost":1483935186},{"name":"Akshay","id":5701450,"emailhash":"!https://lh5.googleusercontent.com/-jWYEADh5ZSw/AAAAAAAAAAI/AAAAAAAAAk8/qpDeJ5qwDaY/photo.jpg?sz=128","lastPost":1483934241}],"messages":[{"date":1483945791,"user":"Patrick","userid":2834339}],"singleImage":false,"tags":["php"]}]} 
+            };
+
+            StackExchange.chatAd.init(options);
+        });
+    // -->
+    </script>
+
+</div>
+
+            <div class="module sidebar-linked">
+	<h4 id="h-linked">Linked</h4>
+	<div class="linked" data-tracker="lq=1">
+
+<div class="spacer">
+	<a href="http://stackoverflow.com/q/30641383?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">27</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/30641383/java-8-stream-with-batch-processing?noredirect=1&amp;lq=1" class="question-hyperlink">Java 8 Stream with batch processing</a>
+</div>
+<div class="spacer">
+	<a href="http://stackoverflow.com/q/31789279?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">6</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/31789279/how-can-one-find-an-item-after-the-match-using-streams?noredirect=1&amp;lq=1" class="question-hyperlink">How can one find an item after the match using streams?</a>
+</div>
+<div class="spacer">
+	<a href="http://stackoverflow.com/q/28510354?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">3</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/28510354/produce-a-stream-from-a-stream-and-an-element-java-8?noredirect=1&amp;lq=1" class="question-hyperlink">Produce a Stream from a Stream and an element, Java 8</a>
+</div>
+<div class="spacer">
+	<a href="http://stackoverflow.com/q/26463771?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">2</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/26463771/how-to-process-chuncks-of-a-file-with-java-util-stream?noredirect=1&amp;lq=1" class="question-hyperlink">How to process chuncks of a file with java.util.stream</a>
+</div>
+<div class="spacer">
+	<a href="http://stackoverflow.com/q/28430914?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">0</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/28430914/how-to-read-a-file-simultaneously-using-three-threads-in-java?noredirect=1&amp;lq=1" class="question-hyperlink">How to read a file simultaneously using three threads in java?</a>
+</div>
+<div class="spacer">
+	<a href="http://stackoverflow.com/q/41379056?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">1</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/41379056/how-to-iterate-over-every-n-elements-with-java?noredirect=1&amp;lq=1" class="question-hyperlink">How to iterate over every n elements with java?</a>
+</div>			</div>
+</div>
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/14830313?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted large">250</div></a><a href="http://stackoverflow.com/questions/14830313/retrieving-a-list-from-a-java-util-stream-stream-in-java-8?rq=1" class="question-hyperlink">Retrieving a List from a java.util.stream.Stream in Java 8</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/21163108?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes large">180</div></a><a href="http://stackoverflow.com/questions/21163108/custom-thread-pool-in-java-8-parallel-stream?rq=1" class="question-hyperlink">Custom thread pool in Java 8 parallel stream</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/22950642?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">12</div></a><a href="http://stackoverflow.com/questions/22950642/java-8-stream-api-why-the-distinction-between-sequential-and-parallel-execution?rq=1" class="question-hyperlink">Java 8 Stream api: why the distinction between sequential and parallel execution mode?</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/23079003?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted large">254</div></a><a href="http://stackoverflow.com/questions/23079003/how-to-convert-a-java-8-stream-to-an-array?rq=1" class="question-hyperlink">How to Convert a Java 8 Stream to an Array?</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/24411313?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">9</div></a><a href="http://stackoverflow.com/questions/24411313/parallelism-and-flatmap-in-java-8-streams?rq=1" class="question-hyperlink">Parallelism and Flatmap in Java 8 Streams</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/25896336?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">1</div></a><a href="http://stackoverflow.com/questions/25896336/java-8-stream-from-a-jpa-repository?rq=1" class="question-hyperlink">Java 8 stream from a JPA Repository</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/29709140?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">17</div></a><a href="http://stackoverflow.com/questions/29709140/why-parallel-stream-get-collected-sequentially-in-java-8?rq=1" class="question-hyperlink">Why parallel stream get collected sequentially in Java 8</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/34381805?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">12</div></a><a href="http://stackoverflow.com/questions/34381805/visualization-of-java-stream-parallelization?rq=1" class="question-hyperlink">Visualization of Java Stream parallelization</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/35189387?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">10</div></a><a href="http://stackoverflow.com/questions/35189387/parallel-processing-with-infinite-stream-in-java?rq=1" class="question-hyperlink">parallel processing with infinite stream in Java</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/40888550?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">1</div></a><a href="http://stackoverflow.com/questions/40888550/joining-two-java-streams?rq=1" class="question-hyperlink">Joining two java streams</a></div>
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="http://stackexchange.com/questions?tab=hot" class="js-gps-track" data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li>
+                <div class="favicon favicon-unix" title="Unix &amp; Linux Stack Exchange"></div><a href="http://unix.stackexchange.com/questions/335832/difference-between-if-else-and" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:106 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Difference between if else and &amp;&amp; ||
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-space" title="Space Exploration Stack Exchange"></div><a href="http://space.stackexchange.com/questions/19722/spatial-screwdriver" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:508 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Spatial screwdriver
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-security" title="Information Security Stack Exchange"></div><a href="http://security.stackexchange.com/questions/147222/is-it-a-security-vulnerability-if-the-addresses-of-university-students-are-expos" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:162 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is it a security vulnerability if the addresses of university students are exposed?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-diy" title="Home Improvement Stack Exchange"></div><a href="http://diy.stackexchange.com/questions/106106/what-is-this-metal-rail-in-the-basement-ceiling" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:73 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is this metal rail in the basement ceiling
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-tex" title="TeX - LaTeX Stack Exchange"></div><a href="http://tex.stackexchange.com/questions/347774/i-need-to-cite-a-classical-author" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:85 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    I need to cite a classical author
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-dba" title="Database Administrators Stack Exchange"></div><a href="http://dba.stackexchange.com/questions/160354/how-to-generate-a-1-2-3-3-2-1-1-2-3-3-2-1-series-in-standard-sql" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:182 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to generate a 1, 2, 3, 3, 2, 1, 1, 2, 3, 3, 2, 1, ... series in standard SQL or T-SQL?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-sharepoint" title="SharePoint Stack Exchange"></div><a href="http://sharepoint.stackexchange.com/questions/204478/active-directory-import-in-sharepoint-foundation-2013" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:232 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Active Directory Import in Sharepoint Foundation 2013
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-movies" title="Movies &amp; TV Stack Exchange"></div><a href="http://movies.stackexchange.com/questions/66476/who-ended-up-on-the-hood-of-the-serenity" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:367 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Who ended up on the hood of the Serenity?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/106079/detect-ms-windows" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Detect MS Windows
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/66747/why-would-two-species-of-predator-with-the-same-prey-cooperate" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why would two species of predator with the same prey cooperate?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-codereview" title="Code Review Stack Exchange"></div><a href="http://codereview.stackexchange.com/questions/152018/how-are-you-spending-your-time-on-the-computer" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:196 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    "How are you spending your time on the computer?"
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-money" title="Personal Finance &amp; Money Stack Exchange"></div><a href="http://money.stackexchange.com/questions/74489/boyfriend-is-coowner-with-sister-wants-to-move-out" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:93 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Boyfriend is coowner with sister, wants to move out
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-gis" title="Geographic Information Systems Stack Exchange"></div><a href="http://gis.stackexchange.com/questions/223754/georeferencing-map-with-known-central-lat-long-and-distances" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:79 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Georeferencing map with known Central Lat-long and distances?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/82651/what-are-the-benefits-of-an-oral-exam" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What are the benefits of an oral exam?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-travel" title="Travel Stack Exchange"></div><a href="http://travel.stackexchange.com/questions/85775/when-does-allegiant-air-add-flights" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:273 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    when does allegiant air add flights?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/2089817/what-is-the-point-of-studying-the-cardinality-of-infinite-sets" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is the point of studying the cardinality of infinite sets?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-superuser" title="Super User"></div><a href="http://superuser.com/questions/1162332/why-do-cds-and-dvds-fill-up-from-the-centre-outwards" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:3 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why do CDs and DVDs fill up from the centre outwards?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-softwareengineering" title="Software Engineering Stack Exchange"></div><a href="http://softwareengineering.stackexchange.com/questions/339495/at-what-point-is-brevity-no-longer-a-virtue" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:131 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    At what point is brevity no longer a virtue?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/106149/compute-the-median" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Compute the Median
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/105861/can-this-number-be-written-in-3x-1-format" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Can this number be written in (3^x) - 1 format?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-puzzling" title="Puzzling Stack Exchange"></div><a href="http://puzzling.stackexchange.com/questions/47718/question-16-ripple-effect" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:559 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Question 16 Ripple Effect
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-chemistry" title="Chemistry Stack Exchange"></div><a href="http://chemistry.stackexchange.com/questions/65865/why-do-shampoo-ingredient-labels-feature-the-term-aqua" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:431 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why do shampoo ingredient labels feature the term "Aqua"?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="http://rpg.stackexchange.com/questions/92839/can-you-take-a-short-rest-while-unconscious" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Can you take a short rest while unconscious?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/82869/is-it-rude-to-use-tracking-softwares-for-the-emails-that-you-send-to-potential-a" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is it rude to use tracking softwares for the emails that you send to potential advisors?
+                </a>
+
+            </li>
+    </ul>
+
+        
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="http://stackoverflow.com/feeds/question/25408350" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	<script>
+StackExchange.ready(function(){$.get('/posts/25408350/ivc/b0ba');});
+</script>
+<noscript>
+    &lt;div&gt;&lt;img src="/posts/25408350/ivc/b0ba" class="dno" alt="" width="0" height="0"&gt;&lt;/div&gt;
+</noscript><div style="display:none" id="prettify-lang">lang-java</div></div>
+
+    <script>
+        $('#wmd-input').one("keypress", function() {
+            $.ajax({
+                url: '/accounts/email-settings-form',
+                cache: false,
+                success: function(data) {
+                    $('#submit-button').parent().prepend(data);
+                }
+            });
+        });
+
+    </script>
+
+        </div>
+    </div><script async="" src="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/clc.min.js.download"></script>
+    <div id="footer" class="categories">
+        <div class="footerwrap">            
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                    <a href="http://stackoverflow.com/company/about">about us</a>
+                        <a href="http://stackoverflow.com/tour">tour</a>
+                    <a href="http://stackoverflow.com/help">help</a>
+                    <a href="http://stackoverflow.blog/?blb=1">blog</a>
+                        <a href="http://chat.stackoverflow.com/">chat</a>
+                    <a href="http://data.stackexchange.com/">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackoverflow.com/company/work-here">work here</a>
+                    <a href="https://www.stackoverflowbusiness.com/advertise">advertising info</a>
+
+                    <a onclick="StackExchange.switchMobile(&quot;on&quot;)">mobile</a>
+                    <b><a href="http://stackoverflow.com/contact">contact us</a></b>
+                        <b><a href="http://meta.stackoverflow.com/">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tbody><tr>
+            <th colspan="4">
+                Technology
+            </th>
+            <th colspan="2">
+                Life / Arts
+            </th>
+            <th colspan="2">
+                Culture / Recreation
+            </th>
+            <th colspan="2">
+                Science
+            </th>
+            <th>
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="http://stackoverflow.com/" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="http://serverfault.com/" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="http://superuser.com/" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="http://webapps.stackexchange.com/" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="http://askubuntu.com/" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="http://webmasters.stackexchange.com/" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="http://gamedev.stackexchange.com/" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="http://tex.stackexchange.com/" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://softwareengineering.stackexchange.com/" title="professionals, academics, and students working within the systems development life cycle who care about creating, delivering, and maintaining software responsibly">Software Engineering</a></li>
+                        <li><a href="http://unix.stackexchange.com/" title="users of Linux, FreeBSD and other Un*x-like operating systems">Unix &amp; Linux</a></li>
+                        <li><a href="http://apple.stackexchange.com/" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="http://wordpress.stackexchange.com/" title="WordPress developers and administrators">WordPress Development</a></li>
+                        <li><a href="http://gis.stackexchange.com/" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="http://electronics.stackexchange.com/" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="http://android.stackexchange.com/" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="http://security.stackexchange.com/" title="information security professionals">Information Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://dba.stackexchange.com/" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="http://drupal.stackexchange.com/" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="http://sharepoint.stackexchange.com/" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="http://ux.stackexchange.com/" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="http://mathematica.stackexchange.com/" title="users of Wolfram Mathematica">Mathematica</a></li>
+                        <li><a href="http://salesforce.stackexchange.com/" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                        <li><a href="http://expressionengine.stackexchange.com/" title="administrators, end users, developers and designers for ExpressionEngine® CMS">ExpressionEngine® Answers</a></li>
+                        <li><a href="http://crypto.stackexchange.com/" title="software developers, mathematicians and others interested in cryptography">Cryptography</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://codereview.stackexchange.com/" title="peer programmer code reviews">Code Review</a></li>
+                        <li><a href="http://magento.stackexchange.com/" title="users of the Magento e-Commerce platform">Magento</a></li>
+                        <li><a href="http://dsp.stackexchange.com/" title="practitioners of the art and science of signal, image and video processing">Signal Processing</a></li>
+                        <li><a href="http://raspberrypi.stackexchange.com/" title="users and developers of hardware and software for Raspberry Pi">Raspberry Pi</a></li>
+                        <li><a href="http://codegolf.stackexchange.com/" title="programming puzzle enthusiasts and code golfers">Programming Puzzles &amp; Code Golf</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (7)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://photo.stackexchange.com/" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="http://scifi.stackexchange.com/" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="http://graphicdesign.stackexchange.com/" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="http://movies.stackexchange.com/" title="movie and tv enthusiasts">Movies &amp; TV</a></li>
+                        <li><a href="http://music.stackexchange.com/" title="musicians, students, and enthusiasts">Music: Practice &amp; Theory</a></li>
+                        <li><a href="http://cooking.stackexchange.com/" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="http://diy.stackexchange.com/" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="http://money.stackexchange.com/" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://academia.stackexchange.com/" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (8)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://english.stackexchange.com/" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="http://skeptics.stackexchange.com/" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="http://judaism.stackexchange.com/" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="http://travel.stackexchange.com/" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="http://christianity.stackexchange.com/" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="http://ell.stackexchange.com/" title="speakers of other languages learning English">English Language Learners</a></li>
+                        <li><a href="http://japanese.stackexchange.com/" title="students, teachers, and linguists wanting to discuss the finer points of the Japanese language">Japanese Language</a></li>
+                        <li><a href="http://gaming.stackexchange.com/" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://bicycles.stackexchange.com/" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="http://rpg.stackexchange.com/" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                        <li><a href="http://anime.stackexchange.com/" title="anime and manga fans">Anime &amp; Manga</a></li>
+                        <li><a href="http://mechanics.stackexchange.com/" title="mechanics and DIY enthusiast owners of cars, trucks, and motorcycles">Motor Vehicle Maintenance &amp; Repair</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (17)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://mathoverflow.net/" title="professional mathematicians">MathOverflow</a></li>
+                        <li><a href="http://math.stackexchange.com/" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="http://stats.stackexchange.com/" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="http://cstheory.stackexchange.com/" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="http://physics.stackexchange.com/" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="http://chemistry.stackexchange.com/" title="scientists, academics, teachers and students">Chemistry</a></li>
+                        <li><a href="http://biology.stackexchange.com/" title="biology researchers, academics, and students">Biology</a></li>
+                        <li><a href="http://cs.stackexchange.com/" title="students, researchers and practitioners of computer science">Computer Science</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://philosophy.stackexchange.com/" title="those interested in the study of the fundamental nature of knowledge, reality, and existence">Philosophy</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (3)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://meta.stackexchange.com/" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="http://stackapps.com/" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="http://area51.stackexchange.com/" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="https://www.stackoverflowbusiness.com/talent">Stack Overflow Talent</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</tbody></table>
+                </div>
+            </div>
+            <div id="copyright">
+                site design / logo © 2017 Stack Exchange Inc; user contributions licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2017.1.7.24586
+            </div>
+                </div>
+    </div>
+    <noscript>
+        &lt;div id="noscript-warning"&gt;Stack Overflow works best with JavaScript enabled&lt;img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"&gt;&lt;/div&gt;
+    </noscript>
+
+<script>var p = "http", d = "static"; if (document.location.protocol == "https:") { p += "s"; d = "engine"; } var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = p + "://" + d + ".adzerk.net/ados.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+<script>
+    var ados = ados || {};
+    ados.run = ados.run || [];
+    
+    
+        
+        ados.run.push(function () {
+                setTimeout(function () { $("#adzerk-user-match").remove(); }, window.AUMIframeDone ? 0 : 2000);
+                ados_setKeywords('parallel-processing,java-8,java-stream,x-user-registered,x-cross-site-serverfault.com');; ados_load();
+        });   
+        
+</script>
+
+    <script>
+            (function(i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function() { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+            
+                ga('create', 'UA-5620270-1', {'userId': '6530852' });
+                
+        ga('create', 'UA-5620270-59', {'userId': '6530852' }, 'pageData');
+        
+                ga('set', 'dimension1', '6530852');                     ga('pageData.set', 'dimension1', '6530852');                 ga('set', 'dimension2', '|parallel-processing|java-8|java-stream|');                     ga('pageData.set', 'dimension2', '|parallel-processing|java-8|java-stream|');             ga('send', 'pageview');
+                ga('pageData.send', 'pageview');
+
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+                qc.async = true;
+                qc.src = (ssl ? 'https://secure' : 'http://edge') + '.quantserve.com/quant.js';
+                s.parentNode.insertBefore(qc, s);
+                _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+                            var sc=document.createElement('script');
+                sc.async=true;
+                sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+                s.parentNode.insertBefore(sc, s);
+                _comscore.push({ c1: "2", c2: "17440561" });
+        })();
+
+    </script>
+        
+    
+            <script type="text/javascript">
+                
+                (function(appendChild) {
+                    Node.prototype.appendChild = function() {
+                        var parent = this;
+                        var newNode = arguments[0];
+                        if (parent.nodeName === 'HEAD'
+                            && newNode
+                            && newNode.nodeName === 'SCRIPT'
+                            && newNode.src) {
+                            
+                            window.setTimeout(function() {
+                                var result = newNode.src.match(/^https:\/\/maps\.googleapis\.com\/maps\/api\/place\/js\/(\w+)Service\./i) || [];
+                                var service = result[1];
+                                if (service) {
+                                    if (service === 'Autocompletion') service =  2;
+                                    else if (service === 'Place') service = 1;
+                                    else service = 0;
+                                    StackExchange.using('gps', function() {
+                                        StackExchange.gps.track('google_maps_places_api.call', { service: service });
+                                    });
+                                }
+                            }, 0);
+                        }
+                        return appendChild.apply(this, arguments);
+                    };
+                })(Node.prototype.appendChild);
+            </script>
+    
+<img src="./parallel processing - Is there a good way to extract chunks of data from a java 8 stream_ - Stack Overflow_files/timeout.gif" style="display: none;"></body></html>

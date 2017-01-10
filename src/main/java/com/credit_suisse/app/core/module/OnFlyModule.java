@@ -2,6 +2,7 @@ package com.credit_suisse.app.core.module;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.OptionalDouble;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,27 +38,18 @@ public class OnFlyModule implements InstrumentCalculateBehavior {
 		return getSum();
 	}
 
-	public synchronized void refresh() {
-		double sum = 0;
-		int counter = 0;
-		
-		logger.debug("OnFlyModule Instruments: " + getInstruments().size());
-		
-		for (Instrument i : getInstruments()) {
-			sum += i.getPrice();
-			counter++;
-		}
-		if (sum == 0 && counter==0)
-			result = 0d;
-		result = (sum / counter);
-	}
-
 	private synchronized Double getAverage() {
+		logger.debug("OnFlyModule Instruments: " + getInstruments().size());
+		OptionalDouble average = getInstruments().stream().mapToDouble(o -> o.getPrice()).average();
+		return average.getAsDouble();
+	}
+	
+	private synchronized Double getAverage2() {
 		double sum = 0;
 		int counter = 0;
 		
 		logger.debug("OnFlyModule Instruments: " + getInstruments().size());
-
+		
 		for (Instrument i : getInstruments()) {
 			sum += i.getPrice();
 			counter++;
@@ -66,8 +58,14 @@ public class OnFlyModule implements InstrumentCalculateBehavior {
 			return 0d;
 		return (sum / counter);
 	}
-
+	
 	private synchronized Double getSum() {
+		logger.debug(CommonConstants.INSTRUMENT3 + " OnFlyModule Instruments: " + getInstruments().size());
+		double sum = instruments.stream().filter(o -> o.getPrice() >= 0).mapToDouble(Instrument::getPrice).sum();
+		return sum;
+	}
+	
+	private synchronized Double getSum2() {
 		double sum = 0;
 		int counter = 0;
 		

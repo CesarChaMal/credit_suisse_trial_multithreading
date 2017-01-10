@@ -34,22 +34,22 @@
         <appender-ref ref="FILE" />
     </logger>
 
-	<logger name="org.springframework.web.servlet" level="info" additivity="false">
+	<logger name="org.springframework.web.servlet" level="debug" additivity="false">
 		<appender-ref ref="STDOUT" />
 		<appender-ref ref="FILE" />
 	</logger>
 	
-	<logger name="org.springframework" level="info" additivity="false">
+	<logger name="org.springframework" level="debug" additivity="false">
 		<appender-ref ref="STDOUT" />
 		<appender-ref ref="FILE" />
 	</logger>
 	
-	<logger name="com.credit_suisse.app" level="info" additivity="false">
+	<logger name="com.credit_suisse.app" level="debug" additivity="false">
 		<appender-ref ref="STDOUT" />
 		<appender-ref ref="FILE" />
 	</logger>
 	 
-	<root level="info" additivity="false">
+	<root level="debug" additivity="false">
 		<appender-ref ref="STDOUT" />
 		<appender-ref ref="FILE" />
 	</root>

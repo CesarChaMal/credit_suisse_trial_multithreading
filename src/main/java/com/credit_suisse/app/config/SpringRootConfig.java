@@ -59,8 +59,9 @@ public class SpringRootConfig {
         return new Bootstrap();
     }
     
-    @Bean
+//    @Bean
     public TaskManager taskManager(InstrumentPriceModifierDao instrumentPriceModifierDao) {
+    	
         return new TaskManager(instrumentPriceModifierDao);
     }
     

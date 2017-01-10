@@ -1,0 +1,948 @@
+/* DEV PORTAL (JULY 21 2016)
+=================================================== */
+body.dev-portal .learn-support-products h2{
+  font-size: 67px;
+  font-weight: 300;
+}
+body.dev-portal .banner h1{
+  font-weight: 300;
+}
+
+
+
+#features-section h2:not(.section-hdr),
+#press-releases-section h2:not(.section-hdr){
+  font-size: 1.5em;
+}
+
+.jump-nav {background: #fff;}
+
+
+/* MARKETO FORM OVERRIDES (JULY 1 2016)
+=================================================== */
+blockquote .quote:after {
+    display: none;
+}
+body.dev-portal blockquote .quote:after {
+    content: "”";
+    display: inline;
+}
+
+#download_form .mktoForm input.mktoField[type='checkbox'],
+#download_form .mktoForm .mktoLogicalField.mktoCheckboxList {
+  border: none !important;
+}
+
+#download_form .mktoForm .mktoGutter {
+  display: none;
+}
+
+#download_form .mktoForm .mktoLogicalField.mktoCheckboxList.mktoHasWidth {
+  width: auto !important;
+  float: left;
+}
+
+#download_form .mktoForm .mktoLogicalField.mktoCheckboxList.mktoHasWidth input[type='checkbox'] {
+  width: auto !important;
+}
+
+#download_form .mktoForm label[for='Double_Opt_in_Compliant__c'] {
+  width: auto !important;
+  box-shadow: none;
+}
+
+#download_form .mktoForm label[for='Double_Opt_in_Compliant__c']:before {
+  background-color: transparent;
+  box-shadow: none !important;
+}
+
+#download_form .mktoForm label[for='Double_Opt_in_Compliant__c'].mktoLabel {
+  float: right;
+  width: 90% !important;
+  padding-bottom: 10px;
+}
+
+/* DEV PORTAL OVERRIDES (June 30 2016)
+=================================================== */
+.learn-support-sec.doc-list h3 a:hover,
+.learn-support-sec.doc-list h3 a:focus{
+	text-decoration:none;
+}
+
+
+@media (min-width: 750px){
+	.leadership-landing .textblock table tr > td:first-child img {
+	    width: 250px !important;
+	    max-width: 250px !important;
+	}
+}
+
+.hero-footer a:hover span, .hero-footer a:focus span{
+	text-decoration: none;
+}
+.hero-footer li:first-child a:hover, .hero-footer li:first-child a:focus{
+	text-decoration: underline;
+}
+.hero-footer li:first-child {
+	font-size: 23px !important;
+}
+.hero-footer span {
+	margin-bottom: 8px !important;
+}
+
+
+/* CHANNEL MANAGER OVERRIDES (May 4 2016) =================================================== */
+
+.channel-manager .toolbar-window {
+    overflow-x: auto !important;
+}
+
+/* DEV PORTAL FIX OVERRIDE (May 2 2016) =================================================== */
+
+@media only screen and (min-width : 800px) {
+	.section-nav {min-width: 218px;}
+	.section-nav > div.fixed{max-width: 218px;}
+}
+
+.learn-support-products .news > div{font-size:15px !important;}
+
+
+
+/* TEMPORARY QA TEST OVERRIDE (Apr 29 2016) =================================================== */
+ img {max-width: 100%;}
+ .anchor:hover,.anchor:focus {text-decoration:inherit !important;}
+
+/* PREVIOUS/NEXT NAV LINK OVERRIDE (Apr 25 2016) =================================================== */
+
+.article .h1-subheader{
+	display: block;
+	text-transform: uppercase;
+	color: #666;
+	font-family: 'Roboto Condensed',sans-serif;
+	padding: 10px 0 2px;
+}
+
+/* PREVIOUS/NEXT NAV LINK OVERRIDE (Feb 12 2016) =================================================== */
+
+body .article .utilities .prev-next,
+.footer .prev-next{
+	display: none !important;
+}
+
+/* CUSTOMER STORIES OVERRIDE (Feb 9 2016) =================================================== */
+
+.customer-stories.story section.banner{
+	position:relative;
+	background-size: cover;
+	background-position: top center;
+	background-color:#000;
+	padding:0;
+	overflow: auto;
+}
+.customer-stories.story section.banner:before{
+	display:block;
+	position:absolute;
+	content:" ";
+	top:0;
+	right:0;
+	left:0;
+	bottom:0;
+	background-color:rgba(0,0,0,.25);
+}
+.customer-stories.story section.banner .wrapper{
+	position:relative;
+	max-width: 900px;
+	z-index:1;
+	margin: 32px auto 40px;
+}
+.customer-stories.story section.banner h1:before{
+	content: "Customer Story";
+    display: block;
+    text-transform: uppercase;
+    padding-bottom: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1rem;
+}
+.customer-stories.story section.banner.dk-bg h1{
+	line-height: 1.15em;
+	text-shadow: 0 0 10px #000;
+	font-size: 36px;
+}
+@media (min-width: 50.1em) {
+	.customer-stories.story section.banner.dk-bg h1{
+		font-size: 59px;
+    	margin-bottom: .1em;
+	}
+}
+@media (min-width: 58em) {
+	.customer-stories.story section.banner{
+		background-size: 2000px auto;
+	}
+}
+
+/* GLOBAL NAV OVERRIDE (Jan 27 2016) =================================================== */
+
+body nav.aux ~ header .global-header__logo {
+    padding-top: 10px;
+}
+body .global-header__logo a:first-child {
+  background-size: cover;
+  display: block;
+  height: 29px !important;
+  width: 126px !important;
+}
+
+body .primary-navigation__item > a{
+  display: inline-block;
+  color: #000;
+  font-size: .95rem;
+}
+body .primary-navigation .secondary-navigation {
+	left: -12px;
+}
+body .secondary-navigation__item {
+    display: block;
+    margin-top: 0.25em;
+    font-size: .95rem;
+}
+
+
+@media (min-width: 51.01em){
+  body .primary-navigation .primary-navigation__item + .primary-navigation__item {
+      margin-left: 20px;
+  }
+  body .primary-navigation .has-secondary-navigation > a:after {
+      display: inline-block;
+      margin: -2px 0 0 4px;
+      width: 6px;
+      height: 4px;
+      background-size: 6px 4px;
+      content: "";
+      vertical-align: middle;
+  }
+  body .primary-navigation .has-secondary-navigation:hover > a {
+	    margin: -16px 0 -5px -12px;
+	    padding: 11px 11px 5px 11px;
+	}
+}
+@media (min-width: 51em) and (max-width: 67.99em) {
+	body .global-header__download-button {
+		bottom: 0;
+	}
+	body .global-header-search {
+		margin-right: 135px;
+	}
+}
+
+/* PRE-RELEASE OVERRIDE (Dec 3 2015) =================================================== */
+
+#membership-and-benefits img{
+  max-height: 350px;
+}
+#usecases h3 a:hover, #usecases h3 a:focus {
+    text-decoration: underline;
+}
+#usecases a:hover + h3, #usecases a:focus + h3{
+  text-decoration: underline;
+}
+
+.hp-tpl #comparisons .icon{
+  display:none;
+}
+.hp-tpl #comparisons h3{
+  font-size:30px;
+}
+#getting-started-accordion h3 + p{
+	margin-top:-15px;
+}
+.v2 div.section .vcard p{margin:0 !important;}
+body .atlwdg-trigger.atlwdg-SUBTLE{color:white !important;}
+/* Prevent bottom margin from being collapsed on buttonblocks */
+div.buttonblock:last-child, div.customer-grouping:last-child, div.pagination:last-child {
+    padding-bottom: 3em;
+    margin-bottom:0 !important;
+}
+
+div.page-nav a.selected{text-shadow:0 0  #000 !important;}
+@media only screen and (max-width: 50em) {
+	#trusted li {
+		display: block;
+	}
+}
+@media only screen and (min-width: 50em) {
+	#trusted li {
+		display: table-cell;
+	}
+}
+.card--actions a.action{
+	margin-bottom: 3px;
+    display: inline-block;
+}
+@media only screen and (max-width : 480px) {
+	.accordion-list-tpl section,
+	.accordion-list-tpl #getting-started-accordion .accordion-content{
+		padding-left:5px;
+		padding-right:5px;
+	}
+	section .cardset.apps h3.title {
+	    font-size: 15px;
+	}
+}
+main pre.codeblock{
+  width: 99%;
+}
+
+
+/* Download platform */
+table.downloads .platform-oracle .platform:before {
+  background-image: url("https://www.couchbase.com/binaries/content/gallery/website/logos/oracle-logo.gif");
+}
+
+/* Removing Caps from Customer Logos */
+.hp-customers h2{text-transform: inherit !important;}
+
+/* SSO release override */
+.sso-tpl select.classic:focus {
+  color:#fff;
+}
+.sso-tpl select.classic:focus {
+  color:#fff;
+}
+.sso-tpl option{
+  color: #fff;
+  background: #111;
+}
+#persistent-ctas{
+  position: relative;
+}
+#persistent-ctas-marker{
+  position: absolute;
+}
+.download-section,
+.product-note{
+    font-family:"Kievit OT", sans-serif !important;
+}
+.textblock,
+.textblock--centered {
+  margin: 4rem auto;
+  max-width: 52em;
+    padding: 0 1rem;
+}
+body main {
+    overflow: auto;
+}
+/* Dev portal release overrides */
+#products-section .section-hdr {
+    font-size: 30px;
+    padding-bottom: 45px;
+}
+.article .body pre.screen{
+	word-wrap: break-word;
+	padding:15px;
+	font-size: 12px;
+}
+img#topic12527__image_xpf_ksy_dt{width:100%;}
+img#topic12527__image_rhb_3sy_dt{width:100%;}
+div.p{
+	overflow:hidden;
+	outline:none;
+}
+.article .body ul p,
+.article .body ol p{
+	overflow:inherit;
+}
+/* Desktop: resolution smaller than 50em */
+@media only screen
+and (max-width : 1000px) {
+	.jump-nav ul.cols > li.col{display:inline-block;padding-bottom:0;}
+  .jump-nav a{padding: 12px 1.1em;}
+} /* end media */
+
+/* Desktop: resolution smaller than 50em */
+@media only screen
+and (min-width : 36em) and (max-width : 49.99em) {
+	.page-nav a, .jump-nav a{font-size:.9em;padding:.75em;border-left:0px;}
+	.page-nav li:last-child a, .jump-nav li:last-child a{border-right:0px;}
+} /* end media */
+
+/* Desktop: resolution smaller than 50em */
+@media only screen
+and (max-width : 35.99em) {
+	.page-nav, .jump-nav{display:none !important;}
+} /* end media */
+.products .cols > .col:only-child h2{font-weight:300 !important;}
+
+
+/* Styles that belong in overrides.css and should never be deleted. */
+
+/* Staging and production */
+.wire-notes{display:none !important;}
+
+
+.blog-content .cols{table-layout:fixed;}
+.blog-content pre{overflow:auto;border:1px solid #ddd;}
+.textblock__content ul { list-style-type: initial;}
+
+a[href="/#global-footer"] {
+   cursor:default;
+}
+a[href="/#global-footer"]:hover {
+   color:#ec1e2c;
+}
+
+/* Temporary styles until the next release */
+@media only screen and (max-width : 49.99em) {
+	.cols .col.one-third,
+	.cols .col.two-thirds{width:auto;}
+	.cols > .col:not(.section-nav),
+	.cols .col:not(.section-nav),
+	.cols > .row > .col{
+    	display: block !important;
+	}
+
+	#products-section .section-hdr {
+		text-align: center !important;
+	}
+}
+
+.primary-navigation__item {line-height: 1.5em;}
+.global-header__logo {
+	padding-top: 14px;
+}
+.secondary-navigation {width:14em !important;}
+.developer-portal-logo-grid__items{
+	padding:0;
+}
+
+
+.icon-link-grid__item.empty {
+	display:none;
+}
+
+.ctablock__wrapper .ctablock__content {
+  margin: 1.5em 0 !important;
+}
+.ctablock__content:only-child {margin:0 !important;padding:0;}
+.v2 .button, .v2 .button--blue{
+	font-size:14.25px;
+}
+
+.platform.platform--oracle:before {
+	background-position: 10px 0;
+	background-size: 70px 70px;
+}
+.download-table__cell .platform--oracle:before {
+	background-image: url("/binaries/content/gallery/website/logos/oracle-logo.gif");
+}
+
+.platform.platform--suse:before {
+	background-position: 0 20px;
+	background-size: 100% auto;
+}
+.download-table__cell .platform--suse:before {
+	background-image: url("/binaries/content/gallery/website/logos/suse-logo.png");
+}
+#global-header .layout-wrapper {padding:0;}
+
+.textblock__content ul.bullet {
+	display: block;
+	margin-bottom:10px;
+}
+
+
+/*
+Couchbase Live 2015 Promo Styles
+*/
+
+aside.couchbase-live{
+	background:#464646 !important;
+	text-shadow: 0px 0px 2px #000;
+}
+aside.couchbase-live .button{
+	font-weight:bold !important;
+	text-shadow: none;
+	box-shadow: 0 0 2px #666;
+}
+.cb-promo.black-white {
+  width: 100%;
+  color:#fff;
+  background-color: #212121;
+}
+.cb-promo .wrapper {
+  display:table;
+  width:100%;
+  max-width:1088px;
+  height: 161px;
+  margin:0 auto;
+  background-position:top right;
+  background-size:cover;
+}
+.cb-promo .content{
+  padding: 15px 20px;
+  display:table-cell;
+  vertical-align: middle;
+  background-position:top right;
+  background-size:cover;
+}
+aside.cb-promo h2 {
+  font-size:27px;
+  font-weight:400;
+  margin: 0 0 4px 0 !important;
+}
+aside.cb-promo p{
+  margin:0;
+  max-width:500px;
+  line-height:1.65em;
+}
+aside.cb-promo .button {
+  color:#000;
+  background-color:#00a4ed;
+  font-size: 11px;
+  padding: 6px 15px;
+  font-weight: normal;
+  text-transform: uppercase;
+  margin-left:0px;
+	text-decoration: none;
+}
+.cb-promo .content:not(:first-child){
+  border-left:1px solid #999;
+}
+.cb-promo.longer-left .content:first-child{
+  width:62%;
+  padding-right:7%;
+}
+.cb-promo.longer-left .content:not(:first-child){
+  border-left:0px;
+}
+.cb-promo.longer-left p{
+  max-width:800px;
+}
+@media only screen and (max-width : 900px) {
+	.cb-promo .content{
+		vertical-align: top;
+	}
+}
+@media only screen and (max-width : 800px) {
+	.cb-promo .content{
+		width:100% !important;
+		display:block;
+	}
+}
+
+.doc-section .css-cols {
+  -webkit-column-rule: 1px solid #eaeaea;
+  -moz-column-rule: 1px solid #eaeaea;
+  column-rule: 1px solid #eaeaea;
+}
+@media only screen and (min-width: 1088px) {
+  .doc-section .css-cols {
+    -moz-column-count: 4;
+    -webkit-column-count: 4;
+    column-count: 4;
+    overflow: hidden;
+    position: relative;
+    -webkit-column-gap: 40px;
+    -moz-column-gap: 40px;
+    column-gap: 40px;
+  }
+}
+.css-cols > div {
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+@media only screen and (min-width: 500px) {
+  .css-cols > div {
+    padding-bottom: 25px;
+  }
+}
+.learn-support-sec.doc-list h4 {
+  font-weight: bold !important;
+  display: block;
+  color: #3c3d3f;
+  font-size: 14px !important;
+  text-transform: uppercase;
+  line-height: 1.1em;
+  margin: 0 0 .25em 0;
+  padding: 0;
+  margin-bottom: 4px;
+  padding-bottom: 0px;
+  font-family: 'Roboto Condensed',sans-serif;
+}
+.css-cols ul {
+  padding-top: 10px;
+  margin-top: 0;
+  margin-left: 0;
+  padding-left: 0;
+  list-style-type: none;
+}
+.css-cols ul li {
+  margin-bottom: 10px;
+  line-height: 1.2em;
+}
+.css-cols ul li:last-child {
+  margin-bottom: 0px;
+}
+.css-cols ul li a {
+  color: #252525;
+}
+.css-cols ul li a:hover {
+  text-decoration: underline;
+}
+
+.snippets label,
+.snippets .label{
+  display:block;
+  text-transform: uppercase;
+  font-size: 12px;
+  margin:0 5px 5px 5px;
+}
+.snippets{
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start; /* horizontal align */
+  -webkit-align-items: flex-start;
+  align-items: flex-start; /* vertical align */
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.snippets .filter{
+  margin-bottom:20px;
+}
+.accordion-content .snippets{
+  padding-top:20px;
+}
+
+.snippets nav {
+  display: none;
+}
+
+.snippets nav.active {
+  display: block;
+}
+
+.snippets nav label{
+  display:block;
+}
+.snippets nav > ul > li{
+  border-top:1px solid #fff;
+}
+.snippets nav > ul > li > a{
+  padding:.5em;
+  font-size:16px;
+}
+.snippets nav a{
+  color:#222;
+  background-color:#eaeaea;
+  display:block;
+  font-size:14px;
+  padding:.25em .5em .25em 25px;
+  position:relative;
+}
+.snippets nav li:last-child a{
+  padding-bottom:.75em;
+}
+.snippets nav > ul > li > a:before {
+  display: none;
+  content: "";
+  position: absolute;
+  width: 7px;
+  height: 9px;
+  z-index: 1;
+  background-image: url('https://www.couchbase.com/binaries/content/gallery/couchbase-developer-portal/icons/accordion-closed.png');
+  background-repeat: no-repeat;
+  background-size: 7px 9px;
+  -webkit-transition: -webkit-transform 0.4s ease-out;
+  -moz-transition: -moz-transform 0.4s ease-out;
+  transition: transform 0.4s ease-out;
+  left: 10px;
+  top: 16px;
+}
+.snippets nav > ul > li > a.expanded:before {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+.snippets .content {
+  display: none;
+}
+
+.snippets .content.active {
+  display: block;
+  flex: 1;
+  width:100%;
+}
+
+.snippets .content h3{
+  font-size: 20px;
+}
+
+@media only screen and (min-width : 800px) {
+  .snippets{
+  	-webkit-flex-direction: row;
+  	flex-direction: row;
+  }
+  .snippets > div.nav{
+    margin-right:30px;
+  }
+ .snippets .content.active {
+	  width:auto;
+  }
+}
+
+.serq {
+  text-align: center;
+  border-top: 1px solid #E1E4E6;
+  border-bottom: 1px solid #E1E4E6;
+  background: #F3F7F9;
+}
+
+.serq h2 {
+  padding-top: 33px !important;
+  padding-bottom: 36px !important;
+}
+
+.serq ul {
+  overflow: auto;
+  border-bottom: 1px solid #CACED0;
+}
+
+.serq ul a {
+  display: block;
+  position: relative;
+  float: left;
+  width: 20%;
+  padding-bottom: 35px;
+  text-align: center;
+  color: #22292c;
+  font-size: 24px;
+}
+
+@media screen and (max-width: 799px) {
+  .serq ul a {
+    margin-left: 16px;
+    padding-bottom: 15px;
+    font-size: 16px;
+    width: auto;
+    text-align: left;
+  }
+  .serq ul li:first-child a {
+    margin-left: 0;
+  }
+}
+
+.serq ul img {
+  display: block;
+  width: auto;
+  height: 125px;
+  margin: 0 auto 16px auto;
+}
+
+@media screen and (max-width: 799px) {
+  .serq ul img {
+    display: none;
+  }
+}
+
+.serq ul a:hover:after {
+  display: block;
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  margin-left: -32px;
+  width: 65px;
+  height: 8px;
+  background: #ccc;
+}
+
+@media screen and (max-width: 799px) {
+  .serq ul a:hover:after {
+    left: 0;
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+.serq ul a.active:after, .serq ul a.active:hover:after {
+  display: block;
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  margin-left: -32px;
+  width: 65px;
+  height: 8px;
+  background: #CB0007;
+}
+
+@media screen and (max-width: 799px) {
+  .serq ul a.active:after, .serq ul a.active:hover:after {
+    left: 0;
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+.serq .tab-content {
+  overflow: auto;
+  margin-top: 20px;
+  border: none;
+  display: none;
+}
+
+.serq .tab-content.active {
+  display: block;
+}
+
+.serq .col-left {
+  float: left;
+  width: 66%;
+  padding-right: 20px;
+  text-align: left;
+}
+
+@media screen and (max-width: 799px) {
+  .serq .col-left {
+    float: none;
+    width: 100%;
+    padding-right: 0;
+  }
+}
+
+.serq .col-right {
+  float: right;
+  width: 33%;
+  text-align: left;
+}
+
+@media screen and (max-width: 799px) {
+  .serq .col-right {
+    float: none;
+    width: 100%;
+  }
+}
+
+.serq .code {
+  margin-top: 22px;
+  border: 1px solid #000;
+  border-radius: 5px 5px 0 0;
+}
+
+.serq .code h4 {
+  padding: .35rem;
+  border-bottom: 1px solid #000;
+  font-size: .9rem;
+  text-transform: uppercase;
+  margin-bottom: 0;
+}
+
+.serq .code pre {
+  background: transparent;
+  overflow-x: auto;
+  margin-right: -1800px;
+  border-top: 1px solid #000;
+  border-top: 0;
+  margin-top: 0;
+  min-height: 130px;
+  font-size: .9rem;
+  margin-bottom: 0;
+  outline: 0;
+  width: 99.9%;
+}
+
+.serq code {
+  margin: 0;
+  line-height: 1.2em;
+  font-family: Consolas, Monaco, 'Andale Mono', monospace;
+  position: relative;
+}
+
+.serq .buttons {
+  clear: both;
+  padding: 30px 0;
+}
+
+#features-section .col-left, #features-section .col-right {
+  width: 50%;
+  float: left;
+}
+@media screen and (max-width: 799px) {
+  #features-section .col-left, #features-section .col-right {
+    width: 100%;
+    float: none;
+  }
+  #features-section .cols.icons {
+    -webkit-column-count: 1 !important;
+    -moz-column-count: 1 !important;
+    column-count: 1 !important;
+  }
+  #features-section .center {
+    text-align: left;
+  }
+}
+.instance-content > div:not(:last-child){
+  -webkit-order: 2;
+  order:2;
+}
+@media only screen and (min-width : 1024px) {
+  .flex-cols.video-right-rail .col{-webkit-flex:1;flex:1;}
+  .flex-cols.video-right-rail .col:first-child{-webkit-flex:1.25;flex:1.25;}
+}
+@media only screen and (max-width : 1023px) {
+  .flex-cols.video-right-rail{
+    -webkit-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+#products-section .wrapper > h2 {
+  padding-bottom: 0;
+}
+
+#trusted {
+  background: #333;
+}
+
+@media screen and (min-width: 800px) {
+  .partners-sec section.list .col {
+    width: 50%;
+    padding: 60px 10px;
+  }
+
+  .partners-sec.become-a-partner section.list .col {
+    width: 33%;
+  }
+
+	.flex-cols > .col{
+    	min-width:0;
+	}
+
+}
+
+/* Styles that belong in overrides.css and should never be deleted. */
+
+/* Staging and production */
+.wire-notes{display:none !important;}
+
+
+.blog-content .cols{table-layout:fixed;}
+.blog-content pre{overflow:auto;border:1px solid #ddd;}
+a[href="/#global-footer"] {
+   cursor:default;
+}
+a[href="/#global-footer"]:hover {
+   color:#ec1e2c;
+}
+@media only screen and (max-width: 49.99em){
+	main .section-hdr {
+    	text-align: center !important;
+    }
+}

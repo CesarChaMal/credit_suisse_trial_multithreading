@@ -7,6 +7,10 @@ public class CalculatorEngineManager implements CalculatorEngineStrategy {
 
 	private CalculatorEngineStrategy strategy;
 	
+	public CalculatorEngineStrategy getStrategy() {
+		return strategy;
+	}
+
 	public void setStrategy(CalculatorEngineStrategy strategy){
 		this.strategy = strategy;
 	}

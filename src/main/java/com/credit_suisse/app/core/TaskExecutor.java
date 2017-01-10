@@ -1,5 +1,7 @@
 package com.credit_suisse.app.core;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.Map.Entry;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -62,15 +64,14 @@ public class TaskExecutor implements Runnable {
 
 	}
 
-	public void updateModifiers() {
+	public synchronized void updateModifiers() {
 		String name = "";
 		double multiplier = 0;
+		NumberFormat formatter = new DecimalFormat("#0.00000");     
 		for (int i = 1; i <= CommonConstants.INSTRUMENTS_COUNT; i++) {
 			name = "INSTRUMENT" + i;
-//						multiplier = (int) ((Math.random()*100) % 10) + 1;
-//						multiplier = ((Math.random()*100) % 10) + 1;
 			if(CommonConstants.MODIFIER_DOUBLE)
-				multiplier = InstrumentUtil.generateRandomNumberDouble(CommonConstants.MODIFIER_MIN, CommonConstants.MODIFIER_MAX);
+				multiplier = Double.parseDouble(formatter.format(InstrumentUtil.generateRandomNumberDouble(CommonConstants.MODIFIER_MIN, CommonConstants.MODIFIER_MAX)));
 			else
 				multiplier = InstrumentUtil.generateRandomNumberInteger(CommonConstants.MODIFIER_MIN, CommonConstants.MODIFIER_MAX);
 			instrumentPriceModifierDao.setMultiplier(name, multiplier);

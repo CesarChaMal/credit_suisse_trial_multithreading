@@ -2,7 +2,9 @@ package com.credit_suisse.app.core.module;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.OptionalDouble;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,12 +48,27 @@ public class AverageNewsInstrumentsModule implements InstrumentCalculateBehavior
 	}
 
 	private synchronized Double getSum() {
+		logger.debug(instrument + " AverageNewstInstrumentsModule Instruments: " + getInstruments().size());
+		
+//		List<Instrument> instruments = getInstruments();
+//		Collections.sort(instruments);
+//		double sum = instruments.stream().filter(o -> o.getPrice() >= 0).limit(3).mapToDouble(Instrument::getPrice).sum();
+		
+//	    Comparator<Instrument> byDate = (i1, i2) -> Long.compare(i1.getDate().getTime(), i2.getDate().getTime());
+//	    Comparator<Instrument> byDate = (i1, i2) -> Long.compare(i2.getDate().getTime(), i1.getDate().getTime());
+//		double sum = getInstruments().stream().sorted(byDate).filter(o -> o.getPrice() >= 0).limit(3).mapToDouble(Instrument::getPrice).sum();
+
+		double sum = getInstruments().stream().sorted().filter(o -> o.getPrice() >= 0).limit(CommonConstants.NEWST).mapToDouble(Instrument::getPrice).sum();
+		return sum;
+	}
+	
+	private synchronized Double getSum2() {
 		double sum = 0;
 		int counter = 0;
 		int limit = CommonConstants.NEWST;
 		
 		logger.debug(instrument + " AverageNewstInstrumentsModule Instruments: " + getInstruments().size());
-
+		
 		List<Instrument> instruments = getInstruments();
 		Collections.sort(instruments);
 		

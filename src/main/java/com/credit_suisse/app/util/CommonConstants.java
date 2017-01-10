@@ -26,4 +26,5 @@ public class CommonConstants {
 	public static int MODIFIER_MAX = 10;
 	public static boolean MODIFIER_DOUBLE = true;
 	public static boolean MODIFIERS = true;
+	public static int BATCH_SIZE = 100;
 }

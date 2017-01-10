@@ -67,10 +67,7 @@ public class Bootstrap implements InitializingBean, ApplicationContextAware, App
     private String workerProfile;
     
     @Value("${InputFile}")
-    private String inputFile;
-    
-    @Value("${Log}")
-    private String log;
+    private String input_file;
     
     @Value("${Instruments_Count}")
     private int instruments_count;
@@ -90,6 +87,9 @@ public class Bootstrap implements InitializingBean, ApplicationContextAware, App
     @Value("${Modifiers}")
     private boolean modifiers;
     
+    @Value("${Batch_Size}")
+    private int batch_size;
+    
     public Bootstrap() { }
     
     public void afterPropertiesSet() throws Exception {
@@ -104,13 +104,14 @@ public class Bootstrap implements InitializingBean, ApplicationContextAware, App
         CommonConstants.THREAD_POOL_SIZE = threadPoolSize;
         CommonConstants.MAX_THREADS = maxThreads;
         CommonConstants.WORKER_PROFILE = workerProfile;
-        CommonConstants.INPUT_FILE = inputFile;
+        CommonConstants.INPUT_FILE = input_file;
         CommonConstants.INSTRUMENTS_COUNT = instruments_count;
         CommonConstants.NEWST = newst;
 		CommonConstants.MODIFIER_MIN = modifier_min;
         CommonConstants.MODIFIER_MAX = modifier_max;
         CommonConstants.MODIFIER_DOUBLE = modifier_double;
         CommonConstants.MODIFIERS = modifiers;
+        CommonConstants.BATCH_SIZE = batch_size;
         
     }
 

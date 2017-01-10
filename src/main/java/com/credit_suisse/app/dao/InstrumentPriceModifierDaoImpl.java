@@ -102,7 +102,7 @@ public class InstrumentPriceModifierDaoImpl implements InstrumentPriceModifierDa
         int status = namedParameterJdbcTemplate.update(sql, params);	
         
         if(status != 0){
-            logger.info("Multiplier data updated for Instrument " + params.get("name") + " with value: "+ params.get("multiplier"));
+            logger.debug("Multiplier data updated for Instrument " + params.get("name") + " with value: "+ params.get("multiplier"));
         } else {
         	logger.debug("No instrument found with name " + params.get("name"));
         }	
