@@ -9,7 +9,7 @@
 
 	<properties>
 		<jdk.version>1.8</jdk.version>
-		<spring.version>4.1.6.RELEASE</spring.version>
+		<spring.version>5.2.2.RELEASE</spring.version>
 		<hsqldb.version>2.3.2</hsqldb.version>
 		<h2.version>1.4.187</h2.version>
 		<derby.version>10.11.1.1</derby.version>
