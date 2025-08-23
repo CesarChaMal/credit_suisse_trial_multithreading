@@ -34,7 +34,8 @@ public class ProcessingFileTest {
 
 		INSTRUMENTS.put(INSTRUMENT, new ArrayList<Instrument>());
 
-		InputStream is = ProcessingFileTest.class.getResourceAsStream("src/main/resources/input.txt");
+		// Load from classpath instead of a source path
+		InputStream is = ProcessingFileTest.class.getClassLoader().getResourceAsStream("input.txt");
 		BufferedReader br = new BufferedReader(new InputStreamReader(is));
 		String line;
 		AverageModule averageModule = new AverageModule();
@@ -73,8 +74,8 @@ public class ProcessingFileTest {
 		INSTRUMENTS.put(INSTRUMENT, new ArrayList<Instrument>());
 		AverageModule averageModule = new AverageModule();
 		
-    	try (Stream<String> stream = Files.lines(Paths.get("src/main/resources/huge_input.txt"))) {
-    		
+    	try (Stream<String> stream = Files.lines(Paths.get("src/main/resources/input.txt"))) {
+
     		Stream<List<String>> partitioned = PartitioningSpliterator.partition(stream, 100, 1);
     		partitioned.forEach(chunk -> {
 					chunk.stream()

@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.credit_suisse.app</groupId>
-	<artifactId>credit_suisse_trial</artifactId>
+	<artifactId>credit_suisse_trial_multithreading</artifactId>
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
 	<name>Credit Suisse Trial</name>
@@ -22,7 +22,6 @@
 	</properties>
 
 	<dependencies>
-
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -121,7 +120,20 @@
 			<version>${servletapi.version}</version>
 			<scope>provided</scope>
 		</dependency>
-		
+
+        <!-- RxJava -->
+        <dependency>
+            <groupId>io.reactivex</groupId>
+            <artifactId>rxjava</artifactId>
+            <version>1.3.8</version>
+        </dependency>
+
+		<!-- Javax Annotations (for @PostConstruct on JDK 9+) -->
+		<dependency>
+			<groupId>javax.annotation</groupId>
+			<artifactId>javax.annotation-api</artifactId>
+			<version>1.3.2</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -164,6 +176,13 @@
 				</configuration>
 			</plugin>
 
+			<!-- Use a modern WAR plugin compatible with recent JDKs -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.4.0</version>
+			</plugin>
+
 		</plugins>
 		<sourceDirectory>src</sourceDirectory>
 		<resources>
@@ -172,6 +191,20 @@
 				<excludes>
 					<exclude>**/*.java</exclude>
 				</excludes>
+			</resource>
+			<!-- Include legacy resources directory used by this project -->
+			<resource>
+				<directory>src/resources</directory>
+				<includes>
+					<include>**/*</include>
+				</includes>
+			</resource>
+			<!-- Also include the conventional Maven resources directory (harmless if empty) -->
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*</include>
+				</includes>
 			</resource>
 		</resources>
 	</build>

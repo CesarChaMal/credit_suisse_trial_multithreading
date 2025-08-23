@@ -4,31 +4,49 @@
 # command line runner for the Credit Suisse Trial app
 #
 
+# Initialize SDKMAN
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
+
+sdk use java 8.0.462.fx-zulu
+
 function cleanup() {
-#    kill ${SERVER_PID} ${CLIENT_PID}
-    kill -9 ${SERVER_PID}
+    if [ ! -z "$SERVER_PID" ]; then
+        echo "Stopping server (PID: $SERVER_PID)..."
+        kill -9 ${SERVER_PID} 2>/dev/null
+    fi
 }
 
 trap cleanup EXIT
 
-# mvn -DskipTests compile
-mvn compile test
+echo "Building and testing..."
+mvn compile test -q
 
-mvn jetty:run & SERVER_PID=$!
+echo "Starting Jetty server..."
+mvn jetty:run -q & SERVER_PID=$!
 
-while ! nc localhost 8080 > /dev/null 2>&1 < /dev/null; do
-    echo "$(date) - waiting for server at localhost:8080..."
-	#echo "$SERVER_PID"
-    sleep 1  
+echo "Waiting for server to start..."
+WAIT_COUNT=0
+while ! nc -z localhost 8080 > /dev/null 2>&1; do
+    if [ $WAIT_COUNT -eq 0 ]; then
+        echo -n "Starting"
+    fi
+    echo -n "."
+    sleep 2
+    WAIT_COUNT=$((WAIT_COUNT + 1))
+    if [ $WAIT_COUNT -gt 30 ]; then
+        echo "\nServer failed to start after 60 seconds. Exiting."
+        exit 1
+    fi
 done
 
-COUNTER=0
-while [  $COUNTER -lt 10 ]; do
-	curl -i -X GET -H Accept:application/json "http://localhost:8080/credit_suisse_trial/"
-	sleep 5  
-	let COUNTER=COUNTER+1
-	echo The counter is $COUNTER
-done
-#curl -i -X GET -H Accept:application/json "http://localhost:8080/credit_suisse_trial/"
-#CLIENT_PID=$!
-cleanup
+echo "\nServer started! Testing endpoint..."
+curl -s "http://localhost:8080/credit_suisse_trial/" > /dev/null
+if [ $? -eq 0 ]; then
+    echo "✓ Application is running at: http://localhost:8080/credit_suisse_trial/"
+    echo "Press Ctrl+C to stop the server"
+    wait $SERVER_PID
+else
+    echo "✗ Failed to connect to application"
+    exit 1
+fi
