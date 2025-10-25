@@ -1,73 +1,64 @@
-Credit Suisse Trial to get a job in Poland
-===============================
-###1. Technologies used
+# Credit Suisse Trial to get a job in Poland
+
+## 1. Technologies Used
 * Maven 3.0
 * Spring 4.1.6.RELEASE
 * Spring MVC 4.1.6.RELEASE
 * H2 1.4.187
 
-###2. To Run this project locally
+## 2. To Run This Project Locally
 ```shell
 $ mvn jetty:run
 ```
 
-###3. app.properties provided for configuration
+## 3. Configuration (app.properties)
 
-####To activate o deactive calculation engine 
-Manager_Startup=true
-####To activate o deactive the price modifier worker  
-Worker_Startup=true
-####Time in miliseconds for the calculation engine to compute the instruments prices 
-RefreshMillis=3600000
-####Time in miliseconds for the price modifier worker to update prices 
-SleepMillis=5000
-####Number of threads for the calculation engine 
-MaxThreads=1
-####Number of threads for the workers 
-ThreadPoolSize=10
-####Name for the worker 
-WorkerProfile=Instrument-2
-####Name for the input file of the instruments 
-InputFile=src/main/resources/input.txt
-####Max number of instruments allowed  
-Instruments_Count=10
-####Max number of lastest instruments to sum this only for the instruments type 3  
-Newst=10
-####To Activate or deactivate modifiers  
-Modifiers=true
-####Initial range of the modifiers generated for the price modifier worker  
-Modifier_Min=1
-####Final range of the modifiers generated for the price modifier worker  
-Modifier_Max=10
-####To enable the price modifier worker generate random doubles otherwise worker generate random integers
-Modifier_Double=true
+### Calculation Engine Settings
+- **Manager_Startup**: `true` - To activate or deactivate calculation engine
+- **RefreshMillis**: `3600000` - Time in milliseconds for the calculation engine to compute instrument prices
+- **MaxThreads**: `1` - Number of threads for the calculation engine
 
+### Price Modifier Worker Settings
+- **Worker_Startup**: `true` - To activate or deactivate the price modifier worker
+- **SleepMillis**: `5000` - Time in milliseconds for the price modifier worker to update prices
+- **ThreadPoolSize**: `10` - Number of threads for the workers
+- **WorkerProfile**: `Instrument-2` - Name for the worker
 
-####It can be use this class to generate test cases  
+### Data Settings
+- **InputFile**: `src/main/resources/input.txt` - Name for the input file of the instruments
+- **Instruments_Count**: `10` - Max number of instruments allowed
+- **Newst**: `10` - Max number of latest instruments to sum (only for instruments type 3)
 
+### Modifier Settings
+- **Modifiers**: `true` - To activate or deactivate modifiers
+- **Modifier_Min**: `1` - Initial range of the modifiers generated for the price modifier worker
+- **Modifier_Max**: `10` - Final range of the modifiers generated for the price modifier worker
+- **Modifier_Double**: `true` - Enable random doubles, otherwise generate random integers
+
+## 4. Test Case Generator
+Use this class to generate test cases:
+```
 com.credit_suisse.app.execs.InstrumentFileGenerator
+```
 
+## 5. Design Patterns Used
+- Static Factory
+- Singleton
+- Strategy
+- Builder
+- Dependency Injection
+- DAO
+- DTO
+- Iterator
+- Decorator
+- Command
 
-####Design Patterns used
-
-Static Factory
-Singleton
-Strategy
-Builder
-Dependency Injection
-Dao
-Dto
-Iterator
-Decorator
-Command
-
-####OOO Principles applied
-
-Single-responsiblity principle (All the classes should follow this principle as an example TaskManager class)
-Open-closed principle (Static Factory added for CalculatorEngine to not violate this principle)
-Liskov substitution principle (Decorator, Strategy, Composite for example used for the Instrument class)
-Interface segregation principle (Any of the calculations modules classes)
-Dependency Inversion Principle (Dependency Injection and Strategy for example used in CalculatorEngineManager class)
+## 6. OOP Principles Applied
+- **Single Responsibility Principle**: All classes follow this principle (e.g., TaskManager class)
+- **Open-Closed Principle**: Static Factory added for CalculatorEngine to not violate this principle
+- **Liskov Substitution Principle**: Decorator, Strategy, Composite used for the Instrument class
+- **Interface Segregation Principle**: Applied in calculation module classes
+- **Dependency Inversion Principle**: Dependency Injection and Strategy used in CalculatorEngineManager class
 
 
 #Trial Description
